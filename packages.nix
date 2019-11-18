@@ -1,0 +1,82 @@
+{ config, pkgs, ... }:
+{
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    (import ./emacs.nix { inherit pkgs; })
+    aqemu qemu qemu_kvm
+    aspell
+    bash-completion
+    bc
+    chromium
+    cmake
+    cmatrix
+    cmus
+    cowsay
+    curl
+    ed
+    firefox
+    fortune
+    gimp
+    git
+    gparted
+    gnupg
+    hardinfo
+    hplip
+    htop
+    hunspell
+    hwinfo
+    imagemagick
+    inkscape
+    inxi
+    ispell
+    jq
+    jwm
+    libreoffice
+    lilyterm
+    lshw
+    maim
+    mlocate
+    mpv
+    mupdf
+    ncdu
+    neofetch
+    neovim
+    nmap
+    jdk12
+    powertop
+    python3
+    qbittorrent
+    ranger
+    ratpoison
+    rsync
+    rtorrent
+    rxvt_unicode-with-plugins
+    sakura
+    sbcl
+    scrot
+    sct
+    shellcheck
+    sl
+    slop
+    spaceFM
+    st
+    sxiv
+    tmux
+    tree
+    virtmanager virtmanager-qt
+    vlc
+    w3m
+    wget
+    wmctrl
+    wireshark
+    xautolock
+    xclip
+    xidlehook
+    xorg.xinput
+    xsel
+    xterm
+    zathura
+    zsh
+  ];
+}
