@@ -5,6 +5,7 @@
   environment.systemPackages = with pkgs; [
     (import ./emacs.nix { inherit pkgs; })
     aqemu qemu qemu_kvm
+    ansible
     aspell
     bash-completion
     bc
@@ -14,6 +15,7 @@
     cmus
     cowsay
     curl
+    docker docker-compose
     ed
     firefox
     fortune
@@ -62,6 +64,7 @@
     spaceFM
     st
     sxiv
+    terraform
     tmux
     tree
     virtmanager virtmanager-qt
