@@ -17,6 +17,7 @@
 
     # Shells
     bash_5
+    bashInteractive_5
     bash-completion
     nix-bash-completions
     shellcheck
@@ -70,12 +71,12 @@
     hwinfo
     inxi
     lshw
+    neofetch
 
     # Fun
     cmatrix
     cowsay
     fortune
-    neofetch
     sl
 
     # Programming

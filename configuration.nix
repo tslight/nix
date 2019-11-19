@@ -66,6 +66,7 @@
         "networkmanager"
         "wheel" # Enable ‘sudo’ for the user.
       ];
+      shell = "${pkgs.bashInteractive_5}${pkgs.bashInteractive_5.shellPath}";
     };
     guest = {
       isNormalUser = true;
