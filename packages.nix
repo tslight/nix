@@ -7,7 +7,7 @@
     aqemu
     qemu
     qemu_kvm
-    virtmanager
+    virtmanager-qt
 
     # Office
     aspell
@@ -25,7 +25,6 @@
     # Terminal Emulators
     lilyterm
     rxvt_unicode-with-plugins
-    sakura
     st
     xterm
 
@@ -131,8 +130,6 @@
     inkscape
     maim
     sxiv
-    scrot
-    slop
 
     # Xorg Utilities
     sct
