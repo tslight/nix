@@ -9,13 +9,18 @@
     libinput.tapping = false; # disable tap to click
 
     displayManager = {
-      sddm.enable = true;
-      auto.enable = true; # Auto login
+      # sddm.enable = true;
+      # slim.enable = true;
+      # Auto login - only works with LightDM
+      auto.enable = true; 
       auto.user = "toby";
     };
 
     desktopManager = {
+      # gnome3.enable = true;
+      # mate.enable = true;
       plasma5.enable = true;
+      xfce.enable = true;
       default = "plasma5";
     };
 
