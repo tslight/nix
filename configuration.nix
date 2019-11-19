@@ -7,6 +7,8 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./packages.nix
+      ./python.nix
+      ./emacs.nix
       ./udev.nix
       ./xserver.nix
     ];
