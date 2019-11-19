@@ -7,7 +7,8 @@
     aqemu qemu qemu_kvm
     ansible
     aspell
-    bash-completion
+    bash_5
+    bash-completion nix-bash-completions
     bc
     chromium
     cmake
