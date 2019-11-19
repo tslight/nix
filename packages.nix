@@ -8,7 +8,6 @@
     qemu
     qemu_kvm
     virtmanager
-    virtmanager-qt
 
     # Office
     aspell
@@ -39,6 +38,7 @@
     # Web Browsers
     chromium
     firefox
+    w3m
 
     # Text Editors
     ed
@@ -49,35 +49,40 @@
     mupdf
     zathura
 
+    # Miscellaneous
     bc
-    cmake
-    cmatrix
-    cmus
-    cowsay
-    curl
     evtest
-    fortune
-    gimp
     gitFull
     gparted
     gnupg
-    hardinfo
     hplip
-    htop
-    hwinfo
-    imagemagick
-    inkscape
-    inxi
-    jq
-    lshw
-    maim
     mlocate
-    mpv
+    tmux
+    tree
+    rsync
+
+    # Monitoring
+    htop
     ncdu
-    neofetch
-    nmap
-    jdk12
     powertop
+
+    # Hardware
+    hardinfo
+    hwinfo
+    inxi
+    lshw
+
+    # Fun
+    cmatrix
+    cowsay
+    fortune
+    neofetch
+    sl
+
+    # Programming
+    cmake
+    jdk12
+    jq
     (python3.withPackages(ps: with ps; [
       conda
       pip
@@ -99,28 +104,40 @@
       pylint
       xonsh
     ]))
-    qbittorrent
-    ranger
-    ratpoison
-    rsync
-    rtorrent
     sbcl
-    scrot
-    sct
-    sl
-    slock
-    slop
+
+    # File Managers
+    ranger
     spaceFM
-    sxiv
-    tmux
-    tree
-    vlc
-    w3m
+
+    # BitTorrent Clients
+    qbittorrent
+    rtorrent
+
+    # Networking
+    curl
+    nmap
     wget
-    wmctrl
     wireshark
 
+    # Media
+    cmus
+    vlc
+    mpv
+
+    # Graphics
+    gimp
+    imagemagick
+    inkscape
+    maim
+    sxiv
+    scrot
+    slop
+
     # Xorg Utilities
+    sct
+    slock
+    wmctrl
     xautolock
     xclip
     xidlehook
