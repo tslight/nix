@@ -97,7 +97,7 @@ main() {
 
     shift $((OPTIND -1))
 
-    install_nix
+    # install_nix
 }
 
 main "$@"
