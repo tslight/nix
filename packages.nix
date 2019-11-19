@@ -79,11 +79,14 @@
     sl
 
     # Programming
+    clang
     clojure
     cmake
+    gcc
     go
     jdk12
     jq
+    llvm
     nodejs-12_x
     (python3.withPackages(ps: with ps; [
       conda
