@@ -1,7 +1,7 @@
 { config, ... }: {
   services.xserver = {
-    enable = true; # Turn the fucker on
-    layout = "gb"; # Set the keyboard layout
+    enable = true;
+    layout = "gb";
     xkbOptions = "terminate:ctrl_alt_bksp";
 
     # Enable touchpad support.
