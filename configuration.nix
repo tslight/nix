@@ -80,6 +80,7 @@
     toby = {
       isNormalUser = true;
       extraGroups = [
+        "docker"
         "networkmanager"
         "wheel" # Enable ‘sudo’ for the user.
       ];
