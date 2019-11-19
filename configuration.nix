@@ -22,13 +22,13 @@
       # grub.efiSupport = true;
       # grub.efiInstallAsRemovable = true;
       # efi.efiSysMountPoint = "/boot/efi";
-      
+
       # Use the systemd-boot EFI boot loader.
       # systemd-boot.enable = true;
       # efi.canTouchEfiVariables = true;
     };
   };
-    
+
   networking = {
     hostName = "throg"; # Define your hostname.
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -40,7 +40,7 @@
     # useDHCP = false;
     interfaces.enp0s25.useDHCP = true;
     interfaces.wls3.useDHCP = true;
-    
+
     # Configure network proxy if necessary
     # proxy.default = "http://user:password@proxy:port/";
     # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -51,7 +51,7 @@
     # Or disable the firewall altogether.
     # firewall.enable = false;
   };
-  
+
   # Select internationalisation properties.
   i18n = {
     consoleFont = "Lat2-Terminus16";
@@ -76,11 +76,21 @@
   hardware.pulseaudio.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.toby = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  users.users = {
+    toby = {
+      isNormalUser = true;
+      extraGroups = [
+        "networkmanager"
+        "wheel" # Enable ‘sudo’ for the user.
+      ];
+    };
+    guest = {
+      isNormalUser = true;
+      extraGroups = [
+      ];
+    };
   };
-  
+
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you

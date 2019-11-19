@@ -7,6 +7,7 @@
 
     # Enable touchpad support.
     libinput.enable = true;
+    libinput.tapping = false; # disable tap to click
 
     displayManager = {
       # sddm.enable = true;
@@ -16,7 +17,7 @@
       auto.enable = true;
       auto.user = "toby";
     };
-    
+
     desktopManager = {
       # plasma5.enable = true;
       xfce.enable = true;
