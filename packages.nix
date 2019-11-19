@@ -3,7 +3,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # (import ./emacs.nix { inherit pkgs; })
+    (import ./emacs.nix { inherit pkgs; })
     aqemu qemu qemu_kvm
     ansible
     aspell
