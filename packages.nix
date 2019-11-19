@@ -3,23 +3,59 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    (import ./emacs.nix { inherit pkgs; })
-    aqemu qemu qemu_kvm
-    ansible
+    # Virtual Machines
+    aqemu
+    qemu
+    qemu_kvm
+    virtmanager
+    virtmanager-qt
+
+    # Office
     aspell
+    hunspell
+    ispell
+    libreoffice
+
+    # Shells
     bash_5
-    bash-completion nix-bash-completions
-    bc
+    bash-completion
+    nix-bash-completions
+    shellcheck
+    zsh
+
+    # Terminal Emulators
+    lilyterm
+    rxvt_unicode-with-plugins
+    sakura
+    st
+    xterm
+
+    # DevOps Utilities
+    ansible
+    docker
+    docker-compose
+    terraform
+
+    # Web Browsers
     chromium
+    firefox
+
+    # Text Editors
+    ed
+    neovim
+    (import ./emacs.nix { inherit pkgs; })
+
+    # PDF Readers
+    mupdf
+    zathura
+
+    bc
     cmake
     cmatrix
     cmus
     cowsay
     curl
-    docker docker-compose
-    ed
     evtest
-    firefox
     fortune
     gimp
     gitFull
@@ -28,24 +64,17 @@
     hardinfo
     hplip
     htop
-    hunspell
     hwinfo
     imagemagick
     inkscape
     inxi
-    ispell
     jq
-    jwm
-    libreoffice
-    lilyterm
     lshw
     maim
     mlocate
     mpv
-    mupdf
     ncdu
     neofetch
-    neovim
     nmap
     jdk12
     powertop
@@ -75,35 +104,28 @@
     ratpoison
     rsync
     rtorrent
-    rxvt_unicode-with-plugins
-    sakura
     sbcl
     scrot
     sct
-    shellcheck
     sl
     slock
     slop
     spaceFM
-    st
     sxiv
-    terraform
     tmux
     tree
-    virtmanager virtmanager-qt
     vlc
     w3m
     wget
     wmctrl
     wireshark
+
+    # Xorg Utilities
     xautolock
     xclip
     xidlehook
     xorg.xev
     xorg.xinput
     xsel
-    xterm
-    zathura
-    zsh
   ];
 }
