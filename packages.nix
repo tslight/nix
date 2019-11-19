@@ -17,10 +17,11 @@
     curl
     docker docker-compose
     ed
+    evtest
     firefox
     fortune
     gimp
-    git
+    gitFull
     gparted
     gnupg
     hardinfo
@@ -76,6 +77,7 @@
     xautolock
     xclip
     xidlehook
+    xorg.xev
     xorg.xinput
     xsel
     xterm

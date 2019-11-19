@@ -9,26 +9,50 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./packages.nix
+      ./udev.nix
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    loader = {
+      # Use the GRUB 2 boot loader.
+      grub.enable = true;
+      grub.version = 2;
+      # Define on which hard drive you want to install Grub.
+      grub.device = "/dev/sda"; # or "nodev" for efi only
+      # grub.efiSupport = true;
+      # grub.efiInstallAsRemovable = true;
+      # efi.efiSysMountPoint = "/boot/efi";
+      
+      # Use the systemd-boot EFI boot loader.
+      # systemd-boot.enable = true;
+      # efi.canTouchEfiVariables = true;
+    };
+  };
+    
+  networking = {
+    hostName = "throg"; # Define your hostname.
+    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    networkmanager.enable = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+    # Per-interface useDHCP will be mandatory in the future, so this generated config
+    # replicates the default behaviour.
+    # useDHCP = false;
+    interfaces.enp0s25.useDHCP = true;
+    interfaces.wls3.useDHCP = true;
+    
+    # Configure network proxy if necessary
+    # proxy.default = "http://user:password@proxy:port/";
+    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.ens3.useDHCP = true;
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
+    # Open ports in the firewall.
+    # firewall.allowedTCPPorts = [ ... ];
+    # firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    # firewall.enable = false;
+  };
+  
   # Select internationalisation properties.
   i18n = {
     consoleFont = "Lat2-Terminus16";
@@ -45,20 +69,12 @@
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
   # List services that you want to enable:
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.openssh.enable = true;
+  services.printing.enable = true;
 
   # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -68,9 +84,31 @@
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
 
-  # Enable the KDE Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  # Choose a display manager
+  # services.xserver.displayManager.sddm.enable = true;
+  # services.xserver.displayManager.slim.enable = true;
+  services.xserver.displayManager.lightdm.enable = true;
+
+  # Auto login
+  services.xserver.displayManager.auto.enable = true;
+  services.xserver.displayManager.auto.user = "toby";
+
+  # Choose desktop environments/window managers
+  services.xserver.desktopManager = {
+    # plasma5.enable = true;
+    xfce.enable = true;
+    # gnome3.enable = true;
+    # mate.enable = true;
+    default = "xfce";
+  };
+
+  services.xserver.windowManager = {
+    xmonad.enable = true;
+    # twm.enable = true;
+    icewm.enable = true;
+    i3.enable = true;
+    default = "none";
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.toby = {
