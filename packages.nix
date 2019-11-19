@@ -79,9 +79,12 @@
     sl
 
     # Programming
+    clojure
     cmake
+    go
     jdk12
     jq
+    nodejs-12_x
     (python3.withPackages(ps: with ps; [
       conda
       pip
