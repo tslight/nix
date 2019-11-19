@@ -1,5 +1,6 @@
 # Help is available in the configuration.nix(5) man page and in the
 # NixOS manual (accessible by running ‘nixos-help’).
+
 { config, pkgs, ... }: {
   imports =
     [ # Include the results of the hardware scan.
@@ -12,29 +13,18 @@
     ];
 
   networking = {
-    hostName = "throg"; # Define your hostname.
-    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    networkmanager.enable = true; # Mutually exclusive with wpa_supplicant.
+    hostName = "throg";
+    networkmanager.enable = true;
     interfaces.enp0s25.useDHCP = true;
     interfaces.wls3.useDHCP = true;
-    # Configure network proxy if necessary
-    # proxy.default = "http://user:password@proxy:port/";
-    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-    # Open ports in the firewall.
-    # firewall.allowedTCPPorts = [ ... ];
-    # firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    # firewall.enable = false;
   };
 
-  # Select internationalisation properties.
   i18n = {
     consoleFont = "Lat2-Terminus16";
     consoleKeyMap = "uk";
     defaultLocale = "en_GB.UTF-8";
   };
 
-  # Set your time zone.
   time.timeZone = "Europe/London";
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -42,29 +32,23 @@
   # programs.mtr.enable = true;
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
-  # List services that you want to enable:
   services.openssh.enable = true;
   services.printing.enable = true;
 
-  # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Don't forget to set a password with ‘passwd’.
   users.users = {
     toby = {
       isNormalUser = true;
       extraGroups = [
         "docker"
         "networkmanager"
+        "systemd-journal"
         "wheel" # Enable ‘sudo’ for the user.
       ];
       shell = "${pkgs.bashInteractive_5}${pkgs.bashInteractive_5.shellPath}";
-    };
-    guest = {
-      isNormalUser = true;
-      extraGroups = [
-      ];
     };
   };
 
