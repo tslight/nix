@@ -1,7 +1,5 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
+# Help is available in the configuration.nix(5) man page and in the
+# NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, ... }:
 
 {
@@ -10,6 +8,7 @@
       ./hardware-configuration.nix
       ./packages.nix
       ./udev.nix
+      ./xserver.nix
     ];
 
   boot = {
@@ -75,40 +74,6 @@
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "gb";
-  # services.xserver.xkbOptions = "eurosign:e";
-
-  # Enable touchpad support.
-  services.xserver.libinput.enable = true;
-
-  # Choose a display manager
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.displayManager.slim.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
-
-  # Auto login
-  services.xserver.displayManager.auto.enable = true;
-  services.xserver.displayManager.auto.user = "toby";
-
-  # Choose desktop environments/window managers
-  services.xserver.desktopManager = {
-    # plasma5.enable = true;
-    xfce.enable = true;
-    # gnome3.enable = true;
-    # mate.enable = true;
-    default = "xfce";
-  };
-
-  services.xserver.windowManager = {
-    xmonad.enable = true;
-    # twm.enable = true;
-    icewm.enable = true;
-    i3.enable = true;
-    default = "none";
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.toby = {

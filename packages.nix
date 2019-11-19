@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -61,6 +61,7 @@
     sct
     shellcheck
     sl
+    slock
     slop
     spaceFM
     st
