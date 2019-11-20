@@ -40,6 +40,7 @@ emacsWithPackages (epkgs: (with epkgs.melpaPackages; [
   clojure-mode
   clojure-snippets
   company
+  company-go
   company-terraform
   counsel
   counsel-projectile
@@ -47,6 +48,7 @@ emacsWithPackages (epkgs: (with epkgs.melpaPackages; [
   docker
   dockerfile-mode
   dot-mode
+  emmet-mode
   exec-path-from-shell
   expand-region
   flx
@@ -62,6 +64,7 @@ emacsWithPackages (epkgs: (with epkgs.melpaPackages; [
   js2-mode
   js2-refactor
   json-mode
+  json-navigator
   magit
   markdown-mode
   nix-mode
@@ -84,6 +87,7 @@ emacsWithPackages (epkgs: (with epkgs.melpaPackages; [
   which-key
   yaml-mode
   yasnippet
+  yasnippet-snippets
 ]) ++ (with epkgs.elpaPackages; [
   undo-tree
 ]))

@@ -52,7 +52,6 @@
     # Miscellaneous
     bc
     evtest
-    gitFull
     gparted
     gnupg
     hplip
@@ -60,6 +59,7 @@
     tmux
     tree
     rsync
+    zip unzip
 
     # Monitoring
     htop
@@ -84,6 +84,7 @@
     clojure
     cmake
     gcc
+    gitFull
     go
     jdk12
     jq
