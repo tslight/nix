@@ -6,15 +6,16 @@
       ./hardware-configuration.nix
       # ./mbr.nix
       ./efi.nix
+      ./udev.nix
+      ./env.nix
+      ./xserver.nix
       ./packages.nix
       ./programs.nix
-      ./env.nix
-      ./udev.nix
-      ./xserver.nix
+      ./home.nix
     ];
 
   networking = {
-    hostName = "throg";
+    hostName = "probook";
     networkmanager.enable = true;
     useDHCP = false;
     # interfaces.enp0s25.useDHCP = true;
