@@ -1,7 +1,7 @@
 # https://nixos.org/nixos/manual/options.html
 { pkgs, ... }: {
   programs = {
-    autojump.enable = true;
+    # autojump.enable = true;
 
     bash = {
       enableCompletion = true;
