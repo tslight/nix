@@ -118,8 +118,6 @@
       terminal = "screen-256color";
       extraTmuxConf = ''
         set -g display-panes-time 4000
-        set -g bg default
-        set -g fg brightgreen
         set -g status-interval 60
         set -g status-left "[#S] "
         set -g status-left-length 50
