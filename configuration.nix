@@ -8,6 +8,7 @@
       ./efi.nix
       ./packages.nix
       ./programs.nix
+      ./env.nix
       ./udev.nix
       ./xserver.nix
     ];
