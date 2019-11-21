@@ -112,7 +112,7 @@
       clock24 = true;
       escapeTime = 0;
       historyLimit = 42000;
-      keyMode = true;
+      keyMode = "emacs";
       newSession = true;
       shortcut = "b";
       terminal = "screen-256color";
@@ -189,10 +189,7 @@
       '';
     };
 
-    wireshark = {
-      enable = true;
-      package = "pkgs.wireshark";
-    };
+    wireshark.enable = true;
 
     zsh = {
       enable = true;
@@ -259,7 +256,7 @@
           pkgs.nix-zsh-completions
         ];
       };
-      zsh.vteIntegration = true;
+      vteIntegration = true;
       zsh-autoenv.enable = true;
       syntaxHighlighting.enable = true;
     };

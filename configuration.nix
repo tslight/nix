@@ -16,7 +16,7 @@
   networking = {
     hostName = "throg";
     networkmanager.enable = true;
-    networking.useDHCP = false;
+    useDHCP = false;
     # interfaces.enp0s25.useDHCP = true;
     # interfaces.wls3.useDHCP = true;
   };

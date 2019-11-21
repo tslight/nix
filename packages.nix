@@ -26,6 +26,7 @@
     firefox
     fortune
     gcc
+    ghc
     gimp
     gitFull
     gksu
@@ -43,6 +44,7 @@
     ispell
     jdk12
     jq
+    leiningen # clojure manager
     libreoffice
     lilyterm
     llvm
@@ -88,6 +90,7 @@
     rofi
     rsync
     rtorrent
+    ruby
     rustc
     rxvt_unicode-with-plugins
     sbcl
