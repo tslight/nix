@@ -53,7 +53,7 @@
       #   epkgs.proofgeneral
       # ];
       # exwm.enableDefaultConfig = true; # vanilla
-      fvwm.enable = true;
+      # fvwm.enable = true;
       # fluxbox.enable = true;
       # i3.enable = true;
       # i3.extraPackages = with pkgs; [
@@ -65,7 +65,7 @@
       openbox.enable = true;
       # sawfish.enable = true;
       stumpwm.enable = true;
-      windowmaker.enable = true;
+      # windowmaker.enable = true;
       xmonad.enable = true;
       xmonad.enableContribAndExtras = true;
       # xmonad.extraPackages = haskellPackages: [

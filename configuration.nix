@@ -1,18 +1,17 @@
 # Help is available in the configuration.nix(5) man page and in the
 # NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, ... }: {
-  imports =
-    [
-      ./hardware-configuration.nix
-      # ./mbr.nix
-      ./efi.nix
-      ./udev.nix
-      ./env.nix
-      ./xserver.nix
-      ./packages.nix
-      ./programs.nix
-      ./home.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    # ./mbr.nix
+    ./efi.nix
+    ./udev.nix
+    ./env.nix
+    ./xserver.nix
+    ./packages.nix
+    ./programs.nix
+    ./home.nix
+  ];
 
   networking = {
     hostName = "probook";
