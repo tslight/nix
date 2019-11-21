@@ -42,13 +42,14 @@
   users.users = {
     toby = {
       isNormalUser = true;
+      description = "Toby Slight";
       extraGroups = [
         "docker"
         "networkmanager"
         "systemd-journal"
         "wheel" # Enable ‘sudo’ for the user.
       ];
-      shell = "${pkgs.bashInteractive_5}${pkgs.bashInteractive_5.shellPath}";
+      shell = pkgs.zsh;
     };
   };
 

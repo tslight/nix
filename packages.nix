@@ -21,8 +21,6 @@
     texlive.combined.scheme-minimal
 
     # Shells
-    bash_5
-    bashInteractive_5
     bash-completion
     nix-bash-completions
     shellcheck
@@ -150,6 +148,9 @@
     sxiv
 
     # Xorg Utilities
+    alttab
+    dmenu
+    rofi
     sct
     slock
     wmctrl
@@ -160,4 +161,16 @@
     xorg.xinput
     xsel
   ];
+
+  programs.zsh.ohMyZsh = {
+    enable = true;
+    plugins = [ "git" "python" "man" ];
+    theme = "agnoster";
+    customPkgs = with pkgs; [
+      pkgs.nix-zsh-completions
+      pkgs.zsh-autosuggestions
+      pkgs.zsh-completions
+      pkgs.zsh-syntax-highlighting
+    ];
+  };
 }
