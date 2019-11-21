@@ -14,6 +14,11 @@
     hunspell
     ispell
     libreoffice
+    # texlive.combined.scheme-full
+    # texlive.combined.scheme-tetex
+    # texlive.combined.scheme-medium
+    # texlive.combined.scheme-small
+    texlive.combined.scheme-minimal
 
     # Shells
     bash_5
