@@ -1,3 +1,4 @@
+# https://nixos.org/nixos/manual/options.html
 { pkgs, ... }: {
   programs = {
 

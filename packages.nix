@@ -1,98 +1,64 @@
+# https://nixos.org/nixos/packages.html?channel=nixos-19.09
 { pkgs, ... }: {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # Virtual Machines
-    aqemu
-    qemu
-    qemu_kvm
-    virtmanager-qt
-
-    # Office
-    aspell
-    hunspell
-    ispell
-    libreoffice
-    # texlive.combined.scheme-full
-    # texlive.combined.scheme-tetex
-    # texlive.combined.scheme-medium
-    # texlive.combined.scheme-small
-    texlive.combined.scheme-minimal
-
-    # Shells
-    nix-bash-completions
-    shellcheck
-
-    # Terminal Emulators
-    lilyterm
-    rxvt_unicode-with-plugins
-    st
-    xterm
-
-    # DevOps Utilities
-    ansible
-    docker
-    docker-compose
-    terraform
-
-    # Web Browsers
-    firefox
-    w3m
-
-    # Text Editors
-    ed
-    neovim
     (import ./emacs.nix { inherit pkgs; })
-
-    # PDF Readers
-    mupdf
-    zathura
-
-    # Miscellaneous
+    alttab
+    ansible
+    aqemu
+    aspell
     bc
-    evtest
-    gparted
-    gnupg
-    hplip
-    mlocate
-    tree
-    ranger
-    rsync
-    zip unzip
-
-    # Monitoring
-    htop
-    lm_sensors
-    ncdu
-    powertop
-    tlp
-
-    # Hardware
-    hardinfo
-    hwinfo
-    inxi
-    lshw
-    neofetch
-
-    # Fun
-    cmatrix
-    cowsay
-    fortune
-    sl
-
-    # Programming
     chez # scheme
     clang
     clojure
     cmake
+    cmatrix
+    cmus
+    cowsay
+    curl
+    dmenu
+    docker
+    docker-compose
+    ed
+    evtest
+    firefox
+    fortune
     gcc
+    gimp
     gitFull
+    gksu
+    gnupg
     go
+    gparted
+    hardinfo
+    hplip
+    htop
+    hunspell
+    hwinfo
+    imagemagick
+    inkscape
+    inxi
+    ispell
     jdk12
     jq
+    libreoffice
+    lilyterm
     llvm
+    lm_sensors
+    lshw
+    maim
     mitscheme
+    mlocate
+    mpv
+    mupdf
+    ncdu
+    neofetch
+    neovim
+    nix-bash-completions
+    nmap
     nodejs-12_x
+    powertop
     (python3.withPackages(ps: with ps; [
       conda
       pip
@@ -114,38 +80,35 @@
       pylint
       xonsh
     ]))
-    rustc
-    sbcl
-
-    # BitTorrent Clients
     qbittorrent
+    qemu
+    qemu_kvm
+    ranger
+    rofi
+    rsync
     rtorrent
-
-    # Networking
-    curl
-    nmap
+    rustc
+    rxvt_unicode-with-plugins
+    sbcl
+    sct
+    shellcheck
+    sl
+    slock
+    st
+    sxiv
+    terraform
+    # texlive.combined.scheme-full
+    # texlive.combined.scheme-medium
+    # texlive.combined.scheme-small
+    # texlive.combined.scheme-tetex
+    texlive.combined.scheme-minimal
+    tlp
+    tree
+    virtmanager-qt
+    vlc
+    w3m
     wget
     wireshark
-
-    # Media
-    cmus
-    vlc
-    mpv
-
-    # Graphics
-    gimp
-    imagemagick
-    inkscape
-    maim
-    sxiv
-
-    # Xorg Utilities
-    alttab
-    dmenu
-    gksu
-    rofi
-    sct
-    slock
     wmctrl
     xautolock
     xclip
@@ -153,5 +116,8 @@
     xorg.xev
     xorg.xinput
     xsel
+    xterm
+    zathura
+    zip unzip
   ];
 }
