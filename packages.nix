@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -21,10 +20,8 @@
     texlive.combined.scheme-minimal
 
     # Shells
-    bash-completion
     nix-bash-completions
     shellcheck
-    zsh
 
     # Terminal Emulators
     lilyterm
@@ -39,7 +36,6 @@
     terraform
 
     # Web Browsers
-    chromium
     firefox
     w3m
 
@@ -59,8 +55,8 @@
     gnupg
     hplip
     mlocate
-    tmux
     tree
+    ranger
     rsync
     zip unzip
 
@@ -121,10 +117,6 @@
     rustc
     sbcl
 
-    # File Managers
-    ranger
-    spaceFM
-
     # BitTorrent Clients
     qbittorrent
     rtorrent
@@ -150,6 +142,7 @@
     # Xorg Utilities
     alttab
     dmenu
+    gksu
     rofi
     sct
     slock
@@ -161,16 +154,4 @@
     xorg.xinput
     xsel
   ];
-
-  programs.zsh.ohMyZsh = {
-    enable = true;
-    plugins = [ "git" "python" "man" ];
-    theme = "agnoster";
-    customPkgs = with pkgs; [
-      pkgs.nix-zsh-completions
-      pkgs.zsh-autosuggestions
-      pkgs.zsh-completions
-      pkgs.zsh-syntax-highlighting
-    ];
-  };
 }
