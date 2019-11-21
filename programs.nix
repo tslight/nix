@@ -118,26 +118,16 @@
       terminal = "screen-256color";
       extraTmuxConf = ''
         set -g display-panes-time 4000
-        ## COLORS
-        set -g message-bg default
-        set -g message-fg brightgreen
-        set -g mode-bg default
-        set -g mode-fg brightgreen
-        set -g status-bg default
-        set -g status-fg brightgreen
-        set -g window-status-attr bold
-        set -g window-status-current-attr underscore
-        ## STATUS
+        set -g bg default
+        set -g fg brightgreen
         set -g status-interval 60
         set -g status-left "[#S] "
         set -g status-left-length 50
         set -g status-right "%H:%M %a %d/%m/%y"
         set -g status-right-length 50
         set -g window-status-current-format "#I: #W.#P*"
-        ## MOUSE
         set -g mouse on
         bind -n MouseDown2Status copy-mode
-        ## KEYS
         bind C-l switch-client -l
         bind C-c new-session
         bind C-x kill-session
