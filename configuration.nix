@@ -16,8 +16,9 @@
   networking = {
     hostName = "throg";
     networkmanager.enable = true;
-    interfaces.enp0s25.useDHCP = true;
-    interfaces.wls3.useDHCP = true;
+    networking.useDHCP = false;
+    # interfaces.enp0s25.useDHCP = true;
+    # interfaces.wls3.useDHCP = true;
   };
 
   i18n = {
@@ -30,9 +31,15 @@
 
   services.openssh.enable = true;
   services.printing.enable = true;
+  services.tlp.enable = true;
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+
+  # hardware.trackpoint.enable = true;
+  # hardware.trackpoint.emulateWheel = true;
+  # hardware.trackpoint.sensitivity = 142;
+  # hardware.trackpoint.speed = 100;
 
   # Don't forget to set a password with ‘passwd’.
   # users.defaultUserShell = pkgs.zsh;
@@ -45,6 +52,7 @@
         "networkmanager"
         "systemd-journal"
         "wheel" # Enable ‘sudo’ for the user.
+        "wireshark"
       ];
       shell = pkgs.zsh;
     };

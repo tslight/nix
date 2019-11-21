@@ -11,8 +11,6 @@
 
     shellAliases = {
       bye = "systemctl poweroff";
-      rb = "systemctl reboot";
-      srch = "sudo updatedb && locate -i";
       cp = "cp -i";
       d = "docker";
       df = "df -h";
@@ -41,7 +39,9 @@
       powertune = "sudo powertop --auto-tune";
       python = "python3";
       py = "python3";
+      rb = "systemctl reboot";
       rm = "rm -i";
+      srch = "sudo updatedb && locate -i";
       sshaa = "eval $(ssh-agent) && ssh-add";
       t = "tmux attach";
       uc = "grep -Ev '^#|^\s+#|^\t+#|^$'";

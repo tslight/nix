@@ -10,6 +10,7 @@
     aspell
     bc
     chez # scheme
+    chromium
     clang
     clojure
     cmake
@@ -108,7 +109,6 @@
     vlc
     w3m
     wget
-    wireshark
     wmctrl
     xautolock
     xclip
