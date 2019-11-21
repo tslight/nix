@@ -63,8 +63,10 @@
 
     # Monitoring
     htop
+    lm_sensors
     ncdu
     powertop
+    tlp
 
     # Hardware
     hardinfo
@@ -80,6 +82,7 @@
     sl
 
     # Programming
+    chez # scheme
     clang
     clojure
     cmake
@@ -89,6 +92,7 @@
     jdk12
     jq
     llvm
+    mitscheme
     nodejs-12_x
     (python3.withPackages(ps: with ps; [
       conda
@@ -111,6 +115,7 @@
       pylint
       xonsh
     ]))
+    rustc
     sbcl
 
     # File Managers
