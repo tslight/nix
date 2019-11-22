@@ -17,8 +17,6 @@
     hostName = "probook";
     networkmanager.enable = true;
     useDHCP = false;
-    # interfaces.enp0s25.useDHCP = true;
-    # interfaces.wls3.useDHCP = true;
   };
 
   i18n = {
@@ -35,6 +33,14 @@
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+
+  # Reload touchpad after resume on HP Probook
+  powerManagement.resumeCommands = ''
+    echo "Reloading i2c_hid..." && \
+        ${pkgs.kmod}/bin/rmmod i2c_hid && \
+        ${pkgs.kmod}/bin/modprobe i2c_hid && \
+        echo "Successfully reloaded i2c_hid :-)"
+  '';
 
   # hardware.trackpoint.enable = true;
   # hardware.trackpoint.emulateWheel = true;
