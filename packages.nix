@@ -8,6 +8,9 @@
     ansible
     aqemu
     aspell
+    aspellDicts.en
+    aspellDicts.en-computers
+    aspellDicts.en-science
     bc
     chez # scheme
     chromium
@@ -87,6 +90,7 @@
     qemu
     qemu_kvm
     ranger
+    redshift-plasma-applet
     rofi
     rsync
     rtorrent
