@@ -26,6 +26,7 @@
     docker-compose
     ed
     evtest
+    exa
     firefox
     fortune
     gcc
