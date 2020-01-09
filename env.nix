@@ -46,6 +46,7 @@
       t = "tmux attach";
       uc = "grep -Ev '^#|^\s+#|^\t+#|^$'";
       up = "uptime";
+      update_nixos = "sudo nix-channel --update && sudo nixos-rebuild switch";
       zzz = "systemctl suspend";
       ZZZ = "systemctl hibernate";
     };
