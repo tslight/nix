@@ -78,6 +78,7 @@ in
           epkgs.markdown-mode
           epkgs.nix-mode
           epkgs.nodejs-repl
+          epkgs.org-journal
           epkgs.paredit
           epkgs.powershell
           epkgs.projectile
