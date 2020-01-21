@@ -1,6 +1,6 @@
 # https://rycee.gitlab.io/home-manager/options.html
 
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   home-manager = builtins.fetchGit {
