@@ -86,6 +86,10 @@
         mi = "make install clean";
         mkdir = "mkdir -p";
         mv = "mv -i";
+        nix-install = "nix-env -iA";
+        nix-remove = "nix-env -e";
+        nix-search = "nix-env -qaP";
+        nix-update = "nix-channel --update && nix-env -u '*'";
         p = "pwd";
         pg = "pgrep -ail";
         ping4 = "ping -c 4";
@@ -104,7 +108,6 @@
         tka = "tmux kill-session -a";
         uc = "grep -Ev '^#|^\s+#|^\t+#|^$'";
         up = "uptime";
-        update_nixos = "nix-channel --update && nix-env -u '*'";
         v = "vim";
         x = "exec; startx; logout";
         zzz = "systemctl suspend";
