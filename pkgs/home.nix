@@ -6,7 +6,126 @@
   home.extraOutputsToInstall = [ "man" ];
   programs.man.enable = false;
 
+  gtk.gtk2.extraConfig = ''
+      gtk-key-theme-name = "Emacs"
+    '';
+
+  gtk.gtk3.extraConfig = ''
+      [Settings]
+      gtk-key-theme-name = Emacs
+    '';
+
   programs = {
+    bash = {
+      enable = true;
+      # enableAutojump = true;
+
+      historyControl = [
+        "erasedups"
+        "ignorespace"
+      ];
+      historyFileSize = 999999;
+      historyIgnore = [
+        "h"
+        "history"
+        "ls"
+        "cd"
+        "exit"
+      ];
+      historySize = 999999;
+
+      initExtra = builtins.readFile(./init.bash);
+      profileExtra = builtins.readFile(./profile.bash);
+
+      sessionVariables = {
+        BLOCK_SIZE = "human-readable";
+        EDITOR = "emacsclient -c -nw";
+        ALTERNATE_EDITOR = "";
+        GCC_COLORS = "error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01";
+        PAGER = "less";
+        GTK_THEME = "Emacs";
+        GOPATH = "$HOME/go";
+        ANSIBLE = "$HOME/src/tspub/devops/ansible";
+        DEVPATH = "$HOME/src/oe-developers";
+        DEVOPS = "$HOME/src/oe-developers/be/devops";
+      };
+
+      shellAliases = {
+        bye = "systemctl poweroff";
+        cp = "cp -i";
+        d = "docker";
+        df = "df -h";
+        dh = "dirs -v";
+        du = "du -h";
+        e = "emacs";
+        ec = "emacsclient -c -a ''";
+        enabled_services = "systemctl list-unit-files | grep enabled";
+        g = "git";
+        h = "history";
+        ha = "history 0";
+        j = "jobs -l";
+        lc = "grep -cv '^$'";
+        ls = "exa";
+        l = "exa";
+        la = "exa --all";
+        ll = "exa --long --group --git";
+        lla = "exa --long --group --git --all";
+        llg = "exa --long --group --git --grid";
+        lt = "exa --tree --group";
+        llt = "exa --tree --long --group --git";
+        llta = "exa --all --tree --long --group --git";
+        lgf = "lazygitfind.sh";
+        lgh = "lazygithub.sh";
+        lghs = "lazygithub.sh status -s";
+        lghp = "lazygithub.sh status pull";
+        lgl = "lazygitlab";
+        lgls = "lazygitlab --run status";
+        lglf = "lazygitlab --run fetch-or-clone";
+        m = "make";
+        mc = "make clean";
+        mi = "make install clean";
+        mkdir = "mkdir -p";
+        mv = "mv -i";
+        p = "pwd";
+        pg = "pgrep -ail";
+        ping4 = "ping -c 4";
+        pingg = "ping -c 4 8.8.8.8";
+        pip = "pip3";
+        powertune = "sudo powertop --auto-tune";
+        python = "python3";
+        py = "python3";
+        rb = "systemctl reboot";
+        rm = "rm -i";
+        srch = "sudo updatedb && locate -i";
+        se = "sudoedit";
+        sshaa = "eval $(ssh-agent) && ssh-add";
+        t = "tmux_create_or_attach";
+        tk = "tmux kill-session";
+        tka = "tmux kill-session -a";
+        uc = "grep -Ev '^#|^\s+#|^\t+#|^$'";
+        up = "uptime";
+        update_nixos = "sudo nix-channel --update && sudo nixos-rebuild switch";
+        v = "vim";
+        x = "exec; startx; logout";
+        zzz = "systemctl suspend";
+        ZZZ = "systemctl hibernate";
+      };
+
+      shellOptions = [
+        "autocd"       # cd without cd. who knew?
+        "checkjobs"    # don't exit if we still have jobs running
+        "dirspell"     # correct directory spelling
+        "globstar"     # pattern match ** in filename context
+        "cdspell"      # correct minor cd spelling errors
+        "checkwinsize" # update lines and columns when resizing
+        "cmdhist"      # save multi line cmds as one entry
+        "dotglob"      # show dotfiles when expanding
+        "extglob"      # enable extended pattern matching
+        "histappend"   # don't overwrite history file on exit
+        "nocaseglob"   # match filename case insensitively
+      ];
+    };
+
     emacs = {
       enable = true;
       extraPackages = epkgs: [
@@ -123,6 +242,20 @@
           whitespace = "trailing-space,space-before-tab";
         };
       };
+    };
+
+    tmux = {
+      enable = true;
+      aggressiveResize = true;
+      baseIndex = 1;
+      clock24 = true;
+      escapeTime = 0;
+      historyLimit = 42000;
+      keyMode = "emacs";
+      newSession = true;
+      shortcut = "b";
+      terminal = "screen-256color";
+      extraConfig = builtins.readFile(./tmux.conf);
     };
   };
 }

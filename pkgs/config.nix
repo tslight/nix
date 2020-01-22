@@ -59,7 +59,7 @@
         # texlive.combined.scheme-small
         # texlive.combined.scheme-tetex
         texlive.combined.scheme-minimal
-        tmux
+        # tmux # should be handled by home-manager
         tree
         w3m
         youtube-dl
