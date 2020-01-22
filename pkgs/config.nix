@@ -14,7 +14,7 @@
         aspellDicts.en-computers
         aspellDicts.en-science
         azure-cli
-        brave
+        brave # https://github.com/brave/brave-browser/issues/1986
         # chez # choose between this and mitscheme
         chromium
         clojure
