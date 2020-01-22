@@ -14,6 +14,7 @@
         aspellDicts.en-computers
         aspellDicts.en-science
         azure-cli
+        brave
         # chez # choose between this and mitscheme
         chromium
         clojure
@@ -42,6 +43,7 @@
         ncdu
         neovim
         neofetch
+        next
         nix-bash-completions
         nix-zsh-completions
         nmap
