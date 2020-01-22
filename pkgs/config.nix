@@ -1,4 +1,10 @@
-{ packageOverrides = pkgs: with pkgs; {
+{
+  packageOverrides = pkgs: with pkgs; {
+    # https://github.com/nix-community/NUR/#installation
+    # https://gitlab.com/rycee/nur-expressions
+    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+      inherit pkgs;
+    };
     myPackages = pkgs.buildEnv {
       name = "my-packages";
       paths = [
@@ -14,14 +20,15 @@
         curl
         docker
         docker-compose
-        emacs
+        # emacs # should be handled by home-manager
         exa
         fast-cli
-        firefox
+        # firefox # should be handled by home-manager
         gimp
-        gitFull
+        # gitFull # should be handled by home-manager
         go
         hardinfo
+        home-manager
         htop
         hunspell
         ispell
