@@ -48,6 +48,8 @@
         ANSIBLE = "$HOME/src/tspub/devops/ansible";
         DEVPATH = "$HOME/src/oe-developers";
         DEVOPS = "$HOME/src/oe-developers/be/devops";
+        PATH = "$HOME/conda/bin:$HOME/.local/bin:$DEVOPS/bin:$HOME/bin:$PATH";
+        XDG_DATA_DIRS = "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
       };
 
       shellAliases = {
