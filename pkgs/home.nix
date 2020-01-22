@@ -104,7 +104,7 @@
         tka = "tmux kill-session -a";
         uc = "grep -Ev '^#|^\s+#|^\t+#|^$'";
         up = "uptime";
-        update_nixos = "sudo nix-channel --update && sudo nixos-rebuild switch";
+        update_nixos = "sudo nix-channel --update && sudo nix-env -u '*'";
         v = "vim";
         x = "exec; startx; logout";
         zzz = "systemctl suspend";
