@@ -56,11 +56,11 @@ setup() {
 }
 
 main() {
-    setup && \
-	generate_ssh_key && \
-	install_nix && \
-	install_nixpkgs && \
-	run_ansible_scripts && \
+    setup
+    [ -f $HOME/.ssh/id_rsa.pub ] || generate_ssh_key
+	[ -d /nix ] || install_nix
+	install_nixpkgs
+	run_ansible_scripts
 	cleanup
 }
 
