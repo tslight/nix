@@ -25,7 +25,7 @@ run_ansible_scripts() {
 install_nixpkgs() {
     git clone git@gitlab.com:tspub/devops/nix $HOME/nix && \
 	mkdir -p $HOME/.config/nixpkgs && \
-	cp $HOME/nix/pkgs/* $HOME/.config/nixpkgs/ && \
+	cp -r $HOME/nix/pkgs $HOME/.config/nixpkgs && \
 	source /etc/profile && \
 	nix-env -iA nixpkgs.myPackages && \
 	mv $HOME/.bashrc{,.bak} && \
