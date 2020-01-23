@@ -33,6 +33,13 @@ install_nixpkgs() {
 	home-manager switch
 }
 
+install_nix() {
+    sh <(curl https://nixos.org/nix/install) --daemon && \
+	source /etc/profile && \
+	nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager && \
+	nix-channel --update
+}
+
 generate_ssh_key() {
     ssh-keygen && \
 	xclip -o -sel clip < $HOME/.ssh/id_rsa.pub && \
@@ -40,14 +47,7 @@ generate_ssh_key() {
 	printf "
 	The key above has been copied to your clipboard.
 	Paste it into the form at https://gitlab.com/profile/keys
-	\n" && read -n1 -rs -p "Press any key to continue..." key
-}
-
-install_nix() {
-    sh <(curl https://nixos.org/nix/install) --daemon && \
-	source /etc/profile && \
-	nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager && \
-	nix-channel --update
+	\n" && read -n1 -rs -p "Press any key to continue..." key && echo
 }
 
 setup() {
@@ -57,8 +57,8 @@ setup() {
 
 main() {
     setup && \
-	install_nix && \
 	generate_ssh_key && \
+	install_nix && \
 	install_nixpkgs && \
 	run_ansible_scripts && \
 	cleanup
