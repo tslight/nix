@@ -15,6 +15,21 @@
       gtk-key-theme-name = Emacs
     '';
 
+  home.sessionVariables = {
+    BLOCK_SIZE = "human-readable";
+    EDITOR = "emacsclient -c -nw";
+    ALTERNATE_EDITOR = "";
+    GCC_COLORS = "error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01";
+    PAGER = "bat";
+    GTK_THEME = "Emacs";
+    GOPATH = "$HOME/go";
+    ANSIBLE = "$HOME/src/tspub/devops/ansible";
+    DEVPATH = "$HOME/src/oe-developers";
+    DEVOPS = "$HOME/src/oe-developers/be/devops";
+    PATH = "$HOME/conda/bin:$HOME/.local/bin:$DEVOPS/bin:$HOME/bin:$PATH";
+    XDG_DATA_DIRS = "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
+  };
+
   programs = {
     bash = {
       enable = true;
@@ -37,23 +52,9 @@
       initExtra = builtins.readFile(./init.bash);
       profileExtra = builtins.readFile(./profile.bash);
 
-      sessionVariables = {
-        BLOCK_SIZE = "human-readable";
-        EDITOR = "emacsclient -c -nw";
-        ALTERNATE_EDITOR = "";
-        GCC_COLORS = "error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01";
-        PAGER = "less";
-        GTK_THEME = "Emacs";
-        GOPATH = "$HOME/go";
-        ANSIBLE = "$HOME/src/tspub/devops/ansible";
-        DEVPATH = "$HOME/src/oe-developers";
-        DEVOPS = "$HOME/src/oe-developers/be/devops";
-        PATH = "$HOME/conda/bin:$HOME/.local/bin:$DEVOPS/bin:$HOME/bin:$PATH";
-        XDG_DATA_DIRS = "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
-      };
-
       shellAliases = {
         bye = "systemctl poweroff";
+        cat = "bat";
         cp = "cp -i";
         d = "docker";
         df = "df -h";
@@ -67,6 +68,7 @@
         ha = "history 0";
         j = "jobs -l";
         lc = "grep -cv '^$'";
+        less = "bat";
         ls = "exa";
         l = "exa";
         la = "exa --all";
@@ -87,6 +89,7 @@
         mc = "make clean";
         mi = "make install clean";
         mkdir = "mkdir -p";
+        more = "bat";
         mv = "mv -i";
         nix-install = "nix-env -iA";
         nix-remove = "nix-env -e";
@@ -260,8 +263,10 @@
     readline = {
       enable = true;
       bindings = {
-        M-n = "history-search-forward";
-        M-p = "history-search-backward";
+        "\\en" = "history-search-forward";
+        "\\ep" = "history-search-backward";
+        "\\em" = "\\C-a\\eb\\ed\\C-y\\e#man \\C-y\\C-m\\C-p\\C-p\\C-a\\C-d\\C-e";
+        "\\eh" = "\\C-a\\eb\\ed\\C-y\\e#man \\C-y\\C-m\\C-p\\C-p\\C-a\\C-d\\C-e";
       };
       extraConfig = ''
       set show-all-if-ambiguous on
