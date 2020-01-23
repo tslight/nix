@@ -263,4 +263,13 @@
       extraConfig = builtins.readFile(./tmux.conf);
     };
   };
+
+  xsession = {
+    windowManager = {
+      xmonad = {
+        enable = true;
+        enableContribAndExtras = true;
+      };
+    };
+  };
 }
