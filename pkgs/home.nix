@@ -131,6 +131,14 @@
       ];
     };
 
+    chromium = {
+      enable = true;
+      extensions = [
+        "gcbommkclmclpchllfjekcdonpmejbdp" # https everywhere
+        "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+      ];
+    };
+
     emacs = {
       enable = true;
       extraPackages = epkgs: [
@@ -247,6 +255,20 @@
           whitespace = "trailing-space,space-before-tab";
         };
       };
+    };
+
+    readline = {
+      enable = true;
+      bindings = {
+        M-n = "history-search-forward";
+        M-p = "history-search-backward";
+      };
+      extraConfig = ''
+      set show-all-if-ambiguous on
+      set show-all-if-unmodified on
+      set completion-ignore-case on
+      '';
+      includeSystemConfig = true;
     };
 
     tmux = {

@@ -14,19 +14,16 @@
         aspellDicts.en-computers
         aspellDicts.en-science
         azure-cli
+        bat
         brave # https://github.com/brave/brave-browser/issues/1986
         # chez # choose between this and mitscheme
-        chromium
         clojure
         curl
         docker
         docker-compose
-        # emacs # should be handled by home-manager
         exa
         fast-cli
-        # firefox # should be handled by home-manager
         gimp
-        # gitFull # should be handled by home-manager
         go
         hardinfo
         home-manager
@@ -61,7 +58,6 @@
         # texlive.combined.scheme-small
         # texlive.combined.scheme-tetex
         texlive.combined.scheme-minimal
-        # tmux # should be handled by home-manager
         tree
         w3m
         youtube-dl
