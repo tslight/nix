@@ -57,6 +57,8 @@
         cat = "bat";
         cp = "cp -i";
         d = "docker";
+        di = "docker images";
+        dp = "docker ps";
         df = "df -h";
         dh = "dirs -v";
         du = "du -h";
