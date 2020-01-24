@@ -45,10 +45,13 @@ run_ansible_scripts() {
 
     [ -d "$HOME"/ansible ] || git clone "$url" "$HOME"/ansible
 
+    read -resp "Enter sudo password: " PASS
+
     chkcmd ansible-playbook
 
     for p in "${playbooks[@]}"; do
-	ansible-playbook -i "$HOME/ansible/hosts" --ask-become-pass "$HOME/ansible/$p.yml"
+	ansible-playbook -i "$HOME/ansible/hosts" "$HOME/ansible/$p.yml" \
+			 --extra-vars "ansible_become_pass=\"$PASS\""
     done
 
     source "$HOME"/{.profile,.bash_profile,.bashrc}
