@@ -131,6 +131,7 @@ get_secrets() {
 
 install_debs() {
     local -a debs
+
     debs=(
 	curl
 	git
