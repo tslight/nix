@@ -16,29 +16,45 @@
         aspellDicts.en-science
         azure-cli
         bat
+        bc
         brave # https://github.com/brave/brave-browser/issues/1986
         # chez # choose between this and mitscheme
+        clang
         clojure
+        cmake
+        cmatrix
+        cowsay
         curl
         dmenu
         docker
         docker-compose
+        ed
         exa
         evtest
         fast-cli
         fontconfig
         gimp
+        gcc
+        ghc
+        gnupg
         go
+        gparted
         hack-font
         hardinfo
         home-manager
         htop
         hunspell
+        hwinfo
         glibcLocales
+        imagemagick
         inxi
         ispell
+        jdk12
         jq
+        leiningen # clojure manager
+        libreoffice
         lilyterm
+        llvm
         lispPackages.stumpwm
         maim
         mitscheme # choose between this and chez
@@ -46,8 +62,8 @@
         mpv
         mupdf
         ncdu
-        neovim
         neofetch
+        neovim
         next
         nix-bash-completions
         nix-zsh-completions
@@ -60,6 +76,9 @@
         ranger
         rsync
         rtorrent
+        ruby
+        rustc
+        rxvt_unicode-with-plugins
         sbcl
         sct
         shellcheck
