@@ -18,6 +18,7 @@ USAGE: $(basename "$0") [OPTION]
   -n, --install-nix
   -p, --install-nixpkgs
   -s, --generate-ssh-keys
+  -u, --uninstall-nix
 "
 }
 
@@ -29,6 +30,16 @@ chkcmd() {
 
 cleanup() {
     rm -rf "$HOME"/{ansible,nix,secrets}
+}
+
+uninstall_nix() {
+    sudo systemctl stop nix-daemon.socket
+    sudo systemctl stop nix-daemon.service
+    sudo systemctl disable nix-daemon.socket
+    sudo systemctl disable nix-daemon.service
+    sudo systemctl daemon-reload
+    sudo mv /etc/profile.d/nix.sh.backup-before-nix /etc/profile.d/nix.sh
+    sudo rm -rf /etc/nix /nix /root/.nix-profile /root/.nix-defexpr /root/.nix-channels /home/toby/.nix-profile /home/toby/.nix-defexpr /home/toby/.nix-channels
 }
 
 lazygit() {
