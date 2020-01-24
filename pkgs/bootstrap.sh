@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+# Pre-Requisites:
+# Install curl, network-manager & sudo
+
+# Then run:
+# bash <(https://gitlab.com/tspub/devops/nix/raw/master/pkgs/bootstrap.sh)
+
 usage() {
     echo "
 USAGE: $(basename "$0") [OPTION]
@@ -7,10 +13,11 @@ USAGE: $(basename "$0") [OPTION]
   -a  --ansible
   -c, --cleanup
   -d, --install-debs
+  -I, --install-home-manager
+  -h, --run-home-manager
   -n, --install-nix
   -p, --install-nixpkgs
   -s, --generate-ssh-keys
-  -h, --help
 "
 }
 
@@ -101,10 +108,17 @@ install_nix() {
     if [ -d /nix ]; then
 	echo "Existing Nix installation found at /nix. Aborting."
     else
-	sh <(curl https://nixos.org/nix/install) --daemon
+	yes | sh <(curl https://nixos.org/nix/install) --daemon
     fi
 
     source /etc/profile
+    sudo -i nix-channel --update nixpkgs
+
+    chkcmd nix-channel && \
+	nix-channel --update nixpkgs && \
+	nix-channel --update
+
+    echo "If the rest of this script fails, try logging out & back in again..."
 }
 
 generate_ssh_keys() {
@@ -113,6 +127,7 @@ generate_ssh_keys() {
     # https://unix.stackexchange.com/a/69318
     ssh-keygen -t rsa -f "$HOME"/.ssh/id_rsa -q -N "" # 0>&- # don't overwrite without prompt
 
+    command -v xclip &>/dev/null || sudo apt install xclip
     xclip < "$HOME"/.ssh/id_rsa.pub
     echo; cat "$HOME"/.ssh/id_rsa.pub
 
@@ -124,38 +139,31 @@ generate_ssh_keys() {
 
 get_secrets() {
     git clone https://gitlab.com/tsprv/devops/secrets $HOME/secrets
-
     [ -d $HOME/.ssh ] || mkdir m 700  $HOME/.ssh
-    cp $HOME/secrets/id_rsa* $HOME/.ssh/
+    cp $HOME/secrets/id_rsa* $HOME/.ssh/ && \
+	chmod 600 $HOME/.ssh/id_rsa && \
+	echo "Successfully copied ssh keys."
 }
 
 install_debs() {
     local -a debs
-
-    debs=(
-	curl
-	git
-	rsync
-	xclip
-    )
-
+    debs=(curl git rsync)
     sudo apt update
-
     for d in "${debs[@]}"; do
 	command -v "$d" &>/dev/null || sudo apt install "$d"
     done
 }
 
 all() {
-    install_debs
-    # generate_ssh_key
-    get_secrets
-    install_nix
-    install_nixpkgs
-    install_home_manager
-    run_home_manager
-    run_ansible_scripts
-    lazygit
+    install_debs && \
+	# generate_ssh_key && \
+	get_secrets && \
+	    install_nix && \
+	    install_nixpkgs && \
+	    install_home_manager && \
+	    run_home_manager && \
+	    run_ansible_scripts && \
+	    lazygit
     # cleanup
 }
 
