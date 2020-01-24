@@ -19,7 +19,7 @@
         bc
         brave # https://github.com/brave/brave-browser/issues/1986
         # chez # choose between this and mitscheme
-        clang
+        clang # choose between this and gcc
         clojure
         cmake
         cmatrix
@@ -34,7 +34,7 @@
         fast-cli
         fontconfig
         gimp
-        gcc
+        # gcc # can't have both this and clang
         ghc
         gnupg
         go
