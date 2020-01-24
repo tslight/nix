@@ -106,6 +106,8 @@
     slock
     st
     sxiv
+    terminus_font
+    terminus_font_ttf
     terraform
     # texlive.combined.scheme-full
     # texlive.combined.scheme-medium
