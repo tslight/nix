@@ -29,10 +29,10 @@ chkcmd() {
 }
 
 cleanup() {
-    sudo apt purge "${TMP_DEB_PKGS[@]}" && \
-	sudo apt autoremove && \
-	sudo apt autoclean && \
-	sudo apt clean
+    # sudo apt purge "${TMP_DEB_PKGS[@]}" && \
+    #	sudo apt autoremove && \
+    #	sudo apt autoclean && \
+    #	sudo apt clean
     rm -rf "$HOME"/{nix,ansible}
 }
 
