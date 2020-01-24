@@ -11,15 +11,21 @@ usage() {
     echo "
 USAGE: $SELFNAME [OPTION]
 
-  -a, --all
-  -A  --ansible
+  -A, --all
+  -a  --ansible
   -c, --cleanup
-  -d, --install_debs
-  -n, --install_nix
-  -p, --install_nixpkgs
-  -s, --generate_ssh_keys
+  -d, --install-debs
+  -n, --install-nix
+  -p, --install-nixpkgs
+  -s, --generate-ssh-keys
   -h, --help
 "
+}
+
+chkcmd() {
+    local cmd="$1"
+
+    command -v "$cmd" &>/dev/null || source /etc/profile
 }
 
 cleanup() {
@@ -27,46 +33,87 @@ cleanup() {
 	sudo apt autoremove && \
 	sudo apt autoclean && \
 	sudo apt clean
-    rm -rf $HOME/{nix,ansible}
+    rm -rf "$HOME"/{nix,ansible}
 }
 
 run_ansible_scripts() {
-    git clone git@gitlab.com:tspub/devops/ansible $HOME/ansible && \
-	ansible-playbook -i $HOME/ansible/hosts $HOME/ansible/agnostic.yml && \
-	ansible-playbook -i $HOME/ansible/hosts $HOME/ansible/apt.yml && \
-	source $HOME/{.profile,.bash_profile,.bashrc}
+    local -a playbooks url="git@gitlab.com:tspub/devops/ansible"
+    playbooks=(
+	agnostic
+	apt
+    )
+
+    [ -d "$HOME"/ansible ] || git clone "$url" "$HOME"/ansible
+
+    chkcmd ansible-playbook
+
+    for p in "${playbooks[@]}"; do
+	ansible-playbook -i "$HOME/ansible/hosts" --ask-become-pass "$HOME/ansible/$p.yml"
+    done
+
+    source "$HOME"/{.profile,.bash_profile,.bashrc}
+}
+
+run_home_manager() {
+    local -a dotfiles
+
+    dotfiles=(
+	bashrc
+	bash_profile
+	inputrc
+	profile
+    )
+
+    for f in "${dotfiles[@]}"; do
+	if [ -L "$HOME/.$f" ]; then
+	    echo "$HOME/.$f is already a symlink. Not moving."
+	else
+	    [ -f "$HOME/.$f" ] && mv "$HOME/.$f"{,.bak}
+	fi
+    done
+
+    chkcmd home-manger
+    home-manager switch
 }
 
 install_nixpkgs() {
-    git clone git@gitlab.com:tspub/devops/nix $HOME/nix && \
-	mkdir -p $HOME/.config/nixpkgs && \
-	cp -r $HOME/nix/pkgs $HOME/.config/nixpkgs && \
-	source /etc/profile && \
-	nix-env -iA nixpkgs.myPackages && \
-	mv $HOME/.bashrc{,.bak} && \
-	mv $HOME/.profile{,.bak} && \
-	home-manager switch
+    [ -d "$HOME"/nix ] || git clone git@gitlab.com:tspub/devops/nix "$HOME"/nix
+
+    if [ -d "$HOME"/.config/nixpkgs ]; then
+	echo "$HOME/.config/nixpkgs already exists..."
+    else
+	[ -d "$HOME"/.config ] || mkdir -p "$HOME"/.config
+	cp -r "$HOME"/nix/pkgs "$HOME"/.config/nixpkgs
+    fi
+
+    chkcmd nix-env
+    nix-env -iA nixpkgs.myPackages
+}
+
+install_home_manager() {
+    chkcmd nix-channel
+    nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager
+    nix-channel --update
 }
 
 install_nix() {
     if [ -d /nix ]; then
 	echo "Existing Nix installation found at /nix. Aborting."
     else
-	sh <(curl https://nixos.org/nix/install) --daemon && \
-	    source /etc/profile && \
-	    nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager && \
-	    nix-channel --update
+	sh <(curl https://nixos.org/nix/install) --daemon
     fi
+
+    source /etc/profile
 }
 
 generate_ssh_keys() {
     # https://unix.stackexchange.com/a/135090
     # cat /dev/zero | ssh-keygen -q -N ""
     # https://unix.stackexchange.com/a/69318
-    ssh-keygen -t rsa -f $HOME/.ssh/id_rsa -q -N "" # 0>&- # don't overwrite without prompt
+    ssh-keygen -t rsa -f "$HOME"/.ssh/id_rsa -q -N "" # 0>&- # don't overwrite without prompt
 
-    cat $HOME/.ssh/id_rsa.pub | xclip
-    echo; cat $HOME/.ssh/id_rsa.pub
+    xclip < "$HOME"/.ssh/id_rsa.pub
+    echo; cat "$HOME"/.ssh/id_rsa.pub
 
     printf "
     The key above has been copied to your clipboard.
@@ -77,7 +124,7 @@ generate_ssh_keys() {
 install_debs() {
     sudo apt update
     for p in "${TMP_DEB_PKGS[@]}"; do
-	command -v "$p" || sudo apt install "$p"
+	command -v "$p" &>/dev/null || sudo apt install "$p"
     done
 }
 
@@ -86,26 +133,32 @@ all() {
     generate_ssh_key
     install_nix
     install_nixpkgs
+    install_home_manager
+    run_home_manager
     run_ansible_scripts
     cleanup
 }
 
 main() {
-    local -a args=("$@")
-
-    for arg in "${args[@]}"; do
+    for arg in "$@"; do
 	case "$arg" in
-	    -a|--all)
+	    -A|--all)
 		all
 		;;
-	    -A|--ansible)
+	    -a|--run-ansible-scripts)
 		run_ansible_scripts
 		;;
 	    -c|--cleanup)
 		cleanup
 		;;
-	    -d|--install_debs)
+	    -d|--install-debs)
 		install_debs
+		;;
+	    -H|--install-home-manager)
+		install_home_manager
+		;;
+	    -h|--run-home-manager)
+		run_home_manager
 		;;
 	    -n|--install-nix)
 		install_nix
@@ -113,14 +166,11 @@ main() {
 	    -p|--install-nixpkgs)
 		install_nixpkgs
 		;;
-	    -s|--generate_ssh_keys)
+	    -s|--generate-ssh-keys)
 		generate_ssh_keys
-		;;
-	    *)
-		usage
 		;;
 	esac
     done
 }
 
-main "$@"
+[[ "${#@}" -eq 0 ]] && usage || main "$@"
