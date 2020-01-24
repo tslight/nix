@@ -1,15 +1,7 @@
 #!/usr/bin/env bash
-readonly SELFNAME=$(basename "$0")
-readonly TMP_DEB_PKGS=(
-    curl
-    git
-    rsync
-    xclip
-)
-
 usage() {
     echo "
-USAGE: $SELFNAME [OPTION]
+USAGE: $(basename "$0") [OPTION]
 
   -A, --all
   -a  --ansible
@@ -29,11 +21,17 @@ chkcmd() {
 }
 
 cleanup() {
-    # sudo apt purge "${TMP_DEB_PKGS[@]}" && \
-    #	sudo apt autoremove && \
-    #	sudo apt autoclean && \
-    #	sudo apt clean
-    rm -rf "$HOME"/{nix,ansible}
+    rm -rf "$HOME"/{ansible,nix,secrets}
+}
+
+lazygit() {
+    cp $HOME/secrets/config.json $HOME/src/tspub/js/lazygit/
+
+    cd  $HOME/src/tspub/js/lazygit/ && \
+	npm install && \
+	npm link
+
+    lazygitlab
 }
 
 run_ansible_scripts() {
@@ -124,22 +122,40 @@ generate_ssh_keys() {
     \n" && read -n1 -rs -p "Press any key to continue..." key && echo
 }
 
+get_secrets() {
+    git clone https://gitlab.com/tsprv/devops/secrets $HOME/secrets
+
+    [ -d $HOME/.ssh ] || mkdir m 700  $HOME/.ssh
+    cp $HOME/secrets/id_rsa* $HOME/.ssh/
+}
+
 install_debs() {
+    local -a debs
+    debs=(
+	curl
+	git
+	rsync
+	xclip
+    )
+
     sudo apt update
-    for p in "${TMP_DEB_PKGS[@]}"; do
-	command -v "$p" &>/dev/null || sudo apt install "$p"
+
+    for d in "${debs[@]}"; do
+	command -v "$d" &>/dev/null || sudo apt install "$d"
     done
 }
 
 all() {
     install_debs
-    generate_ssh_key
+    # generate_ssh_key
+    get_secrets
     install_nix
     install_nixpkgs
     install_home_manager
     run_home_manager
     run_ansible_scripts
-    cleanup
+    lazygit
+    # cleanup
 }
 
 main() {
@@ -169,8 +185,9 @@ main() {
 	    -p|--install-nixpkgs)
 		install_nixpkgs
 		;;
-	    -s|--generate-ssh-keys)
-		generate_ssh_keys
+	    -s|--get-secrets)
+		# generate_ssh_keys
+		get_secrets
 		;;
 	esac
     done
