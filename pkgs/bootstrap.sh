@@ -33,13 +33,25 @@ cleanup() {
 }
 
 uninstall_nix() {
+    local -a paths
+    paths=(
+	/etc/nix
+	/nix
+	/root/.nix-profile
+	/root/.nix-defexpr
+	/root/.nix-channels
+	"$HOME"/.nix-profile
+	"$HOME"/.nix-defexpr
+	"$HOME"/.nix-channels
+    )
+
     sudo systemctl stop nix-daemon.socket
     sudo systemctl stop nix-daemon.service
     sudo systemctl disable nix-daemon.socket
     sudo systemctl disable nix-daemon.service
     sudo systemctl daemon-reload
-    sudo mv /etc/profile.d/nix.sh.backup-before-nix /etc/profile.d/nix.sh
-    sudo rm -rf /etc/nix /nix /root/.nix-profile /root/.nix-defexpr /root/.nix-channels /home/toby/.nix-profile /home/toby/.nix-defexpr /home/toby/.nix-channels
+    sudo mv -v /etc/profile.d/nix.sh.backup-before-nix /etc/profile.d/nix.sh
+    for p in "${paths[@]}"; do sudo rm -rfv "$p"; done
 }
 
 lazygit() {
@@ -67,7 +79,7 @@ run_ansible_scripts() {
 
     for p in "${playbooks[@]}"; do
 	ansible-playbook -i "$HOME/ansible/hosts" "$HOME/ansible/$p.yml" \
-			 --extra-vars "ansible_become_pass=\"$PASS\""
+--extra-vars "ansible_become_pass=\"$PASS\""
     done
 
     source "$HOME"/{.profile,.bash_profile,.bashrc}
@@ -110,8 +122,9 @@ install_nixpkgs() {
 }
 
 install_home_manager() {
+    local url="https://github.com/rycee/home-manager/archive/master.tar.gz"
     chkcmd nix-channel
-    nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager
+    nix-channel --add "$url" home-manager
     nix-channel --update
 }
 
@@ -130,22 +143,6 @@ install_nix() {
 	nix-channel --update
 
     echo "If the rest of this script fails, try logging out & back in again..."
-}
-
-generate_ssh_keys() {
-    # https://unix.stackexchange.com/a/135090
-    # cat /dev/zero | ssh-keygen -q -N ""
-    # https://unix.stackexchange.com/a/69318
-    ssh-keygen -t rsa -f "$HOME"/.ssh/id_rsa -q -N "" # 0>&- # don't overwrite without prompt
-
-    command -v xclip &>/dev/null || sudo apt install xclip
-    xclip < "$HOME"/.ssh/id_rsa.pub
-    echo; cat "$HOME"/.ssh/id_rsa.pub
-
-    printf "
-    The key above has been copied to your clipboard.
-    Paste it into the form at https://gitlab.com/profile/keys
-    \n" && read -n1 -rs -p "Press any key to continue..." key && echo
 }
 
 get_secrets() {
@@ -167,15 +164,14 @@ install_debs() {
 
 all() {
     install_debs && \
-	# generate_ssh_key && \
 	get_secrets && \
-	    install_nix && \
-	    install_nixpkgs && \
-	    install_home_manager && \
-	    run_home_manager && \
-	    run_ansible_scripts && \
-	    lazygit
-    # cleanup
+	install_nix && \
+	install_nixpkgs && \
+	install_home_manager && \
+	run_home_manager && \
+	run_ansible_scripts && \
+	lazygit && \
+	cleanup
 }
 
 main() {
@@ -206,8 +202,10 @@ main() {
 		install_nixpkgs
 		;;
 	    -s|--get-secrets)
-		# generate_ssh_keys
 		get_secrets
+		;;
+	    -u|--uninstall_nix)
+		uninstall_nix
 		;;
 	esac
     done
