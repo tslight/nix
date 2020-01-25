@@ -79,7 +79,7 @@ run_ansible_scripts() {
 
     for p in "${playbooks[@]}"; do
 	ansible-playbook -i "$HOME/ansible/hosts" "$HOME/ansible/$p.yml" \
---extra-vars "ansible_become_pass=\"$PASS\""
+			 --extra-vars "ansible_become_pass=\"$PASS\""
     done
 
     source "$HOME"/{.profile,.bash_profile,.bashrc}
@@ -119,6 +119,8 @@ install_nixpkgs() {
 
     chkcmd nix-env
     nix-env -iA nixpkgs.myPackages
+
+    [ -L "$HOME"/.config ] || rm -rf "$HOME"/.config/nixpkgs
 }
 
 install_home_manager() {
