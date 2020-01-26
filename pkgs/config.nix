@@ -6,6 +6,69 @@
       inherit pkgs;
     };
 
+    myEmacs = emacsWithPackages (epkgs: (with epkgs.melpaPackages; [
+      ace-window
+      ansible
+      ansible-doc
+      async
+      avy
+      change-inner
+      cider
+      clojure-mode
+      clojure-snippets
+      company
+      company-go
+      company-terraform
+      counsel
+      counsel-projectile
+      diminish
+      docker
+      dockerfile-mode
+      dot-mode
+      emmet-mode
+      exec-path-from-shell
+      expand-region
+      flx
+      flycheck
+      git-timemachine
+      gitlab-ci-mode
+      go-mode
+      hungry-delete
+      ibuffer-vc
+      iedit
+      ivy
+      jedi
+      js2-mode
+      js2-refactor
+      json-mode
+      json-navigator
+      magit
+      markdown-mode
+      nix-mode
+      nodejs-repl
+      org-journal
+      paredit
+      powershell
+      projectile
+      py-autopep8
+      python-mode
+      restclient
+      slime
+      slime-company
+      smex
+      ssh-agency
+      systemd
+      terraform-mode
+      # undo-tree
+      use-package
+      web-mode
+      wgrep
+      which-key
+      yaml-mode
+      yasnippet
+      yasnippet-snippets
+    ]));
+
     myPackages = pkgs.buildEnv {
       name = "my-packages";
       paths = [

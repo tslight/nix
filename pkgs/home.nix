@@ -1,9 +1,12 @@
 # https://rycee.gitlab.io/home-manager/options.html
 {
+  # Let Home Manager install and manage itself.
+  # programs.home-manager.enable = true;
+
   imports = [
     ./home/bash.nix
     ./home/browsers.nix
-    ./home/emacs.nix
+    # ./home/emacs.nix
     ./home/git.nix
     ./home/gtk.nix
     ./home/readline.nix
