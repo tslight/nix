@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{
   xsession = {
     windowManager = {
       xmonad = {

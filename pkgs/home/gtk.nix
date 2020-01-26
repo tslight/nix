@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{
   gtk.gtk2.extraConfig = ''
       gtk-key-theme-name = "Emacs"
     '';
