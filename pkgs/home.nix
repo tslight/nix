@@ -1,5 +1,5 @@
 # https://rycee.gitlab.io/home-manager/options.html
-{ pkgs, ... }: {
+{
   imports = [
     ./home/bash.nix
     ./home/browsers.nix
