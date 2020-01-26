@@ -5,6 +5,7 @@
     nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
       inherit pkgs;
     };
+
     myPackages = pkgs.buildEnv {
       name = "my-packages";
       paths = [
@@ -55,14 +56,14 @@
         libreoffice
         lilyterm
         llvm
-        lispPackages.clx-truetype
-        lispPackages.quicklisp
-        lispPackages.quicklisp
-        lispPackages.quicklisp-to-nix
-        lispPackages.quicklisp-to-nix-system-info
+        # lispPackages.clx-truetype
+        # lispPackages.quicklisp
+        # lispPackages.quicklisp
+        # lispPackages.quicklisp-to-nix
+        # lispPackages.quicklisp-to-nix-system-info
         lispPackages.stumpwm
-        lispPackages.swank
-        lispPackages.xembed
+        # lispPackages.swank
+        # lispPackages.xembed
         maim
         mitscheme # choose between this and chez
         mlocate
@@ -72,8 +73,12 @@
         neofetch
         neovim
         next
+        nix
         nix-bash-completions
         nix-zsh-completions
+        nix-prefetch-scripts
+        nixpkgs-lint
+        nixops
         nmap
         peek
         powershell
