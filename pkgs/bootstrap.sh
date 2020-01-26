@@ -131,12 +131,25 @@ install_home_manager() {
 }
 
 add_trusted_nix_user() {
-    sudo cp /etc/nix/nix.conf{,bak}
+    local file=/etc/nix/nix.conf
+    local -a lines
 
-    echo "trusted-users = $USER" | sudo tee -a /etc/nix/nix.conf
-    echo "allowed-users = *" | sudo tee -a /etc/nix/nix.conf
+    lines=(
+	"trusted-users = $USER"
+	"allowed-users = *"
+    )
 
-    sudo killall nix-daemon
+    sudo cp "$file"{,.bak} && echo "Backed up $file."
+
+    for l in "${lines[@]}"; do
+	if grep -Eq "$l" "$file"; then
+	    echo "Already added $l to $file"
+	else
+	    echo "$l" | sudo tee -a "$file" && echo "Added $l to $file"
+	fi
+    done
+
+    # sudo killall nix-daemon
 }
 
 install_nix() {
@@ -177,6 +190,7 @@ all() {
     install_debs && \
 	get_secrets && \
 	install_nix && \
+	add_trusted_nix_user && \
 	install_nixpkgs && \
 	install_home_manager && \
 	run_home_manager && \
@@ -214,6 +228,9 @@ main() {
 		;;
 	    -s|--get-secrets)
 		get_secrets
+		;;
+	    -t|--add-trusted-user)
+		add_trusted_nix_user
 		;;
 	    -u|--uninstall_nix)
 		uninstall_nix
