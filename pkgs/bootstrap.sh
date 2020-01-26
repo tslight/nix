@@ -55,9 +55,9 @@ uninstall_nix() {
 }
 
 lazygit() {
-    cp $HOME/secrets/config.json $HOME/src/tspub/js/lazygit/
+    cp "$HOME"/secrets/config.json "$HOME"/src/tspub/js/lazygit/
 
-    cd  $HOME/src/tspub/js/lazygit/ && \
+    cd  "$HOME"/src/tspub/js/lazygit/ && \
 	npm install && \
 	npm link
 
@@ -130,6 +130,15 @@ install_home_manager() {
     nix-channel --update
 }
 
+add_trusted_nix_user() {
+    sudo cp /etc/nix/nix.conf{,bak}
+
+    echo "trusted-users = $USER" | sudo tee -a /etc/nix/nix.conf
+    echo "allowed-users = *" | sudo tee -a /etc/nix/nix.conf
+
+    sudo killall nix-daemon
+}
+
 install_nix() {
     if [ -d /nix ]; then
 	echo "Existing Nix installation found at /nix. Aborting."
@@ -137,8 +146,8 @@ install_nix() {
 	yes | sh <(curl https://nixos.org/nix/install) --daemon
     fi
 
-    source /etc/profile
-    sudo -i nix-channel --update nixpkgs
+    export PATH=$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/nix/var/nix/profiles/default/bin/$PATH
+    source /etc/profile && sudo -i nix-channel --update nixpkgs
 
     chkcmd nix-channel && \
 	nix-channel --update nixpkgs && \
@@ -148,10 +157,10 @@ install_nix() {
 }
 
 get_secrets() {
-    git clone https://gitlab.com/tsprv/devops/secrets $HOME/secrets
-    [ -d $HOME/.ssh ] || mkdir m 700  $HOME/.ssh
-    cp $HOME/secrets/id_rsa* $HOME/.ssh/ && \
-	chmod 600 $HOME/.ssh/id_rsa && \
+    git clone https://gitlab.com/tsprv/devops/secrets "$HOME"/secrets
+    [ -d "$HOME"/.ssh ] || mkdir m 700  "$HOME"/.ssh
+    cp "$HOME"/secrets/id_rsa* "$HOME"/.ssh/ && \
+	chmod 600 "$HOME"/.ssh/id_rsa && \
 	echo "Successfully copied ssh keys."
 }
 

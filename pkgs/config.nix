@@ -55,7 +55,14 @@
         libreoffice
         lilyterm
         llvm
+        lispPackages.clx-truetype
+        lispPackages.quicklisp
+        lispPackages.quicklisp
+        lispPackages.quicklisp-to-nix
+        lispPackages.quicklisp-to-nix-system-info
         lispPackages.stumpwm
+        lispPackages.swank
+        lispPackages.xembed
         maim
         mitscheme # choose between this and chez
         mlocate
