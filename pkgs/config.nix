@@ -141,6 +141,7 @@
         mlocate
         mpv
         mupdf
+        myEmacs
         ncdu
         neofetch
         neovim
