@@ -67,6 +67,7 @@
       terraform-mode
       # undo-tree
       undo-fu
+      # undo-fu-session
       undohist
       use-package
       web-mode
