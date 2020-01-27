@@ -144,6 +144,7 @@
         nixops
         nmap
         peek
+        physlock
         powershell
         profont
         proggyfonts
@@ -170,6 +171,7 @@
         # texlive.combined.scheme-tetex
         texlive.combined.scheme-minimal
         tree
+        vlock
         w3m
         xautolock
         xclip
