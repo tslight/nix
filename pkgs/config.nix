@@ -1,12 +1,18 @@
 {
-  packageOverrides = pkgs: with pkgs; {
+  packageOverrides = pkgs: with pkgs; rec {
     # https://github.com/nix-community/NUR/#installation
     # https://gitlab.com/rycee/nur-expressions
     nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
       inherit pkgs;
     };
 
+    # file = builtins.readFile(./use-melpa.el);
+    # myEmacsConfig = writeText "default.el" file;
     myEmacs = emacsWithPackages (epkgs: (with epkgs.melpaPackages; [
+      # (runCommand "default.el" {} ''
+      #             mkdir -p $out/share/emacs/site-lisp
+      #             cp ${myEmacsConfig} $out/share/emacs/site-lisp/default.el
+      #             '')
       ace-window
       ansible
       ansible-doc
@@ -60,6 +66,8 @@
       systemd
       terraform-mode
       # undo-tree
+      undo-fu
+      undohist
       use-package
       web-mode
       wgrep
