@@ -30,7 +30,7 @@
       DEVOPS = "$HOME/src/oe-developers/be/devops";
       PATH = "$HOME/conda/bin:$HOME/.local/bin:$DEVOPS/bin:$HOME/bin:$PATH";
       XDG_DATA_DIRS = "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
-      LOCALE_ARCHIVE="$(nix-env --installed --no-name --out-path --query glibc-locales)/lib/locale/locale-archive";
+      # LOCALE_ARCHIVE="$(nix-env --installed --no-name --out-path --query glibc-locales)/lib/locale/locale-archive";
     };
 
     initExtra = builtins.readFile(./assets/init.bash);

@@ -16,12 +16,12 @@ let
     # vim
 
     # Sourced directly from Nixpkgs
-    # pkgs.curl
-    # pkgs.htop
+    pkgs.curl
+    pkgs.htop
     pkgs.nix
     pkgs.pass
-    # pkgs.tree
-    # pkgs.xclip
+    pkgs.tree
+    pkgs.xclip
   ];
 
 in myPkgs
