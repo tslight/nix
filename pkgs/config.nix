@@ -1,4 +1,5 @@
 {
+  allowUnfree = true;
   packageOverrides = pkgs: with pkgs; rec {
     # https://github.com/nix-community/NUR/#installation
     # https://gitlab.com/rycee/nur-expressions
@@ -101,6 +102,7 @@
         dmenu
         docker
         docker-compose
+        dpkg
         ed
         exa
         evtest
@@ -110,7 +112,7 @@
         # gcc # can't have both this and clang
         ghc
         gnupg
-        go
+        # go
         gparted
         hack-font
         hardinfo
@@ -181,6 +183,7 @@
         # texlive.combined.scheme-tetex
         texlive.combined.scheme-minimal
         tree
+        unixODBCDrivers.msodbcsql17
         vlock
         w3m
         xautolock
