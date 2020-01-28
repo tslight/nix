@@ -15,6 +15,7 @@ USAGE: $(basename "$0") [OPTION]
   -d, --install-debs
   -I, --install-home-manager
   -h, --run-home-manager
+  -l, --run-lazygit
   -n, --install-nix
   -p, --install-nixpkgs
   -s, --generate-ssh-keys
@@ -219,6 +220,9 @@ main() {
 		;;
 	    -h|--run-home-manager)
 		run_home_manager
+		;;
+	    -l|--run-lazygit)
+		lazygit
 		;;
 	    -n|--install-nix)
 		install_nix
