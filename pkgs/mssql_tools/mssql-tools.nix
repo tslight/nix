@@ -1,3 +1,4 @@
+# https://reflexivereflection.com/posts/2015-02-28-deb-installation-nixos.html
 let nixpkgs = import <nixpkgs> {};
     stdenv = nixpkgs.stdenv;
 in rec {
