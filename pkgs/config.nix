@@ -1,5 +1,6 @@
 {
   allowUnfree = true;
+
   packageOverrides = pkgs: with pkgs; rec {
     # https://github.com/nix-community/NUR/#installation
     # https://gitlab.com/rycee/nur-expressions
@@ -7,77 +8,7 @@
       inherit pkgs;
     };
 
-    # file = builtins.readFile(./use-melpa.el);
-    # myEmacsConfig = writeText "default.el" file;
-    myEmacs = emacsWithPackages (epkgs: (with epkgs.melpaPackages; [
-      # (runCommand "default.el" {} ''
-      #             mkdir -p $out/share/emacs/site-lisp
-      #             cp ${myEmacsConfig} $out/share/emacs/site-lisp/default.el
-      #             '')
-      ace-window
-      ansible
-      ansible-doc
-      async
-      avy
-      change-inner
-      cider
-      clojure-mode
-      clojure-snippets
-      company
-      company-go
-      company-terraform
-      counsel
-      counsel-projectile
-      diminish
-      docker
-      dockerfile-mode
-      dot-mode
-      emmet-mode
-      exec-path-from-shell
-      expand-region
-      flx
-      flycheck
-      git-timemachine
-      gitlab-ci-mode
-      go-mode
-      hungry-delete
-      ibuffer-vc
-      iedit
-      ivy
-      jedi
-      js2-mode
-      js2-refactor
-      json-mode
-      json-navigator
-      magit
-      markdown-mode
-      nix-mode
-      nodejs-repl
-      org-journal
-      paredit
-      powershell
-      projectile
-      py-autopep8
-      python-mode
-      restclient
-      slime
-      slime-company
-      smex
-      ssh-agency
-      systemd
-      terraform-mode
-      # undo-tree
-      undo-fu
-      # undo-fu-session
-      undohist
-      use-package
-      web-mode
-      wgrep
-      which-key
-      yaml-mode
-      yasnippet
-      yasnippet-snippets
-    ]));
+    myEmacs = import ./emacs.nix {};
 
     myPackages = pkgs.buildEnv {
       name = "my-packages";

@@ -1,8 +1,9 @@
 /*
-This is a nix expression to build Emacs and some Emacs packages I like
-from source on any distribution where Nix is installed. This will install
-all the dependencies from the nixpkgs repository and build the binary files
-without interfering with the host distribution.
+
+This is a nix expression to build Emacs and some Emacs packages I like from
+source on any distribution where Nix is installed. This will install all the
+dependencies from the nixpkgs repository and build the binary files without
+interfering with the host distribution.
 
 To build the project, type the following from the current directory:
 
@@ -11,6 +12,14 @@ $ nix-build emacs.nix
 To run the newly compiled executable:
 
 $ ./result/bin/emacs
+
+Querying Emacs packages:
+
+nix-env -f "<nixpkgs>" -qaP -A emacsPackages.elpaPackages
+nix-env -f "<nixpkgs>" -qaP -A emacsPackages.melpaPackages
+nix-env -f "<nixpkgs>" -qaP -A emacsPackages.melpaStablePackages
+nix-env -f "<nixpkgs>" -qaP -A emacsPackages.orgPackages
+
 */
 { pkgs ? import <nixpkgs> {} }:
 
@@ -82,7 +91,6 @@ emacsWithPackages (epkgs: (with epkgs.melpaPackages; [
   ssh-agency
   systemd
   terraform-mode
-  # undo-tree
   undo-fu
   # undo-fu-session
   undohist
