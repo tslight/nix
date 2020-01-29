@@ -1,7 +1,6 @@
 pkgs: with pkgs; [
   alttab
   ansible
-  aqemu
   aspell
   aspellDicts.en
   aspellDicts.en-computers
@@ -24,6 +23,7 @@ pkgs: with pkgs; [
   docker-compose
   dpkg
   ed
+  emacs
   evtest
   exa
   fast-cli
@@ -37,7 +37,7 @@ pkgs: with pkgs; [
   gksu
   glibcLocales
   gnupg
-  go
+  # go
   gparted
   hack-font
   hardinfo
@@ -83,18 +83,15 @@ pkgs: with pkgs; [
   nixops
   nixpkgs-lint
   nmap
-  nodejs-12_x
+  # nodejs-13_x # using nvm for this still...
   peek
   physlock
   powershell
   powertop
-  profont
-  proggyfonts
   qbittorrent
   qemu
   qemu_kvm
   ranger
-  redshift-plasma-applet
   rofi
   rsync
   rtorrent
@@ -105,7 +102,7 @@ pkgs: with pkgs; [
   sct
   shellcheck
   sl
-  slock
+  # slock # doesn't work when not on NixOS
   st
   sxiv
   terminus_font
@@ -114,7 +111,7 @@ pkgs: with pkgs; [
   # texlive.combined.scheme-full
   # texlive.combined.scheme-medium
   # texlive.combined.scheme-minimal
-  texlive.combined.scheme-small
+  # texlive.combined.scheme-small
   # texlive.combined.scheme-tetex
   tlp
   tree
