@@ -23,7 +23,7 @@ pkgs: with pkgs; [
   docker-compose
   dpkg
   ed
-  emacs
+  # emacs
   evtest
   exa
   fast-cli

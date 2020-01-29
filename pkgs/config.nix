@@ -6,12 +6,11 @@
     nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
       inherit pkgs;
     };
-    # myEmacs = import ./emacs.nix {};
+    myEmacs = import ./emacs.nix {};
     myPythonPackages = pkgs.buildEnv {
       name = "my-python-packages";
       paths = import ./python-packages.nix pkgs;
     };
-    security.setuidPrograms = [ "slock" ];
     myPackages = pkgs.buildEnv {
       name = "my-packages";
       paths = import ./packages.nix pkgs;
