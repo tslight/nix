@@ -1,4 +1,6 @@
 pkgs: with pkgs; [
+  alsaTools
+  alsaUtils
   alttab
   ansible
   aspell
