@@ -11,6 +11,7 @@ pkgs: with pkgs; [
   bat
   bc
   brave # https://github.com/brave/brave-browser/issues/1986
+  broot
   # chez # choose between this and mitscheme
   # chromium
   clang # choose between this and gcc
