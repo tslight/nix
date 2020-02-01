@@ -1,20 +1,28 @@
 # https://rycee.gitlab.io/home-manager/options.html
-{
-  # Let Home Manager install and manage itself.
-  # programs.home-manager.enable = true;
-
-  imports = [
-    ./home/bash.nix
-    ./home/browsers.nix
-    # ./home/emacs.nix
-    ./home/git.nix
-    ./home/gtk.nix
-    ./home/readline.nix
-    ./home/tmux.nix
-    ./home/xsession.nix
-  ];
-
+{ pkgs }:{
   # https://github.com/rycee/home-manager/issues/432
   home.extraOutputsToInstall = [ "man" ];
   programs.man.enable = false;
+
+  programs.chromium = {
+    enable = true;
+    extensions = [
+      "gcbommkclmclpchllfjekcdonpmejbdp" # https everywhere
+      "hdokiejnpimakedhajhdlcegeplioahd" # lastpass
+      "pkehgijcmpdhfbdbbnkijodmdjhbjlgp" # privacy badger
+      "gfbliohnnapiefjpjlpjnehglfpaknnc" # surfing keys
+      "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+    ];
+  };
+
+  # https://gitlab.com/rycee/nur-expressions
+  programs.firefox = {
+    enable = true;
+    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      https-everywhere
+      privacy-badger
+      ublock-origin
+      vim-vixen
+    ];
+  };
 }

@@ -26,7 +26,7 @@ pkgs: with pkgs; [
   docker-compose
   dpkg
   ed
-  # emacs
+  emacs
   evtest
   exa
   fast-cli
@@ -36,7 +36,7 @@ pkgs: with pkgs; [
   # gcc # can't have both this and clang
   ghc
   gimp
-  # gitFull
+  gitFull
   gksu
   glibcLocales
   gnupg
@@ -117,8 +117,9 @@ pkgs: with pkgs; [
   # texlive.combined.scheme-small
   # texlive.combined.scheme-tetex
   tlp
+  tmux
   tree
-  unixODBCDrivers.msodbcsql17
+  # unixODBCDrivers.msodbcsql17
   unzip
   virtmanager-qt
   vlc
