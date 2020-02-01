@@ -58,13 +58,13 @@ pkgs: with pkgs; [
   leiningen # clojure manager
   libreoffice
   lilyterm
-  lispPackages.clx-truetype
-  lispPackages.quicklisp
-  lispPackages.quicklisp-to-nix
-  lispPackages.quicklisp-to-nix-system-info
-  lispPackages.stumpwm
-  lispPackages.swank
-  lispPackages.xembed
+  # lispPackages.clx-truetype
+  # lispPackages.quicklisp
+  # lispPackages.quicklisp-to-nix
+  # lispPackages.quicklisp-to-nix-system-info
+  # lispPackages.stumpwm
+  # lispPackages.swank
+  # lispPackages.xembed
   llvm
   lm_sensors
   lshw
