@@ -90,12 +90,9 @@ install_nix() {
     else
 	yes | sh <(curl https://nixos.org/nix/install) --daemon
     fi
-
     export PATH=$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/nix/var/nix/profiles/default/bin/$PATH
     source /etc/profile && sudo -i "$NIX_BIN"/nix-channel --update nixpkgs
-
     "$NIX_BIN"/nix-channel --update nixpkgs && "$NIX_BIN"/nix-channel --update
-
     echo "If the rest of this script fails, try logging out & back in again..."
 }
 

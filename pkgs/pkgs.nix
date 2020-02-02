@@ -15,7 +15,7 @@ let
     pkgs.fast-cli
     # pkgs.firefox
     pkgs.glibcLocales
-    pkgs.go
+    # pkgs.go
     pkgs.home-manager
     pkgs.mitscheme # choose between this and chez
     pkgs.nix
@@ -24,7 +24,7 @@ let
     pkgs.nix-zsh-completions
     pkgs.nixops
     pkgs.nixpkgs-lint
-    pkgs.powershell
+    # pkgs.powershell
     pkgs.ranger
     pkgs.terraform
     pkgs.tmux
