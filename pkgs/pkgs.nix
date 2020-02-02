@@ -7,13 +7,13 @@ let
     pkgs.bat
     pkgs.brave # https://github.com/brave/brave-browser/issues/1986
     pkgs.broot
-    pkgs.chromium
+    # pkgs.chromium
     pkgs.docker
     pkgs.docker-compose
     pkgs.emacs
     pkgs.exa
     pkgs.fast-cli
-    pkgs.firefox
+    # pkgs.firefox
     pkgs.glibcLocales
     pkgs.go
     pkgs.home-manager

@@ -11,9 +11,10 @@
       name = "my-python-packages";
       paths = import ./python-packages.nix pkgs;
     };
-    myPackages = pkgs.buildEnv {
-      name = "my-packages";
-      paths = import ./packages.nix pkgs;
-    };
+    myPkgs = import ./pkgs.nix {};
+    # myPackages = pkgs.buildEnv {
+    #   name = "my-packages";
+    #   paths = import ./packages.nix pkgs;
+    # };
   };
 }
