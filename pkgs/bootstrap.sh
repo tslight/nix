@@ -4,6 +4,8 @@
 
 # Then run:
 # bash <(https://gitlab.com/tspub/devops/nix/raw/master/pkgs/bootstrap.sh)
+NIX_BIN="/nix/var/nix/profiles/default/bin"
+GITLAB_URL="git@gitlab.com:tspub"
 
 usage() {
     echo "
@@ -24,13 +26,7 @@ USAGE: $(basename "$0") [OPTION]
 }
 
 chkcmd() {
-    local cmd="$1"
-
-    command -v "$cmd" &>/dev/null || source /etc/profile
-}
-
-cleanup() {
-    rm -rf "$HOME"/{ansible,nix,secrets}
+    command -v "$1" &>/dev/null || source /etc/profile
 }
 
 uninstall_nix() {
@@ -56,101 +52,36 @@ uninstall_nix() {
 }
 
 lazygit() {
-    cp "$HOME"/secrets/config.json "$HOME"/src/tspub/js/lazygit/
+    cp /tmp/secrets/config.json "$HOME"/src/tspub/js/lazygit/
 
     cd  "$HOME"/src/tspub/js/lazygit/ && \
-	npm install && \
-	npm link
+	npm install && npm link
 
     lazygitlab
 }
 
 run_ansible_scripts() {
-    local -a playbooks url="git@gitlab.com:tspub/devops/ansible"
-    playbooks=(
-	agnostic
-	apt
-    )
-
-    [ -d "$HOME"/ansible ] || git clone "$url" "$HOME"/ansible
-
+    [ -d /tmp/ansible ] || git clone "$GITLAB_URL/devops/ansible" /tmp/ansible
     read -resp "Enter sudo password: " PASS
-
     chkcmd ansible-playbook
-
-    for p in "${playbooks[@]}"; do
-	ansible-playbook -i "$HOME/ansible/hosts" "$HOME/ansible/$p.yml" \
-			 --extra-vars "ansible_become_pass=\"$PASS\""
-    done
-
-    source "$HOME"/{.profile,.bash_profile,.bashrc}
+    ansible-playbook -i "/tmp/ansible/hosts" "/tmp/ansible/apt.yml" --extra-vars "ansible_become_pass=\"$PASS\""
+    ansible-playbook -i "/tmp/ansible/hosts" "/tmp/ansible/agnostic.yml" --extra-vars "ansible_become_pass=\"$PASS\""
 }
 
 run_home_manager() {
-    local -a dotfiles
-
-    # dotfiles=(
-    #	bashrc
-    #	bash_profile
-    #	inputrc
-    #	profile
-    # )
-
-    # for f in "${dotfiles[@]}"; do
-    #	if [ -L "$HOME/.$f" ]; then
-    #	    echo "$HOME/.$f is already a symlink. Not moving."
-    #	else
-    #	    [ -f "$HOME/.$f" ] && mv "$HOME/.$f"{,.bak}
-    #	fi
-    # done
-
     chkcmd home-manger
     home-manager switch
 }
 
 install_nixpkgs() {
-    [ -d "$HOME"/nix ] || git clone git@gitlab.com:tspub/devops/nix "$HOME"/nix
-
-    if [ -d "$HOME"/.config/nixpkgs ]; then
-	echo "$HOME/.config/nixpkgs already exists..."
-    else
-	[ -d "$HOME"/.config ] || mkdir -p "$HOME"/.config
-	cp -r "$HOME"/nix/pkgs "$HOME"/.config/nixpkgs
-    fi
-
-    chkcmd nix-env
-    nix-env -iA nixpkgs.myPackages
-
-    [ -L "$HOME"/.config ] || rm -rf "$HOME"/.config/nixpkgs
+    [ -d /tmp/nix ] || git clone "GITLAB_URL"/devops/nix /tmp/nix
+    "$NIX_BIN"/nix-env -f /tmp/nix/pkgs/pkgs.nix -i --remove-all
 }
 
 install_home_manager() {
     local url="https://github.com/rycee/home-manager/archive/master.tar.gz"
-    chkcmd nix-channel
-    nix-channel --add "$url" home-manager
-    nix-channel --update
-}
-
-add_trusted_nix_user() {
-    local file=/etc/nix/nix.conf
-    local -a lines
-
-    lines=(
-	"trusted-users = $USER"
-	"allowed-users = *"
-    )
-
-    sudo cp "$file"{,.bak} && echo "Backed up $file."
-
-    for l in "${lines[@]}"; do
-	if grep -Eq "$l" "$file"; then
-	    echo "Already added $l to $file"
-	else
-	    echo "$l" | sudo tee -a "$file" && echo "Added $l to $file"
-	fi
-    done
-
-    # sudo killall nix-daemon
+    "$NIX_BIN"/nix-channel --add "$url" home-manager
+    "$NIX_BIN"/nix-channel --update
 }
 
 install_nix() {
@@ -161,39 +92,31 @@ install_nix() {
     fi
 
     export PATH=$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/nix/var/nix/profiles/default/bin/$PATH
-    source /etc/profile && sudo -i nix-channel --update nixpkgs
+    source /etc/profile && sudo -i "$NIX_BIN"/nix-channel --update nixpkgs
 
-    chkcmd nix-channel && \
-	nix-channel --update nixpkgs && \
-	nix-channel --update
+    "$NIX_BIN"/nix-channel --update nixpkgs && "$NIX_BIN"/nix-channel --update
 
     echo "If the rest of this script fails, try logging out & back in again..."
 }
 
 get_secrets() {
-    git clone https://gitlab.com/tsprv/devops/secrets "$HOME"/secrets
+    git clone https://gitlab.com/tsprv/devops/secrets /tmp/secrets
     [ -d "$HOME"/.ssh ] || mkdir m 700  "$HOME"/.ssh
-    cp "$HOME"/secrets/id_rsa* "$HOME"/.ssh/ && \
+    cp /tmp/secrets/id_rsa* "$HOME"/.ssh/ && \
 	chmod 600 "$HOME"/.ssh/id_rsa && \
 	echo "Successfully copied ssh keys."
 }
 
 install_debs() {
-    local -a debs
-    debs=(curl git rsync)
-    sudo apt update
-    for d in "${debs[@]}"; do
-	command -v "$d" &>/dev/null || sudo apt install "$d"
-    done
+    sudo apt update && sudo apt install curl git rsync
 }
 
 all() {
     install_debs && \
 	get_secrets && \
 	install_nix && \
-	add_trusted_nix_user && \
-	install_nixpkgs && \
 	install_home_manager && \
+	install_nixpkgs && \
 	run_home_manager && \
 	run_ansible_scripts && \
 	lazygit && \
