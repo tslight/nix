@@ -1,5 +1,5 @@
 # https://rycee.gitlab.io/home-manager/options.html
-{ pkgs }:{
+{ pkgs, ... }:{
   # https://github.com/rycee/home-manager/issues/432
   home.extraOutputsToInstall = [ "man" ];
   programs.man.enable = false;
