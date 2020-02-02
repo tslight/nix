@@ -89,20 +89,20 @@ run_ansible_scripts() {
 run_home_manager() {
     local -a dotfiles
 
-    dotfiles=(
-	bashrc
-	bash_profile
-	inputrc
-	profile
-    )
+    # dotfiles=(
+    #	bashrc
+    #	bash_profile
+    #	inputrc
+    #	profile
+    # )
 
-    for f in "${dotfiles[@]}"; do
-	if [ -L "$HOME/.$f" ]; then
-	    echo "$HOME/.$f is already a symlink. Not moving."
-	else
-	    [ -f "$HOME/.$f" ] && mv "$HOME/.$f"{,.bak}
-	fi
-    done
+    # for f in "${dotfiles[@]}"; do
+    #	if [ -L "$HOME/.$f" ]; then
+    #	    echo "$HOME/.$f is already a symlink. Not moving."
+    #	else
+    #	    [ -f "$HOME/.$f" ] && mv "$HOME/.$f"{,.bak}
+    #	fi
+    # done
 
     chkcmd home-manger
     home-manager switch
