@@ -25,6 +25,8 @@ pkgs: with pkgs; [
   nixpkgs-lint
   # powershell
   ranger
+  rclone
+  speedtest-cli
   terraform
   tmux
   youtube-dl
