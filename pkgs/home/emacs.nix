@@ -1,0 +1,67 @@
+{
+  programs.emacs = {
+    enable = true;
+    extraPackages = epkgs: [
+      epkgs.ace-window
+      epkgs.ansible
+      epkgs.ansible-doc
+      epkgs.async
+      epkgs.avy
+      epkgs.change-inner
+      epkgs.cider
+      epkgs.clojure-mode
+      epkgs.clojure-snippets
+      epkgs.company
+      epkgs.company-go
+      epkgs.company-terraform
+      epkgs.counsel
+      epkgs.counsel-projectile
+      epkgs.diminish
+      epkgs.docker
+      epkgs.dockerfile-mode
+      epkgs.dot-mode
+      epkgs.emmet-mode
+      epkgs.exec-path-from-shell
+      epkgs.expand-region
+      epkgs.flx
+      epkgs.flycheck
+      epkgs.git-timemachine
+      epkgs.gitlab-ci-mode
+      epkgs.go-mode
+      epkgs.hungry-delete
+      epkgs.ibuffer-vc
+      epkgs.iedit
+      epkgs.ivy
+      epkgs.jedi
+      epkgs.js2-mode
+      epkgs.js2-refactor
+      epkgs.json-mode
+      epkgs.json-navigator
+      epkgs.magit
+      epkgs.markdown-mode
+      epkgs.nix-mode
+      epkgs.nodejs-repl
+      epkgs.org-journal
+      epkgs.paredit
+      epkgs.powershell
+      epkgs.projectile
+      epkgs.py-autopep8
+      epkgs.python-mode
+      epkgs.restclient
+      epkgs.slime
+      epkgs.slime-company
+      epkgs.smex
+      epkgs.ssh-agency
+      epkgs.systemd
+      epkgs.terraform-mode
+      epkgs.undo-tree
+      epkgs.use-package
+      epkgs.web-mode
+      epkgs.wgrep
+      epkgs.which-key
+      epkgs.yaml-mode
+      epkgs.yasnippet
+      epkgs.yasnippet-snippets
+    ];
+  };
+}
