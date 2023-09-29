@@ -3,8 +3,8 @@
 #+PROPERTY: header-args+ :tangle-mode (identity #o644)
 #+PROPERTY: header-args+ :results silent
 #+PROPERTY: header-args+ :padline no
-
 * CONFIGURATION
+#+NAME: configuration
 #+begin_src nix :tangle /sudo::/etc/nixos/configuration.nix
   { config, pkgs, ... }:
   {
@@ -160,6 +160,9 @@
     system.stateVersion = "23.05"; # Did you read the comment?
   }
 #+end_src
+#+BEGIN_SRC nix :noweb yes :tangle ./configuration.nix
+  <<configuration>>
+#+END_SRC
 
 * APPLY
 #+begin_src shell :tangle no :dir "/sudo::/" :cache no
