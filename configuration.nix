@@ -48,17 +48,6 @@
 
   # Configure console keymap
   console.keyMap = "uk";
-  services.udev.extraHwdb = ''
-    # cat /proc/bus/input/devices | grep -i keyboard -A 9 -B 1
-    evdev:input:b0011v0001p0001*
-     KEYBOARD_KEY_01=capslock         # esc   --> caps
-     KEYBOARD_KEY_3a=esc              # caps  --> esc
-     KEYBOARD_KEY_38=leftctrl         # alt   --> leftctrl
-     KEYBOARD_KEY_db=leftalt          # super --> leftalt
-     KEYBOARD_KEY_1d=leftmeta         # ctrl  --> super
-     KEYBOARD_KEY_b8=leftctrl         # altgr --> leftctrl
-     KEYBOARD_KEY_9d=leftalt          # ctrl  --> leftalt (otherwise altgr)
-  '';
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -82,26 +71,12 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-  programs = {
-    git.enable = true;
-    tmux.enable = true;
-    zsh.enable = true;
-    neovim.enable = true;
-    hyprland.enable = true;
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.toby = {
     isNormalUser = true;
     description = "Toby";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-      emacs29-pgtk
-      kitty
-      wofi
-    ];
-    shell = pkgs.zsh;
   };
 
   # Enable automatic login for the user.
@@ -114,15 +89,6 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    ansible
-    cowsay
-    curl
-    mg
-    python3Full
-    rsync
-    wget
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -133,6 +99,7 @@
   # };
 
   # List services that you want to enable:
+  # services.fwupd.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
