@@ -19,7 +19,7 @@
 
   services.emacs = {
     enable = true;
-    package = "emacs29-pgtk";
+    package = pkgs.emacs29-pgtk;
     defaultEditor = true;
   };
 
