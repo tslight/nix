@@ -17,6 +17,12 @@
      KEYBOARD_KEY_9d=leftalt          # ctrl  --> leftalt (otherwise altgr)
   '';
 
+  services.emacs = {
+    enable = true;
+    package = "emacs29-pgtk";
+    defaultEditor = true;
+  };
+
   programs = {
     git.enable = true;
     tmux.enable = true;
@@ -36,7 +42,6 @@
     rsync
     wget
     firefox
-    emacs29-pgtk
     kitty
     wofi
   ];

@@ -166,6 +166,12 @@ to a freshly installed system simply tangle the nix block below and then run:
        KEYBOARD_KEY_9d=leftalt          # ctrl  --> leftalt (otherwise altgr)
     '';
 
+    services.emacs = {
+      enable = true;
+      package = "emacs29-pgtk";
+      defaultEditor = true;
+    };
+
     programs = {
       git.enable = true;
       tmux.enable = true;
@@ -185,7 +191,6 @@ to a freshly installed system simply tangle the nix block below and then run:
       rsync
       wget
       firefox
-      emacs29-pgtk
       kitty
       wofi
     ];
