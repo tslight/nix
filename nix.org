@@ -184,8 +184,15 @@ to a freshly installed system simply tangle the nix block below and then run:
 
     environment.systemPackages = with pkgs; [
       ansible
+      aspell
       cowsay
       curl
+      go
+      godef
+      gopls
+      gnumake
+      hunspell
+      ispell
       mg
       python3Full
       rsync

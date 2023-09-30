@@ -35,8 +35,15 @@
 
   environment.systemPackages = with pkgs; [
     ansible
+    aspell
     cowsay
     curl
+    go
+    godef
+    gopls
+    gnumake
+    hunspell
+    ispell
     mg
     python3Full
     rsync
