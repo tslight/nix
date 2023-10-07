@@ -1,20 +1,45 @@
-{ config, pkgs, ... }:
+# This is your home-manager configuration file
+# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
+{ inputs, lib, config, pkgs, ...}: {
+  # You can import other home-manager modules here
+  imports = [
+    # If you want to use home-manager modules from other flakes (such as nix-colors):
+    # inputs.nix-colors.homeManagerModule
+    # You can also split up your configuration and import pieces of it here:
+    # ./nvim.nix
+  ];
 
-{
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = "toby";
-  home.homeDirectory = "/home/toby";
+  nixpkgs = {
+    # You can add overlays here
+    overlays = [
+      # If you want to use overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "23.05"; # Please read the comment before changing.
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
+    ];
+    # Configure your nixpkgs instance
+    config = {
+      # Disable if you don't want unfree packages
+      allowUnfree = true;
+      # Workaround for https://github.com/nix-community/home-manager/issues/2942
+      allowUnfreePredicate = _: true;
+    };
+  };
 
+  # TODO: Set your username
+  home = {
+    username = "toby";
+    homeDirectory = "/home/toby";
+  };
+
+  # Add stuff for your user as you see fit:
+  # programs.neovim.enable = true;
+  # home.packages = with pkgs; [ steam ];
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
@@ -31,6 +56,7 @@
     pkgs.ispell
     pkgs.python3Full
     pkgs.rsync
+    pkgs.terraform
     pkgs.wget
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -72,6 +98,8 @@
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
+    XDG_DATA_DIRS = "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
+    NIX_CONFIG = "experimental-features = nix-command flakes";
     EDITOR = "emacsclient -nw -c";
     ALTERNATE_EDITOR = "";
     PAGER = "less";
@@ -81,8 +109,6 @@
     KEYTIMEOUT = 1;
     EMPLOYER = "oe-developers";
     DEVPATH = "$HOME/$EMPLOYER";
-    GOPATH = "$HOME/go";
-    GOROOT = "/usr/local/go";
   };
 
   home.shellAliases = {
@@ -173,6 +199,8 @@ fi
     ];
   };
 
+  programs.firefox.enable = true;
+
   programs.git = {
     enable = true;
     userName  = "Toby Slight";
@@ -200,6 +228,68 @@ fi
         defaultBranch = "main";
       };
     };
+  };
+
+  programs.neovim = {
+    enable = true;
+    extraConfig = ''
+set autochdir                             "silently change directory for each file
+set autoindent                            "retain indentation on next lines
+set autoread                              "reload when ext changes detected
+set autowriteall                          "auto save when switching buffers
+set backspace=indent,eol,start            "allow backspace past indent & eol
+set backup                                "turn backups on
+set backupdir=~/.cache                    "set backup directory
+set clipboard=unnamedplus                 "allow copy/pasting to clipboard
+set directory=~/.cache                    "set swap file directory
+set expandtab                             "make tabs spaces
+set history=4242                          "increase history
+set hlsearch                              "highlight all matches
+set ignorecase                            "ignore case in all searches...
+set incsearch                             "lookahead as search is specified
+set nohlsearch                            "turn off search highlight
+set nomousehide                           "stop cursor from disappearing
+set nowrap                                "turn line wrap off
+set relativenumber                        "relative line numbers are awesome
+set ruler                                 "turn on line & column numbers
+set scrolloff=5                           "scroll when 5 lines from bottom
+set shiftround                            "always indent to nearest tabstop
+set shiftwidth=4                          "backtab size
+set showcmd                               "display incomplete commands
+set smartcase                             "unless uppercase letters used
+set smartindent                           "turn on autoindenting of blocks
+set smarttab                              "use shiftwidths only at left margin
+set softtabstop=4                         "soft space size of tabs
+set spelllang=en_gb                       "spellcheck language
+set tabstop=4                             "space size of tabs
+set undodir=~/.cache                      "set undo file directory
+set undofile                              "turn undos on
+set undolevels=4242                       "how far back to go
+set wildchar=<tab> wildmenu wildmode=full "more verbose command tabbing
+set wildcharm=<c-z>                       "plus awesome wildcard matching
+
+let mapleader = " "
+
+cmap w!! w !sudo tee %<cr>
+map <leader>sv :source $MYVIMRC<CR>
+map <leader><space> :b#<cr>
+map <leader>b :b<space>
+map <leader>d :bd<cr>
+map <leader>i ggVG=<c-o><c-o>
+map <leader>n :bn<cr>
+map <leader>p :bp<cr>
+map <leader>e :e<space>
+map <leader>w :wall<cr>
+map <leader>q :q!<cr>
+map <leader>tc :tabnew<cr>
+map <leader>td :tabclose<cr>
+map <leader>tn :tabnext<cr>
+map <leader>tp :tabprev<cr>
+map <leader>tt :tablast<cr>
+'';
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
   };
 
   programs.tmux = {
@@ -326,4 +416,46 @@ prompt_vcs_setup "$@"
     client.enable = true;
     package = pkgs.emacs29-pgtk;
   };
+
+  programs.kitty.enable = true;
+  programs.kitty.extraConfig = ''
+font_size 12.0
+scrollback_lines 10000
+copy_on_select yes
+strip_trailing_spaces smart
+terminal_select_modifiers ctrl
+hide_window_decorations yes
+clipboard_control write-clipboard write-primary no-append
+term xterm-256color
+map ctrl+Tab        next_tab
+map kitty_mod+Tab   previous_tab
+map ctrl+Escape goto_tab -1
+map ctrl+equal      change_font_size all +2.0
+map ctrl+minus      change_font_size all -2.0
+map kitty_mod+equal change_font_size all 0
+'';
+
+  programs.readline.enable = true;
+  programs.readline.bindings = {
+    "\\en" = "history-search-forward";
+    "\\ep" =  "history-search-backward";
+    "\\em" = "\\C-a\\eb\\ed\\C-y\\e#man \\C-y\\C-m\\C-p\\C-p\\C-a\\C-d\\C-e";
+    "\\eh" = "\\C-a\\eb\\ed\\C-y\\e#man \\C-y\\C-m\\C-p\\C-p\\C-a\\C-d\\C-e";
+  };
+  programs.readline.extraConfig = ''
+set bell-style none
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set completion-ignore-case on
+set keyseq-timeout 1200
+set colored-stats on
+set colored-completion-prefix on
+'';
+
+
+  # Nicely reload system units when changing configs
+  systemd.user.startServices = "sd-switch";
+
+  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  home.stateVersion = "23.05";
 }
