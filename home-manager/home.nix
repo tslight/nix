@@ -55,6 +55,7 @@
     pkgs.hunspell
     pkgs.ispell
     pkgs.python3Full
+    pkgs.rclone
     pkgs.rsync
     pkgs.terraform
     pkgs.wget
