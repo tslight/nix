@@ -111,6 +111,7 @@
     gnomeExtensions.caffeine
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.dash-to-dock
+    libadwaita
     mpv
   ];
 

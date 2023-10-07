@@ -143,9 +143,11 @@
   gtk.gtk2.extraConfig = ''gtk-key-theme-name = "Emacs"'';
   gtk.gtk3.extraConfig = {
     gtk-key-theme-name = "Emacs";
+    gtk-application-prefer-dark-theme = 1;
   };
   gtk.gtk4.extraConfig = {
     gtk-key-theme-name = "Emacs";
+    gtk-application-prefer-dark-theme = 1;
   };
 
   programs.home-manager.enable = true;
