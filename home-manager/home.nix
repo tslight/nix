@@ -51,9 +51,12 @@
     pkgs.godef
     pkgs.golangci-lint
     pkgs.gopls
+    pkgs.gptfdisk
     pkgs.hunspell
     pkgs.ispell
+    pkgs.lf
     pkgs.python3Full
+    pkgs.ncdu
     pkgs.rclone
     pkgs.rsync
     pkgs.terraform
