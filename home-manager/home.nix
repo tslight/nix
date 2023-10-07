@@ -48,7 +48,6 @@
     pkgs.curl
     pkgs.emacs29-pgtk
     pkgs.gnumake
-    pkgs.go
     pkgs.godef
     pkgs.golangci-lint
     pkgs.gopls
@@ -73,6 +72,11 @@
     # '')
   ];
 
+  programs.go = {
+    enable = true;
+    goBin = ".local/bin.go";
+    goPath = "go";
+  };
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
