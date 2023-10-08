@@ -117,6 +117,7 @@
     KEYTIMEOUT = 1;
     EMPLOYER = "oe-developers";
     DEVPATH = "$HOME/$EMPLOYER";
+    PATH = "$PATH:$GOPATH/bin";
   };
 
   home.shellAliases = {
