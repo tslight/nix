@@ -35,7 +35,7 @@
         specialArgs = {inherit inputs outputs;};
         modules = [./nixos/martin/configuration.nix];
       };
-      Tobys-MacBook-Pro = nixpkgs.lib.nixosSystem {
+      hexley = nixpkgs.lib.nixosSystem {
         system = "aarch64-darwin";
         specialArgs = {inherit inputs outputs;};
         modules = [./nixos/Tobys-MacBook-Pro.local/configuration.nix];
@@ -64,7 +64,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [ ./home-manager/home.nix ];
       };
-      "toby@Tobys-MacBook-Pro" = home-manager.lib.homeManagerConfiguration {
+      "toby@hexley" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [ ./home-manager/home.nix ];
