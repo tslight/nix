@@ -1,4 +1,4 @@
-HOST := $(shell hostname)
+HOST := $(shell hostname -s)
 USER := $(shell whoami)
 NIX_CONFIG := "experimental-features = nix-command flakes"
 
