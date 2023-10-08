@@ -3,6 +3,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "terence"; # Define your hostname.
+  services.fwupd.enable = true;
   services.udev.extraHwdb = ''
   evdev:input:b0011v0001p0001*
     KEYBOARD_KEY_01=capslock
