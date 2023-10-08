@@ -149,7 +149,11 @@
   };
 
   gtk.enable = true;
-  gtk.gtk2.extraConfig = ''gtk-key-theme-name = "Emacs"'';
+  gtk.theme.name = "Adwaita";
+  gtk.gtk2.extraConfig = ''
+gtk-key-theme-name = "Emacs"
+gtk-application-prefer-dark-theme = 1
+'';
   gtk.gtk3.extraConfig = {
     gtk-key-theme-name = "Emacs";
     gtk-application-prefer-dark-theme = 1;
