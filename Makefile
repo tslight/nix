@@ -2,6 +2,7 @@ HOST := $(shell hostname)
 USER := $(shell whoami)
 NIX_CONFIG := "experimental-features = nix-command flakes"
 
+.PHONY: all
 all: host home
 
 host:
