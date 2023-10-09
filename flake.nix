@@ -30,6 +30,13 @@
           ./nixos/terence/configuration.nix
         ];
       };
+      enigma = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./nixos/enigma/configuration.nix
+        ];
+      };
       martin = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         specialArgs = {inherit inputs outputs;};
@@ -55,6 +62,11 @@
         modules = [ ./home-manager/home.nix ];
       };
       "toby@terence" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [ ./home-manager/home.nix ];
+      };
+      "toby@enigma" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [ ./home-manager/home.nix ];
