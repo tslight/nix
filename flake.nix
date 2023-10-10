@@ -37,6 +37,13 @@
           ./nixos/enigma/configuration.nix
         ];
       };
+      porridge = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./nixos/porridge/configuration.nix
+        ];
+      };
       martin = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         specialArgs = {inherit inputs outputs;};
@@ -79,7 +86,7 @@
       "toby@hexley" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [ ./home-manager/home.nix ];
+        modules = [ ./home-manager/darwin/home.nix ];
       };
     };
   };
