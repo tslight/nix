@@ -55,7 +55,6 @@
     pkgs.hunspell
     pkgs.ispell
     pkgs.lf
-    pkgs.python3Full
     pkgs.ncdu
     pkgs.rclone
     pkgs.rsync
@@ -467,9 +466,9 @@ set colored-stats on
 set colored-completion-prefix on
 '';
 
-
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";
