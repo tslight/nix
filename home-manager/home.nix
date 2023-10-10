@@ -110,7 +110,7 @@
     EDITOR = "emacsclient -nw -c";
     ALTERNATE_EDITOR = "";
     PAGER = "less";
-    GTK_THEME = "Emacs";
+    # GTK_THEME = "Emacs";
     BLOCK_SIZE = "human-readable";
     DIRSTACKSIZE = 12;
     KEYTIMEOUT = 1;
