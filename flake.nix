@@ -34,6 +34,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs;};
         modules = [
+          nixos-hardware.nixosModules.lenovo-thinkpad-x13
           ./nixos/enigma/configuration.nix
         ];
       };
