@@ -40,6 +40,7 @@
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
+  # https://the-empire.systems/nixos-gnome-settings-and-keyboard-shortcuts
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
