@@ -39,6 +39,7 @@
   system.defaults.finder.QuitMenuItem = true;
   system.defaults.finder.ShowPathbar = true;
   system.defaults.finder.ShowStatusBar = true;
+  system.defaults.NSGlobalDomain.AppleInterfaceStyle = "Dark";
 
   security.pam.enableSudoTouchIdAuth = true;
 
@@ -54,9 +55,11 @@
       "mssql-tools"
     ];
     casks = [
+      "caffeine"
       "emacs"
       "firefox"
       "google-chrome"
+      "iterm2"
       "karabiner-elements"
     ];
     taps = [
