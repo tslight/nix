@@ -61,29 +61,6 @@
     # '')
   ];
 
-  programs.kitty.enable = true;
-  programs.kitty.extraConfig = ''
-    font_size 12.0
-    scrollback_lines 10000
-    copy_on_select yes
-    strip_trailing_spaces smart
-    terminal_select_modifiers ctrl
-    hide_window_decorations yes
-    clipboard_control write-clipboard write-primary no-append
-    term xterm-256color
-    map ctrl+Tab        next_tab
-    map kitty_mod+Tab   previous_tab
-    map ctrl+Escape goto_tab -1
-    map ctrl+equal      change_font_size all +2.0
-    map ctrl+minus      change_font_size all -2.0
-    map kitty_mod+equal change_font_size all 0
-  '';
-
-  programs.go = {
-    enable = true;
-    goBin = ".local/bin.go";
-    goPath = "go";
-  };
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -99,16 +76,6 @@
     # '';
   };
 
-  # You can also manage environment variables but you will have to manually
-  # source
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/toby/etc/profile.d/hm-session-vars.sh
-  #
-  # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
     XDG_DATA_DIRS = "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
     NIX_CONFIG = "experimental-features = nix-command flakes";
@@ -201,6 +168,33 @@
       "nocaseglob"
     ];
   };
+
+  programs.go = {
+    enable = true;
+    goBin = ".local/bin.go";
+    goPath = "go";
+  };
+
+  programs.kitty.enable = true;
+  programs.kitty.extraConfig = ''
+    font_size 12.0
+    scrollback_lines 10000
+    copy_on_select yes
+    strip_trailing_spaces smart
+    terminal_select_modifiers ctrl
+    hide_window_decorations yes
+    clipboard_control write-clipboard write-primary no-append
+    term xterm-256color
+    macos_option_as_alt yes
+    map ctrl+Tab        next_tab
+    map kitty_mod+Tab   previous_tab
+    map ctrl+Escape goto_tab -1
+    map ctrl+equal      change_font_size all +2.0
+    map ctrl+minus      change_font_size all -2.0
+    map kitty_mod+equal change_font_size all 0
+    map cmd+c        copy_to_clipboard
+    map cmd+v        paste_from_clipboard
+  '';
 
   programs.git = {
     enable = true;

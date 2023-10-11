@@ -50,7 +50,7 @@
     casks = [
       "emacs"
       "firefox"
-      # "google-chrome"
+      "google-chrome"
       "karabiner-elements"
     ];
   };

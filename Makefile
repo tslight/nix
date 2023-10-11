@@ -1,16 +1,23 @@
 HOST := $(shell hostname -s)
 USER := $(shell whoami)
 NIX_CONFIG := "experimental-features = nix-command flakes"
+UNAME_S := $(shell uname -s)
 
-.PHONY: all brew darwin
-all: nixos home
-mac: darwin home
+.PHONY: all
+all:
+ifeq ($(UNAME_S),Linux)
+	make -s nixos
+endif
+ifeq ($(UNAME_S),Darwin)
+	make -s darwin
+endif
+	make -s home
 
 brew:
 	bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # https://xyno.space/post/nix-darwin-introduction
-darwin: 
+darwin:
 	nix build .#darwinConfigurations.$(HOST).system --extra-experimental-features "nix-command flakes"
 	./result/sw/bin/darwin-rebuild switch --flake .
 

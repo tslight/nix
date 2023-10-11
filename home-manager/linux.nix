@@ -24,6 +24,7 @@
   };
 
   programs.firefox.enable = true;
+
   programs.chromium = {
     enable = true;
     extensions = [
@@ -33,24 +34,6 @@
       { id = "gphhapmejobijbbhgpjhcjognlahblep"; } # gnome-extensions
     ];
   };
-
-  programs.kitty.enable = true;
-  programs.kitty.extraConfig = ''
-    font_size 12.0
-    scrollback_lines 10000
-    copy_on_select yes
-    strip_trailing_spaces smart
-    terminal_select_modifiers ctrl
-    hide_window_decorations yes
-    clipboard_control write-clipboard write-primary no-append
-    term xterm-256color
-    map ctrl+Tab        next_tab
-    map kitty_mod+Tab   previous_tab
-    map ctrl+Escape goto_tab -1
-    map ctrl+equal      change_font_size all +2.0
-    map ctrl+minus      change_font_size all -2.0
-    map kitty_mod+equal change_font_size all 0
-  '';
 
   services.emacs = {
     enable = true;
