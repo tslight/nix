@@ -221,6 +221,7 @@
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
       { id = "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"; } # privacy badger
       { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
+      { id = "gphhapmejobijbbhgpjhcjognlahblep"; } # gnome-extensions
     ];
   };
 
