@@ -5,10 +5,14 @@
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hardware.url = "github:nixos/nixos-hardware";
+    darwin.url = "github:lnl7/nix-darwin";
+    darwin.inputs.nixpkgs.follows = "nixpkgs"; # ...
   };
 
-  outputs = {self, nixpkgs, home-manager, nixos-hardware, ...} @ inputs: let
+  outputs = {self, nixpkgs, home-manager, nixos-hardware, darwin, ...} @ inputs: let
     inherit (self) outputs;
+    #inherit (darwin.lib) darwinSystem;
+    #inherit (inputs.nixpkgs-unstable.lib) attrValues makeOverridable optionalAttrs singleton;
   in {
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
@@ -50,10 +54,12 @@
         specialArgs = {inherit inputs outputs;};
         modules = [./nixos/martin/configuration.nix];
       };
-      hexley = nixpkgs.lib.nixosSystem {
-        system = "aarch64-darwin";
-        specialArgs = {inherit inputs outputs;};
-        modules = [./nixos/hexley/configuration.nix];
+    };
+
+    darwinConfigurations = {
+      hexley = darwin.lib.darwinSystem {
+        system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
+        modules = [ ./darwin/hexley/configuration.nix ]; # will be important later
       };
     };
 
