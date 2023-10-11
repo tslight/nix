@@ -62,12 +62,9 @@
       "iterm2"
       "karabiner-elements"
     ];
-    taps = [
-      "microsoft/mssql-release"
-      {
-        name = "microsoft/mssql-release";
-        clone_target = "https://github.com/Microsoft/homebrew-mssql-release";
-      }
-    ];
+    taps = [ "microsoft/mssql-release" {
+      name = "microsoft/mssql-release";
+      clone_target = "https://github.com/Microsoft/homebrew-mssql-release";
+    }];
   };
 }
