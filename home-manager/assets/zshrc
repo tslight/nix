@@ -1,0 +1,49 @@
+unsetopt flow_control         # stty ixon doesn't work, but this does.
+unsetopt completealiases      # supposedly allows aliases to be completed, but
+# I turn it off because it breaks mine..
+ttyctl -f                     # avoid having to manually reset the terminal
+
+bindkey '^[[Z' reverse-menu-complete # shift-tab cycles backwards
+bindkey \^U backward-kill-line # ctrl-u (whole-line by default)
+
+# Alt-n & Alt-p to search history using current input
+autoload -Uz history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey '\ep' history-beginning-search-backward-end
+bindkey '\en' history-beginning-search-forward-end
+
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' # emacs tramp workaround
+
+if [ -n "$INSIDE_EMACS" ]; then
+    chpwd() { print -P "\033AnSiTc %d" }
+    print -P "\033AnSiTu %n"
+    print -P "\033AnSiTc %d"
+fi
+
+command -v kubectl &>/dev/null && source <(kubectl completion zsh)
+
+prompt_vcs_setup () {
+    zstyle ':vcs_info:*' enable git svn
+    zstyle ':vcs_info:git:*' formats '%B%F{cyan}(%b)%f'
+
+    autoload -Uz vcs_info
+
+    precmd_vcs_info() { vcs_info }
+    precmd_functions+=( precmd_vcs_info )
+
+    setopt prompt_subst
+
+    local user_at_host="%B%F{green}%n%B%F{yellow}@%B%F{green}%m%b%f"
+    local cwd="%B%F{yellow}:%F{magenta}%1~%b%f"
+    local git_branch=\$vcs_info_msg_0_
+    local exit_status="%B%(?.%F{yellow}√.%F{red}%?)"
+    local priv="%B%F{yellow}%#%b%f"
+
+    PS1="''${user_at_host}''${cwd} ''${git_branch}"$'\n'"''${exit_status} ''${priv} "
+    PS2="> "
+
+    prompt_opts=( cr percent )
+}
+
+prompt_vcs_setup "$@"

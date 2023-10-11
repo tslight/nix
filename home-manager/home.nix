@@ -109,23 +109,7 @@
   programs.bash = {
     enable = true;
     enableVteIntegration = true;
-    bashrcExtra = ''
-      complete -cf sudo     # completion after sudo
-      complete -cf man      # same, but for man
-      stty -ixon # disable ctrl-s/q flow control
-      command -v kubectl &>/dev/null && source <(kubectl completion bash)
-      RED="\\[\\e[1;31m\\]"
-      GRN="\\[\\e[1;32m\\]"
-      YEL="\\[\\e[1;33m\\]"
-      MAG="\\[\\e[1;35m\\]"
-      CYN="\\[\\e[1;36m\\]"
-      OFF="\\[\\e[0m\\]"
-      if [ "$(id -u)" -eq 0 ]; then
-          export PS1="''${RED}\\u''${YEL}@''${RED}\\h''${YEL}:''${MAG}\\W \\n''${YEL}\$? \$ ''${OFF}"
-      else
-          export PS1="''${GRN}\\u''${YEL}@''${GRN}\\h''${YEL}:''${MAG}\\W \\n''${YEL}\$? \$ ''${OFF}"
-      fi
-    '';
+    bashrcExtra = builtins.readFile ./assets/bashrc;
     historyControl = [
       "erasedups"
       "ignoredups"
@@ -219,61 +203,7 @@
 
   programs.neovim = {
     enable = true;
-    extraConfig = ''
-      set autochdir                             "silently change directory for each file
-      set autoindent                            "retain indentation on next lines
-      set autoread                              "reload when ext changes detected
-      set autowriteall                          "auto save when switching buffers
-      set backspace=indent,eol,start            "allow backspace past indent & eol
-      set backup                                "turn backups on
-      set backupdir=~/.cache                    "set backup directory
-      set clipboard=unnamedplus                 "allow copy/pasting to clipboard
-      set directory=~/.cache                    "set swap file directory
-      set expandtab                             "make tabs spaces
-      set history=4242                          "increase history
-      set hlsearch                              "highlight all matches
-      set ignorecase                            "ignore case in all searches...
-      set incsearch                             "lookahead as search is specified
-      set nohlsearch                            "turn off search highlight
-      set nomousehide                           "stop cursor from disappearing
-      set nowrap                                "turn line wrap off
-      set relativenumber                        "relative line numbers are awesome
-      set ruler                                 "turn on line & column numbers
-      set scrolloff=5                           "scroll when 5 lines from bottom
-      set shiftround                            "always indent to nearest tabstop
-      set shiftwidth=4                          "backtab size
-      set showcmd                               "display incomplete commands
-      set smartcase                             "unless uppercase letters used
-      set smartindent                           "turn on autoindenting of blocks
-      set smarttab                              "use shiftwidths only at left margin
-      set softtabstop=4                         "soft space size of tabs
-      set spelllang=en_gb                       "spellcheck language
-      set tabstop=4                             "space size of tabs
-      set undodir=~/.cache                      "set undo file directory
-      set undofile                              "turn undos on
-      set undolevels=4242                       "how far back to go
-      set wildchar=<tab> wildmenu wildmode=full "more verbose command tabbing
-      set wildcharm=<c-z>                       "plus awesome wildcard matching
-
-      let mapleader = " "
-
-      cmap w!! w !sudo tee %<cr>
-      map <leader>sv :source $MYVIMRC<CR>
-      map <leader><space> :b#<cr>
-      map <leader>b :b<space>
-      map <leader>d :bd<cr>
-      map <leader>i ggVG=<c-o><c-o>
-      map <leader>n :bn<cr>
-      map <leader>p :bp<cr>
-      map <leader>e :e<space>
-      map <leader>w :wall<cr>
-      map <leader>q :q!<cr>
-      map <leader>tc :tabnew<cr>
-      map <leader>td :tabclose<cr>
-      map <leader>tn :tabnext<cr>
-      map <leader>tp :tabprev<cr>
-      map <leader>tt :tablast<cr>
-    '';
+    extraConfig = builtins.readFile ./assets/init.vim;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
@@ -362,56 +292,6 @@
     historySubstringSearch.searchUpKey = [
       "^[[A"
     ];
-    initExtra = ''
-      unsetopt flow_control         # stty ixon doesn't work, but this does.
-      unsetopt completealiases      # supposedly allows aliases to be completed, but
-                                    # I turn it off because it breaks mine..
-      ttyctl -f                     # avoid having to manually reset the terminal
-
-      bindkey '^[[Z' reverse-menu-complete # shift-tab cycles backwards
-      bindkey \^U backward-kill-line # ctrl-u (whole-line by default)
-
-      # Alt-n & Alt-p to search history using current input
-      autoload -Uz history-search-end
-      zle -N history-beginning-search-backward-end history-search-end
-      zle -N history-beginning-search-forward-end history-search-end
-      bindkey '\ep' history-beginning-search-backward-end
-      bindkey '\en' history-beginning-search-forward-end
-
-      [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' # emacs tramp workaround
-
-      if [ -n "$INSIDE_EMACS" ]; then
-          chpwd() { print -P "\033AnSiTc %d" }
-          print -P "\033AnSiTu %n"
-          print -P "\033AnSiTc %d"
-      fi
-
-      command -v kubectl &>/dev/null && source <(kubectl completion zsh)
-
-      prompt_vcs_setup () {
-          zstyle ':vcs_info:*' enable git svn
-          zstyle ':vcs_info:git:*' formats '%B%F{cyan}(%b)%f'
-
-          autoload -Uz vcs_info
-
-          precmd_vcs_info() { vcs_info }
-          precmd_functions+=( precmd_vcs_info )
-
-          setopt prompt_subst
-
-          local user_at_host="%B%F{green}%n%B%F{yellow}@%B%F{green}%m%b%f"
-          local cwd="%B%F{yellow}:%F{magenta}%1~%b%f"
-          local git_branch=\$vcs_info_msg_0_
-          local exit_status="%B%(?.%F{yellow}√.%F{red}%?)"
-          local priv="%B%F{yellow}%#%b%f"
-
-          PS1="''${user_at_host}''${cwd} ''${git_branch}"$'\n'"''${exit_status} ''${priv} "
-          PS2="> "
-
-          prompt_opts=( cr percent )
-      }
-
-      prompt_vcs_setup "$@"
-    '';
+    initExtra = builtins.readFile ./assets/zshrc;
   };
 }
