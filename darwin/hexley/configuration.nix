@@ -49,14 +49,22 @@
       "bash"
       "gnu-sed"
       "gnu-tar"
-      "kubectl"
       "libomp"
+      "msodbcsql"
+      "mssql-tools"
     ];
     casks = [
       "emacs"
       "firefox"
       "google-chrome"
       "karabiner-elements"
+    ];
+    taps = [
+      "microsoft/mssql-release"
+      {
+        name = "microsoft/mssql-release";
+        clone_target = "https://github.com/Microsoft/homebrew-mssql-release";
+      }
     ];
   };
 }

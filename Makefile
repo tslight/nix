@@ -3,7 +3,7 @@ USER := $(shell whoami)
 NIX_CONFIG := "experimental-features = nix-command flakes"
 UNAME_S := $(shell uname -s)
 
-.PHONY: all
+.PHONY: all darwin nixos home clean brew
 all:
 ifeq ($(UNAME_S),Linux)
 	@make -s nixos
@@ -13,8 +13,7 @@ ifeq ($(UNAME_S),Darwin)
 endif
 	@make -s home
 
-brew:
-	bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew:; bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # https://xyno.space/post/nix-darwin-introduction
 darwin:
