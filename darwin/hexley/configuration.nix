@@ -24,7 +24,9 @@
 
   programs.nix-index.enable = true;
 
+  system.defaults.dock.minimize-to-application = true;
   system.defaults.dock.orientation = "left";
+  system.defaults.dock.tilesize = 32;
   system.defaults.dock.wvous-tl-corner = 2; # Mission Control
   system.defaults.dock.wvous-tr-corner = 12; # Notifications
   system.defaults.dock.wvous-bl-corner = 11; # Launchpad

@@ -40,7 +40,7 @@ prompt_vcs_setup () {
     local exit_status="%B%(?.%F{yellow}√.%F{red}%?)"
     local priv="%B%F{yellow}%#%b%f"
 
-    PS1="''${user_at_host}''${cwd} ''${git_branch}"$'\n'"''${exit_status} ''${priv} "
+    PS1="${user_at_host}${cwd} ${git_branch}"$'\n'"${exit_status} ${priv} "
     PS2="> "
 
     prompt_opts=( cr percent )
