@@ -28,12 +28,15 @@
   ];
 
   programs.nix-index.enable = true;
-
-  # Keyboard
+  
   system.keyboard.enableKeyMapping = true;
-  system.keyboard.remapCapsLockToEscape = true;
+  system.keyboard.userKeyMapping = [ 
+        {
+        HIDKeyboardModifierMappingDst = 30064771113;
+        HIDKeyboardModifierMappingSrc = 30064771129;
+    }];
+  system.defaults.dock.orientation = "left";
 
-  # Add ability to used TouchID for sudo authentication
   security.pam.enableSudoTouchIdAuth = true;
 
   homebrew = {
