@@ -1,13 +1,5 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 { inputs, lib, config, pkgs, ...}: {
-  # You can import other home-manager modules here
-  imports = [
-    # If you want to use home-manager modules from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModule
-    # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
-  ];
+  imports = [];
 
   nixpkgs = {
     # You can add overlays here
@@ -31,12 +23,6 @@
     };
   };
 
-  # TODO: Set your username
-  home = {
-    username = "toby";
-    homeDirectory = "/home/toby";
-  };
-
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
@@ -44,20 +30,19 @@
   # environment.
   home.packages = [
     pkgs.aspell
-    pkgs.bitwarden
-    pkgs.bitwarden-cli
     pkgs.cowsay
     pkgs.curl
-    pkgs.emacs29-pgtk
     pkgs.gnumake
     pkgs.godef
     pkgs.golangci-lint
     pkgs.gopls
     pkgs.gptfdisk
     pkgs.hunspell
+    pkgs.htop
     pkgs.ispell
     pkgs.lf
     pkgs.ncdu
+    pkgs.nmap
     pkgs.rclone
     pkgs.rsync
     pkgs.terraform
@@ -148,21 +133,6 @@
     up = "uptime";
   };
 
-  gtk.enable = true;
-  gtk.theme.name = "Adwaita";
-  gtk.gtk2.extraConfig = ''
-    gtk-key-theme-name = "Emacs"
-    gtk-application-prefer-dark-theme = 1
-  '';
-  gtk.gtk3.extraConfig = {
-    gtk-key-theme-name = "Emacs";
-    gtk-application-prefer-dark-theme = 1;
-  };
-  gtk.gtk4.extraConfig = {
-    gtk-key-theme-name = "Emacs";
-    gtk-application-prefer-dark-theme = 1;
-  };
-
   programs.home-manager.enable = true;
 
   programs.bash = {
@@ -211,17 +181,6 @@
       "globstar"
       "histappend"
       "nocaseglob"
-    ];
-  };
-
-  programs.firefox.enable = true;
-  programs.chromium = {
-    enable = true;
-    extensions = [
-      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
-      { id = "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"; } # privacy badger
-      { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
-      { id = "gphhapmejobijbbhgpjhcjognlahblep"; } # gnome-extensions
     ];
   };
 
@@ -438,26 +397,7 @@
   services.emacs = {
     enable = true;
     client.enable = true;
-    package = pkgs.emacs29-pgtk;
   };
-
-  programs.kitty.enable = true;
-  programs.kitty.extraConfig = ''
-    font_size 12.0
-    scrollback_lines 10000
-    copy_on_select yes
-    strip_trailing_spaces smart
-    terminal_select_modifiers ctrl
-    hide_window_decorations yes
-    clipboard_control write-clipboard write-primary no-append
-    term xterm-256color
-    map ctrl+Tab        next_tab
-    map kitty_mod+Tab   previous_tab
-    map ctrl+Escape goto_tab -1
-    map ctrl+equal      change_font_size all +2.0
-    map ctrl+minus      change_font_size all -2.0
-    map kitty_mod+equal change_font_size all 0
-  '';
 
   programs.readline.enable = true;
   programs.readline.bindings = {
@@ -475,16 +415,6 @@
     set colored-stats on
     set colored-completion-prefix on
   '';
-
-  # Nicely reload system units when changing configs
-  systemd.user.startServices = "sd-switch";
-
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-      gtk-key-theme = "Emacs";
-    };
-  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";
