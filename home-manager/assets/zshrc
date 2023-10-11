@@ -23,6 +23,8 @@ fi
 
 command -v kubectl &>/dev/null && source <(kubectl completion zsh)
 
+[ -f "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
 prompt_vcs_setup () {
     zstyle ':vcs_info:*' enable git svn
     zstyle ':vcs_info:git:*' formats '%B%F{cyan}(%b)%f'
