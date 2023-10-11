@@ -6,12 +6,12 @@ UNAME_S := $(shell uname -s)
 .PHONY: all
 all:
 ifeq ($(UNAME_S),Linux)
-	make -s nixos
+	@make -s nixos
 endif
 ifeq ($(UNAME_S),Darwin)
-	make -s darwin
+	@make -s darwin
 endif
-	make -s home
+	@make -s home
 
 brew:
 	bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

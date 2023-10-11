@@ -6,7 +6,7 @@
   nix.configureBuildUsers = true;
 
   # Enable experimental nix command and flakes
-  # nix.package = pkgs.nixUnstable;
+  nix.package = pkgs.nixUnstable;
   nix.extraOptions = ''
     auto-optimise-store = true
     experimental-features = nix-command flakes
@@ -20,12 +20,7 @@
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
-  # Apps
-  # `home-manager` currently has issues adding them to `~/Applications`
-  # Issue: https://github.com/nix-community/home-manager/issues/1341
-  environment.systemPackages = with pkgs; [
-    kitty
-  ];
+  environment.systemPackages = with pkgs; [ kitty ];
 
   programs.nix-index.enable = true;
 
@@ -47,6 +42,14 @@
 
   homebrew = {
     enable = true;
+    brews = [
+      "azure-cli"
+      "bash"
+      "gnu-sed"
+      "gnu-tar"
+      "kubectl"
+      "libomp"
+    ];
     casks = [
       "emacs"
       "firefox"

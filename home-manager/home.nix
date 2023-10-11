@@ -40,6 +40,8 @@
     pkgs.hunspell
     pkgs.htop
     pkgs.ispell
+    pkgs.jq
+    pkgs.kubectl
     pkgs.lf
     pkgs.ncdu
     pkgs.nmap
