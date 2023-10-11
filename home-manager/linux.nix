@@ -41,6 +41,28 @@
   systemd.user.startServices = "sd-switch";
 
   dconf.settings = {
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+      ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      binding = "<Super>t";
+      command = "kitty";
+      name = "open-terminal";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      binding = "<Super>e";
+      command = "emacsclient -c -a ''";
+      name = "open-emacs";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+      binding = "<Super>w";
+      command = "firefox";
+      name = "open-firefox";
+    };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       gtk-key-theme = "Emacs";
@@ -63,11 +85,12 @@
         "org.gnome.Nautilus.desktop"
         "chromium.desktop"
         "firefox.desktop"
+        "emacs.desktop"
         "kitty.desktop"
-        "emacsclient.desktop"
       ];
     };
   };
+
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";
