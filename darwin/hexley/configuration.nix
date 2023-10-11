@@ -28,22 +28,23 @@
   ];
 
   programs.nix-index.enable = true;
-  
+
   system.keyboard.enableKeyMapping = true;
-  system.keyboard.userKeyMapping = [ 
-        {
-        HIDKeyboardModifierMappingDst = 30064771113;
-        HIDKeyboardModifierMappingSrc = 30064771129;
-    }];
+  system.keyboard.userKeyMapping = [{
+    HIDKeyboardModifierMappingDst = 30064771113;
+    HIDKeyboardModifierMappingSrc = 30064771129;
+  }];
   system.defaults.dock.orientation = "left";
 
   security.pam.enableSudoTouchIdAuth = true;
 
   homebrew = {
-  enable = true;
-  casks = [
-    "emacs"
-    "karabiner-elements"
-  ];
-};
+    enable = true;
+    casks = [
+      "emacs"
+      "firefox"
+      "google-chrome"
+      "karabiner-elements"
+    ];
+  };
 }
