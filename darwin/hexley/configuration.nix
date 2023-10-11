@@ -29,12 +29,19 @@
 
   programs.nix-index.enable = true;
 
-  system.keyboard.enableKeyMapping = true;
-  system.keyboard.userKeyMapping = [{
-    HIDKeyboardModifierMappingDst = 30064771113;
-    HIDKeyboardModifierMappingSrc = 30064771129;
-  }];
   system.defaults.dock.orientation = "left";
+  system.defaults.dock.wvous-tl-corner = 2; # Mission Control
+  system.defaults.dock.wvous-tr-corner = 12; # Notifications
+  system.defaults.dock.wvous-bl-corner = 11; # Launchpad
+  system.defaults.dock.wvous-br-corner = 4; # Desktop
+  system.defaults.trackpad.Clicking = true;
+  system.defaults.trackpad.TrackpadRightClick = true;
+  system.defaults.trackpad.TrackpadThreeFingerDrag = true;
+  system.defaults.finder.FXPreferredViewStyle = "clmv";
+  system.defaults.finder.AppleShowAllExtensions = true;
+  system.defaults.finder.QuitMenuItem = true;
+  system.defaults.finder.ShowPathbar = true;
+  system.defaults.finder.ShowStatusBar = true;
 
   security.pam.enableSudoTouchIdAuth = true;
 
