@@ -11,8 +11,6 @@
 
   outputs = {self, nixpkgs, home-manager, nixos-hardware, darwin, ...} @ inputs: let
     inherit (self) outputs;
-    #inherit (darwin.lib) darwinSystem;
-    #inherit (inputs.nixpkgs-unstable.lib) attrValues makeOverridable optionalAttrs singleton;
   in {
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
@@ -56,6 +54,8 @@
       };
     };
 
+    # Available through 'nix build .#darwinConfigurations.$(HOST).system --extra-experimental-features "nix-command flakes"`
+    # ./result/sw/bin/darwin-rebuild switch --flake .
     darwinConfigurations = {
       hexley = darwin.lib.darwinSystem {
         system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
