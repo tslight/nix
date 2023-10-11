@@ -111,6 +111,8 @@
     gnomeExtensions.caffeine
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.dash-to-dock
+    gnomeExtensions.simple-monitor
+    gnomeExtensions.rclone-manager
     libadwaita
     mpv
   ];
