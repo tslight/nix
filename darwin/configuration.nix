@@ -48,6 +48,7 @@
       "bash"
       "gnu-sed"
       "gnu-tar"
+      # "pam-reattach" # https://superuser.com/a/1348180
     ];
     casks = [
       "caffeine"
