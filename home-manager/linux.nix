@@ -50,6 +50,13 @@
       close = ["<Super>q"];
       toggle-maximized = ["<Super>m"];
     };
+    "org/gnome/desktop/wm/preferences" = {
+      button-layout = "close,minimize,maximize:appmenu";
+    };
+    "org/gnome/desktop/peripherals/touchpad" = {
+      tap-to-click = true;
+      two-finger-scrolling-enabled = true;
+    };
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enable-hot-corners = true;
