@@ -53,7 +53,7 @@
       hexley = nixpkgs.lib.nixosSystem {
         system = "aarch64-darwin";
         specialArgs = {inherit inputs outputs;};
-        modules = [./nixos/Tobys-MacBook-Pro.local/configuration.nix];
+        modules = [./nixos/hexley/configuration.nix];
       };
     };
 

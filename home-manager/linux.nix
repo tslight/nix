@@ -52,6 +52,11 @@
     map kitty_mod+equal change_font_size all 0
   '';
 
+  services.emacs = {
+    enable = true;
+    client.enable = true;
+  };
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 

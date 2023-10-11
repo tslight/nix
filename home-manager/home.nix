@@ -394,11 +394,6 @@
     '';
   };
 
-  services.emacs = {
-    enable = true;
-    client.enable = true;
-  };
-
   programs.readline.enable = true;
   programs.readline.bindings = {
     "\\en" = "history-search-forward";
