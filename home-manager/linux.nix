@@ -35,10 +35,7 @@
     ];
   };
 
-  services.emacs = {
-    enable = true;
-    client.enable = true;
-  };
+  services.emacs = { enable = true; client.enable = true; };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
