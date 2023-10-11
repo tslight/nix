@@ -110,9 +110,7 @@
     gnome.gnome-themes-extra
     gnomeExtensions.caffeine
     gnomeExtensions.clipboard-indicator
-    gnomeExtensions.dash-to-dock
-    # gnomeExtensions.simple-monitor # can't add these yet :-(
-    # gnomeExtensions.rclone-manager
+    gnomeExtensions.dash-to-panel
     libadwaita
     mpv
   ];
@@ -143,10 +141,10 @@
   programs.dconf.enable = true;
 
   services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
-[org/gnome/desktop/interface]
-color-scheme='prefer-dark'
-gtk-key-theme='Emacs'
-'';
+  [org/gnome/desktop/interface]
+  color-scheme='prefer-dark'
+  gtk-key-theme='Emacs'
+  '';
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).

@@ -61,16 +61,9 @@
       disable-user-extensions = false;
       enable-hot-corners = true;
       enabled-extensions = [
-        "apps-menu@gnome-shell-extensions.gcampax.github.com"
         "caffeine@patapon.info"
         "clipboard-indicator@tudmotu.com"
-        "dash-to-dock@micxgx.gmail.com"
-        "drive-menu@gnome-shell-extensions.gcampax.github.com"
-        "places-menu@gnome-shell-extensions.gcampax.github.com"
-        "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com"
-        "user-theme@gnome-shell-extensions.gcampax.github.com"
-        "windowsNavigator@gnome-shell-extensions.gcampax.github.com"
-        "workspace-indicator@gnome-shell-extensions.gcampax.github.com"
+        "dash-to-panel@jderose9.github.com"
       ];
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
@@ -102,18 +95,23 @@
       command = "firefox";
       name = "open-firefox";
     };
-    "org/gnome/shell/extensions/dash-to-dock" = {
-      custom-theme-shrink = true;
-      dash-max-icon-size = 32;
-      dock-fixed = true;
-      dock-position = "LEFT";
-      extend-height = true;
-      icon-size-fixed = true;
-      multi-monitor = true;
-      show-trash=false;
+    "org/gnome/shell/extensions/dash-to-panel" = {
+      appicon-margin = 4;
+      appicon-padding = 4;
+      dot-position = "LEFT";
+      dot-style-focused = "SOLID";
+      dot-style-unfocused = "DASHES";
+      leftbox-padding = -1;
+      panel-anchors = "{\"0\":\"MIDDLE\"}";
+      panel-lengths = "{\"0\":100}";
+      panel-positions = "{\"0\":\"LEFT\"}";
+      panel-sizes = "{\"0\":48}";
+      status-icon-padding = -1;
+      tray-padding = -1;
+      window-preview-title-position = "TOP";
     };
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.05";
+  home.stateVersion  =  "23.05";
 }
