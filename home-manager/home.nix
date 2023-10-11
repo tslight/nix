@@ -16,7 +16,6 @@
     ];
     # Configure your nixpkgs instance
     config = {
-      # Disable if you don't want unfree packages
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = _: true;
@@ -38,7 +37,6 @@
     pkgs.gopls
     pkgs.gptfdisk
     pkgs.hunspell
-    pkgs.htop
     pkgs.ispell
     pkgs.jq
     pkgs.kubectl
@@ -62,21 +60,6 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
 
   home.sessionVariables = {
     XDG_DATA_DIRS = "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
@@ -120,7 +103,8 @@
     up = "uptime";
   };
 
-  programs.home-manager.enable = true;
+  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  home.stateVersion = "23.05";
 
   programs.bash = {
     enable = true;
@@ -171,11 +155,19 @@
     ];
   };
 
-  programs.go = {
-    enable = true;
-    goBin = ".local/bin.go";
-    goPath = "go";
-  };
+  # Direnv, load and unload environment variables depending on the current directory.
+  # https://direnv.net
+  # https://rycee.gitlab.io/home-manager/options.html#opt-programs.direnv.enable
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
+
+  programs.home-manager.enable = true;
+
+  # https://rycee.gitlab.io/home-manager/options.html#opt-programs.htop.enable
+  programs.htop.enable = true;
+  programs.htop.settings.show_program_path = true;
+
+  programs.go = { enable = true; goBin = ".local/bin.go"; goPath = "go"; };
 
   programs.kitty.enable = true;
   programs.kitty.extraConfig = ''
@@ -202,9 +194,7 @@
     enable = true;
     userName  = "Toby Slight";
     userEmail = "tslight@pm.me";
-    aliases = {
-      l = "log --graph --decorate --pretty=oneline --abbrev-commit";
-    };
+    aliases = { l = "log --graph --decorate --pretty=oneline --abbrev-commit"; };
     ignores = [
       ".DS_Store"
       ".localized"
@@ -288,6 +278,23 @@
     vimAlias = true;
     vimdiffAlias = true;
   };
+
+  programs.readline.enable = true;
+  programs.readline.bindings = {
+    "\\en" = "history-search-forward";
+    "\\ep" =  "history-search-backward";
+    "\\em" = "\\C-a\\eb\\ed\\C-y\\e#man \\C-y\\C-m\\C-p\\C-p\\C-a\\C-d\\C-e";
+    "\\eh" = "\\C-a\\eb\\ed\\C-y\\e#man \\C-y\\C-m\\C-p\\C-p\\C-a\\C-d\\C-e";
+  };
+  programs.readline.extraConfig = ''
+    set bell-style none
+    set show-all-if-ambiguous on
+    set show-all-if-unmodified on
+    set completion-ignore-case on
+    set keyseq-timeout 1200
+    set colored-stats on
+    set colored-completion-prefix on
+  '';
 
   programs.tmux = {
     enable = true;
@@ -407,24 +414,4 @@
       prompt_vcs_setup "$@"
     '';
   };
-
-  programs.readline.enable = true;
-  programs.readline.bindings = {
-    "\\en" = "history-search-forward";
-    "\\ep" =  "history-search-backward";
-    "\\em" = "\\C-a\\eb\\ed\\C-y\\e#man \\C-y\\C-m\\C-p\\C-p\\C-a\\C-d\\C-e";
-    "\\eh" = "\\C-a\\eb\\ed\\C-y\\e#man \\C-y\\C-m\\C-p\\C-p\\C-a\\C-d\\C-e";
-  };
-  programs.readline.extraConfig = ''
-    set bell-style none
-    set show-all-if-ambiguous on
-    set show-all-if-unmodified on
-    set completion-ignore-case on
-    set keyseq-timeout 1200
-    set colored-stats on
-    set colored-completion-prefix on
-  '';
-
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.05";
 }
