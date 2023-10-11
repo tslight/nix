@@ -102,14 +102,10 @@
       dot-position = "LEFT";
       dot-style-focused = "SOLID";
       dot-style-unfocused = "DASHES";
-      leftbox-padding = -1;
       panel-anchors = "{\"0\":\"MIDDLE\"}";
       panel-lengths = "{\"0\":100}";
       panel-positions = "{\"0\":\"LEFT\"}";
       panel-sizes = "{\"0\":48}";
-      status-icon-padding = -1;
-      tray-padding = -1;
-      window-preview-title-position = "TOP";
     };
   };
 
