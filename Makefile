@@ -14,3 +14,5 @@ home:
 	export NIX_CONFIG="experimental-features = nix-command flakes"
 	NIX_CONFIG="experimental-features = nix-command flakes" \
 		home-manager switch --flake .#$(USER)@$(HOST)
+
+clean:;	sudo nix-collect-garbage -d
