@@ -9,7 +9,7 @@
       # neovim-nightly-overlay.overlays.default
 
       # Or define it inline, for example:
-      # (final: prev: {
+      # (final: perv: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
@@ -86,7 +86,7 @@
 
   # Enable automatic login for the user.
   # services.getty.autologinUser = "toby";
-
+  services.printing.enable = true;
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
