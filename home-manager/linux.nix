@@ -48,6 +48,7 @@
       clock-show-weekday = true;
     };
     "org/gnome/desktop/wm/keybindings" = {
+      toggle-message-tray = "disabled"; # needs to be for maximize to work
       close = ["<Super>q"];
       toggle-maximized = ["<Super>m"];
     };
@@ -79,19 +80,25 @@
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
       ];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Super>t";
+      command = "kitty -e tmux attach";
+      name = "open-tmux";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      binding = "<Super>Return";
       command = "kitty";
       name = "open-terminal";
     };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
       binding = "<Super>e";
       command = "emacsclient -c -a ''";
       name = "open-emacs";
     };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
       binding = "<Super>w";
       command = "firefox";
       name = "open-firefox";
