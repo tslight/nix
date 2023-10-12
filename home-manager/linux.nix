@@ -42,6 +42,10 @@
 
   # https://the-empire.systems/nixos-gnome-settings-and-keyboard-shortcuts
   dconf.settings = {
+    "org/gnome/mutter" = {
+      dynamic-workspaces = true;
+      edge-tiling = true;
+    };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       gtk-key-theme = "Emacs";
