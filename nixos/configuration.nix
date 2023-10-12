@@ -110,13 +110,19 @@
   environment.systemPackages = with pkgs; [
     gnome.cheese
     gnome.evince
-    gnome.gnome-tweaks
     gnome.gnome-themes-extra
+    gnome.gnome-tweaks
     gnomeExtensions.caffeine
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.dash-to-panel
+    grim # screenshot functionality
     libadwaita
     mpv
+    slurp # screenshot functionality
+    swayidle
+    swaylock
+    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+    xdg-desktop-portal-hyprland
   ];
 
   environment.gnome.excludePackages = (with pkgs; [
