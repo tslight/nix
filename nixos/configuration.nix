@@ -103,6 +103,8 @@
 
   services.xserver.excludePackages = [ pkgs.xterm ];
 
+  programs.sway.enable = true; # provide an alternative for lower-end hardware...
+
   environment.systemPackages = with pkgs; [
     gnome.cheese
     gnome.evince
