@@ -11,5 +11,6 @@
     KEYBOARD_KEY_700e3=leftctrl         # cmd  --> ctrl
     KEYBOARD_KEY_700e6=leftalt          # rightalt --> leftalt
     KEYBOARD_KEY_700e0=leftmeta         # ctrl  --> meta
+    KEYBOARD_KEY_70050=leftmeta         # right_arrow -> meta
   '';
 }
