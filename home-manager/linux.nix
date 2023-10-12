@@ -75,7 +75,7 @@
       ];
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
-        "chromium.desktop"
+        "chromium-browser.desktop"
         "firefox.desktop"
         "emacs.desktop"
         "kitty.desktop"
