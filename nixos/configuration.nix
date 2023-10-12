@@ -103,7 +103,9 @@
 
   services.xserver.excludePackages = [ pkgs.xterm ];
 
-  programs.sway.enable = true; # provide an alternative for lower-end hardware...
+  # provide some alternative to gnome for lower-end hardware...
+  programs.sway.enable = true;
+  programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
     gnome.cheese
