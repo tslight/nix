@@ -54,7 +54,9 @@
     "org/gnome/desktop/wm/keybindings" = {
       toggle-message-tray = "disabled"; # needs to be for maximize to work
       close = ["<Super>q"];
-      toggle-maximized = ["<Super>m"];
+      show-desktop = ["<Super>d"];
+      toggle-maximized = ["<Alt>F10"];
+      maximize = ["<Super>m"];
     };
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "close,minimize,maximize:appmenu";
