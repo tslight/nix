@@ -80,6 +80,8 @@
     df = "df -h";
     dh = "dirs -v";
     du = "du -h";
+    dropbox-c2d = "rclone sync dropbox: ~/Dropbox -P -v --exclude Vault/";
+    dropbox-d2c = "rclone sync ~/Dropbox dropbox: -P -v --exclude Vault/";
     h = "history";
     ha = "history 0";
     j = "jobs -l";
