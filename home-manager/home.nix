@@ -176,6 +176,7 @@
     clipboard_control = "write-clipboard write-primary no-append";
     term = "xterm-256color";
     macos_option_as_alt = "yes";
+    tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{title}";
   };
 
   programs.git = {
