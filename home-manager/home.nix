@@ -39,13 +39,11 @@
     pkgs.hunspell
     pkgs.ispell
     pkgs.jq
-    pkgs.kubectl
     pkgs.lf
     pkgs.ncdu
     pkgs.nmap
     pkgs.rclone
     pkgs.rsync
-    pkgs.terraform
     pkgs.wget
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
