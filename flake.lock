@@ -58,10 +58,10 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1696975083,
-        "narHash": "sha256-Wsita+TLmgKq+xE337FJdhzDUbgy8jJIBwUhxjAQegA=",
-        "path": "/nix/store/4d1bf522fmd083d8i3fz8mdnd2jn3phs-source",
-        "rev": "c2bbfcfc3d12351919f8df7c7d6528f41751d0a3",
+        "lastModified": 1696593747,
+        "narHash": "sha256-0PKfC46HRnWZ+P/ASUtV/rn50QPHcNxyppYQWhoAVb0=",
+        "path": "/nix/store/saqvh7v2f2a8qwk12zca7djm8mha35h7-source",
+        "rev": "f4ef5df944429e2ce3308bdbe69da940fffc5942",
         "type": "path"
       },
       "original": {

@@ -110,7 +110,6 @@
     gnome.gnome-tweaks
     gnomeExtensions.caffeine
     gnomeExtensions.clipboard-indicator
-    gnomeExtensions.dash-to-panel
     mpv
   ];
 

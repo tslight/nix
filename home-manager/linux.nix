@@ -71,7 +71,6 @@
       enabled-extensions = [
         "caffeine@patapon.info"
         "clipboard-indicator@tudmotu.com"
-        "dash-to-panel@jderose9.github.com"
       ];
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
@@ -108,17 +107,6 @@
       binding = "<Super>w";
       command = "firefox";
       name = "open-firefox";
-    };
-    "org/gnome/shell/extensions/dash-to-panel" = {
-      appicon-margin = 4;
-      appicon-padding = 4;
-      dot-position = "LEFT";
-      dot-style-focused = "SOLID";
-      dot-style-unfocused = "DASHES";
-      panel-anchors = "{\"0\":\"MIDDLE\"}";
-      panel-lengths = "{\"0\":100}";
-      panel-positions = "{\"0\":\"LEFT\"}";
-      panel-sizes = "{\"0\":48}";
     };
   };
 
