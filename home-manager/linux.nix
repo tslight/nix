@@ -55,7 +55,7 @@
       toggle-message-tray = "disabled"; # needs to be for maximize to work
       close = ["<Super>q"];
       show-desktop = ["<Super>d"];
-      toggle-maximized = ["<Super>m"];
+      toggle-maximized = ["<Super><Control>m"];
       maximize = ["<Alt>F10"];
     };
     "org/gnome/desktop/wm/preferences" = {
