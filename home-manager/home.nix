@@ -31,6 +31,7 @@
     pkgs.aspell
     pkgs.cowsay
     pkgs.curl
+    pkgs.exiftool
     pkgs.gnumake
     pkgs.godef
     pkgs.golangci-lint
