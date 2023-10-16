@@ -6,10 +6,5 @@
     source = ./assets/karabiner.json;
     target = ".config/karabiner/karabiner.json";
   };
-  home.file.iterm = {
-    enable = true;
-    source = ./assets/iterm.json;
-    target = ".config/iterm2/profiles.json";
-  };
   home.stateVersion = "23.05";
 }

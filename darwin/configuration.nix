@@ -55,7 +55,6 @@
       "emacs"
       "firefox"
       "google-chrome"
-      "iterm2"
       "karabiner-elements"
     ];
   };
