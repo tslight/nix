@@ -1,5 +1,5 @@
 { inputs, lib, config, pkgs, ... }: {
-  imports = ["./configuration.nix"];
+  imports = [./configuration.nix];
 
   services.printing.enable = true;
   services.xserver.enable = true;
