@@ -1,5 +1,5 @@
 { inputs, lib, config, pkgs, ... }: {
-  imports = [../configuration.nix];
+  imports = [../desktop.nix];
   boot.loader.grub.enable = false;
   boot.loader.generic-extlinux-compatible.enable = true;
   networking.hostName = "martin"; # Define your hostname.
@@ -15,7 +15,7 @@
       KEYBOARD_KEY_70050=leftmeta         # ctrl  --> meta
       KEYBOARD_KEY_700a5=brightnessdown
       KEYBOARD_KEY_700a6=brightnessup
-      KEYBOARD_KEY_70066=sleep 
+      KEYBOARD_KEY_70066=sleep
     evdev:input:b0003v258Ap001Ee0110-e0,1,2,4,k110,111,112,r0,1,am4,lsfw
       ID_INPUT=0
       ID_INPUT_MOUSE=0
@@ -56,7 +56,7 @@
     "gpio_charger"
     "rtc_rk808"
   ];
-  
+
   # https://github.com/elementary/os/blob/05a5a931806d4ed8bc90396e9e91b5ac6155d4d4/build-pinebookpro.sh#L253-L257
   # Mark the keyboard as internal, so that "disable when typing" works for the touchpad
   environment.etc."libinput/local-overrides.quirks".text = ''
@@ -69,7 +69,7 @@
   '';
 
   hardware.enableRedistributableFirmware = true;
-  
+
   systemd.tmpfiles.rules = [
     # Tweak the minimum frequencies of the GPU and CPU governors to get a bit more performance
     # https://github.com/elementary/os/blob/05a5a931806d4ed8bc90396e9e91b5ac6155d4d4/build-pinebookpro.sh#L288-L294

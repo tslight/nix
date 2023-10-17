@@ -56,46 +56,46 @@
     darwinConfigurations = {
       hexley = darwin.lib.darwinSystem {
         system = "aarch64-darwin"; # "x86_64-darwin" if you're using a pre M1 mac
-        modules = [ ./darwin/hexley/configuration.nix ]; # will be important later
+        modules = [ ./darwin/hexley/configuration.nix ]; # will be important Available
       };
     };
 
-    # Available through 'home-manager --flake .#your-username@your-hostname'
+    # later through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
       "toby@cardiel" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [ ./home-manager/linux.nix ];
+        modules = [ ./home-manager/linux/desktop.nix ];
       };
       "toby@nightwolf" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [ ./home-manager/linux.nix ];
+        modules = [ ./home-manager/linux/desktop.nix ];
       };
       "toby@terence" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [ ./home-manager/linux.nix ];
+        modules = [ ./home-manager/linux/desktop.nix ];
       };
       "toby@enigma" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [ ./home-manager/linux.nix ];
+        modules = [ ./home-manager/linux/desktop.nix ];
       };
       "toby@porridge" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [ ./home-manager/linux.nix ];
+        modules = [ ./home-manager/linux/desktop.nix ];
       };
       "toby@martin" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [ ./home-manager/linux.nix ];
+        modules = [ ./home-manager/linux/desktop.nix ];
       };
       "toby@hexley" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [ ./home-manager/darwin.nix ];
+        modules = [ ./home-manager/darwin/home.nix ];
       };
     };
   };

@@ -1,9 +1,9 @@
 { inputs, lib, config, pkgs, ...}: {
-  imports = [ ./home.nix ];
+  imports = [ ../desktop.nix ];
   home = { username = "toby"; homeDirectory = "/Users/toby"; };
   home.file.karabiner = {
     enable = true;
-    source = ./assets/karabiner.json;
+    source = ../assets/karabiner.json;
     target = ".config/karabiner/karabiner.json";
   };
   home.stateVersion = "23.05";

@@ -1,10 +1,5 @@
 { inputs, lib, config, pkgs, ...}: {
-  imports = [ ./home.nix ];
-
-  home = {
-    username = "toby";
-    homeDirectory = "/home/toby";
-  };
+  imports = [ ../desktop.nix ./home.nix ];
 
   home.packages = [ pkgs.emacs29-pgtk ];
 
@@ -36,9 +31,6 @@
   };
 
   services.emacs = { enable = true; client.enable = true; };
-
-  # Nicely reload system units when changing configs
-  systemd.user.startServices = "sd-switch";
 
   # https://the-empire.systems/nixos-gnome-settings-and-keyboard-shortcuts
   dconf.settings = {
