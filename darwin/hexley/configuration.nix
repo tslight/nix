@@ -16,7 +16,7 @@
       end
       brew "mssql-tools"
     '';
-    casks = [ "miniconda" "1password" "1password-cli" ];
+    casks = ["docker" "miniconda" "1password" "1password-cli" ];
     taps = [ "microsoft/mssql-release" {
       name = "microsoft/mssql-release";
       clone_target = "https://github.com/Microsoft/homebrew-mssql-release";
