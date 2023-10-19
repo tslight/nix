@@ -42,6 +42,17 @@
       color-scheme = "prefer-dark";
       gtk-key-theme = "Emacs";
       clock-show-weekday = true;
+      show-battery-percentage = true;
+    };
+    "org/gnome/settings-daemon/plugins/color" = {
+      night-light-enabled = true;
+    };
+    "org/gnome/shell/weather" = {
+      automatic-location = true;
+    };
+    "org/gnome/settings-daemon/plugins/power" = {
+      sleep-inactive-ac-timeout = 7200;
+      sleep-inactive-battery-timeout = 600;
     };
     "org/gnome/desktop/wm/keybindings" = {
       toggle-message-tray = "disabled"; # needs to be for maximize to work
