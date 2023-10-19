@@ -53,8 +53,4 @@
   color-scheme='prefer-dark'
   gtk-key-theme='Emacs'
   '';
-
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
 }

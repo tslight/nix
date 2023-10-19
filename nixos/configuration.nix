@@ -1,6 +1,6 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, lib, config, pkgs, stateVersion, ... }: {
   imports = ["/etc/nixos/hardware-configuration.nix"];
   nixpkgs = {
     # You can add overlays here
@@ -81,7 +81,5 @@
   # services.getty.autologinUser = "toby";
   services.openssh.enable = true;
 
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = stateVersion;
 }

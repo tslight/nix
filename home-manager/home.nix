@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, ...}: {
+{ inputs, lib, config, pkgs, stateVersion, ...}: {
   imports = [];
 
   nixpkgs = {
@@ -103,9 +103,6 @@
     uc = "grep -Ev '^#|^\s+#|^\t+#|^$'";
     up = "uptime";
   };
-
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.05";
 
   programs.bash = {
     enable = true;
@@ -274,4 +271,6 @@
     ];
     initExtra = builtins.readFile ./assets/zshrc;
   };
+
+  home.stateVersion = stateVersion;
 }
