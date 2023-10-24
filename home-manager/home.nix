@@ -51,8 +51,6 @@
     BLOCK_SIZE = "human-readable";
     DIRSTACKSIZE = 12;
     KEYTIMEOUT = 1;
-    EMPLOYER = "oe-developers";
-    DEVPATH = "$HOME/$EMPLOYER";
     PATH = "$PATH:$GOPATH/bin";
   };
 
