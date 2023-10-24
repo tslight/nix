@@ -47,7 +47,7 @@
         "toby@enigma" = libx.mkHome { os = "linux"; type = "desktop"; };
         "toby@porridge" = libx.mkHome { os = "linux"; type = "desktop"; };
         "toby@martin" = libx.mkHome { os = "linux"; type = "desktop"; platform = "aarch64-linux"; };
-        "toby@hexley" = libx.mkHome { os = "darwin"; type = "home"; platform = "aarch64-darwin"; };
+        "toby@hexley" = libx.mkHome { os = "darwin"; type = "work"; platform = "aarch64-darwin"; };
       };
     };
 }
