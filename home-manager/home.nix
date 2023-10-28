@@ -42,7 +42,7 @@
     # '')
   ];
 
-  home.sessionPath = [ "$HOME/bin" "$HOME/.local/bin" ];
+  home.sessionPath = [ "$HOME/bin" "$HOME/.local/bin" "$GOPATH/bin" ];
 
   home.sessionVariables = {
     XDG_DATA_DIRS = "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
@@ -53,7 +53,6 @@
     BLOCK_SIZE = "human-readable";
     DIRSTACKSIZE = 12;
     KEYTIMEOUT = 1;
-    PATH = "$PATH:$GOPATH/bin";
   };
 
   home.shellAliases = {
