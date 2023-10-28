@@ -42,6 +42,8 @@
     # '')
   ];
 
+  home.sessionPath = [ "$HOME/bin" "$HOME/.local/bin" ];
+
   home.sessionVariables = {
     XDG_DATA_DIRS = "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
     NIX_CONFIG = "experimental-features = nix-command flakes";
