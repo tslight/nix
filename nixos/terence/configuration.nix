@@ -2,7 +2,6 @@
   imports = [../desktop.nix];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  networking.hostName = "terence"; # Define your hostname.
   services.fwupd.enable = true;
   services.fprintd.enable = true;
   services.udev.extraHwdb = ''

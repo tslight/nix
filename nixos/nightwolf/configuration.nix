@@ -2,7 +2,6 @@
   imports = [../desktop.nix];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  networking.hostName = "nightwolf"; # Define your hostname.
   services.udev.extraHwdb = ''
   evdev:input:b0003v05ACp0291*
     KEYBOARD_KEY_70029=capslock         # esc   --> caps

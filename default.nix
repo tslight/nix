@@ -3,7 +3,7 @@
   mkHost = { hostname, platform ? "x86_64-linux", modules ? [] }:
     inputs.nixpkgs.lib.nixosSystem {
       system = "${platform}";
-      specialArgs = { inherit inputs outputs stateVersion; };
+      specialArgs = { inherit hostname inputs outputs stateVersion; };
       modules = modules ++ [./nixos/${hostname}/configuration.nix];
     };
 

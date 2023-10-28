@@ -1,6 +1,6 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{ inputs, lib, config, pkgs, stateVersion, ... }: {
+{ inputs, lib, config, pkgs, stateVersion, hostname, ... }: {
   imports = ["/etc/nixos/hardware-configuration.nix"];
   nixpkgs = {
     # You can add overlays here
@@ -46,7 +46,7 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
+  networking.hostName = hostname;
   networking.networkmanager.enable = true;
 
   # Set your time zone.

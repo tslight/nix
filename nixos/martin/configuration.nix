@@ -2,7 +2,6 @@
   imports = [../desktop.nix];
   boot.loader.grub.enable = false;
   boot.loader.generic-extlinux-compatible.enable = true;
-  networking.hostName = "martin"; # Define your hostname.
   services.udev.extraHwdb = ''
     evdev:input:b0003v258Ap001E*
       KEYBOARD_KEY_70029=capslock         # esc   --> caps

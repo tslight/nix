@@ -2,7 +2,6 @@
   imports = [../desktop.nix];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  networking.hostName = "cardiel"; # Define your hostname.
   services.udev.extraHwdb = ''
     evdev:atkbd:dmi:bvn*:bvr*:svnLENOVO*:pvrThinkPadX131e*
       KEYBOARD_KEY_01=capslock         # esc   --> caps
