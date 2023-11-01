@@ -45,6 +45,7 @@
   home.sessionPath = [ "$HOME/bin" "$HOME/.local/bin" "$GOPATH/bin" ];
 
   home.sessionVariables = {
+    NIXPKGS_ALLOW_UNFREE=1;
     XDG_DATA_DIRS = "$HOME/.nix-profile/share:$XDG_DATA_DIRS";
     NIX_CONFIG = "experimental-features = nix-command flakes";
     EDITOR = "emacsclient -nw -c";
