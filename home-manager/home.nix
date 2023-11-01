@@ -62,6 +62,7 @@
     du = "du -h";
     dropbox-c2d = "rclone sync dropbox: ~/Dropbox -P -v --exclude Vault/";
     dropbox-d2c = "rclone sync ~/Dropbox dropbox: -P -v --exclude Vault/";
+    dropbox-mount = "rclone mount dropbox: ~/Dropbox --daemon --cache-dir ~/.cache/rclone --vfs-cache-mode full";
     h = "history";
     ha = "history 0";
     j = "jobs -l";
