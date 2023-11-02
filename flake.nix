@@ -15,7 +15,7 @@
       # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
       stateVersion = "23.05";
       # https://github.com/wimpysworld/nix-config
-      libx = import ./default.nix {inherit inputs outputs stateVersion;};
+      libx = import ./libx.nix {inherit inputs outputs stateVersion;};
     in {
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {

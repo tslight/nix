@@ -1,7 +1,15 @@
 { inputs, lib, config, pkgs, ...}: {
   imports = [ ../desktop.nix ./home.nix ];
 
-  home.packages = [ pkgs.emacs29-pgtk pkgs.imagemagick pkgs.mupdf ];
+  # mainly all for emacs :-)
+  home.packages = [
+    pkgs.aspell
+    pkgs.emacs29-pgtk
+    pkgs.hunspell
+    pkgs.imagemagick
+    pkgs.ispell
+    pkgs.mupdf
+  ];
 
   gtk.enable = true;
   gtk.theme.name = "Adwaita";

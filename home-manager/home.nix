@@ -10,17 +10,11 @@
   };
 
   home.packages = [
-    pkgs.aspell
     pkgs.cowsay
     pkgs.curl
     pkgs.exiftool
     pkgs.gnumake
-    pkgs.godef
-    pkgs.golangci-lint
-    pkgs.gopls
     pkgs.gptfdisk
-    pkgs.hunspell
-    pkgs.ispell
     pkgs.jq
     pkgs.lf
     pkgs.ncdu
