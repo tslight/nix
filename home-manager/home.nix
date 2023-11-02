@@ -17,9 +17,12 @@
     pkgs.gnumake
     pkgs.gptfdisk
     pkgs.jq
+    pkgs.killall
     pkgs.lf
+    pkgs.mg
     pkgs.ncdu
     pkgs.nmap
+    pkgs.ranger
     pkgs.rclone
     pkgs.rsync
     pkgs.tree

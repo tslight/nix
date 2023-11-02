@@ -41,6 +41,8 @@
 
   boot.plymouth.enable = lib.mkForce false;
 
+  environment.defaultPackages = []; # get rid of nano, perl, rsync, strace
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
