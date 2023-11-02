@@ -10,6 +10,7 @@
   };
 
   home.packages = [
+    pkgs.bat
     pkgs.cowsay
     pkgs.curl
     pkgs.exiftool
