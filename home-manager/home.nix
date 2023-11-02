@@ -18,7 +18,6 @@
     pkgs.gptfdisk
     pkgs.jq
     pkgs.killall
-    pkgs.lf
     pkgs.mg
     pkgs.ncdu
     pkgs.nmap
@@ -26,6 +25,7 @@
     pkgs.rclone
     pkgs.rsync
     pkgs.tree
+    pkgs.w3m
     pkgs.wget
     # It is sometimes useful to fine-tune packages, for example, by applying
     # overrides. You can do that directly here, just don't forget the
