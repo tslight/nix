@@ -35,6 +35,7 @@
       { id = "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"; } # privacy badger
       { id = "nngceckbapebfimnlniiiahkandclblb"; } # bitwarden
       { id = "gphhapmejobijbbhgpjhcjognlahblep"; } # gnome-extensions
+      { id = "gfbliohnnapiefjpjlpjnehglfpaknnc"; } # surfing-keys
     ];
   };
 
