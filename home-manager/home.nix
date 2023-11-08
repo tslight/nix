@@ -199,7 +199,7 @@
       set -g status-style bg=default,fg=brightgreen
       set -g window-status-style bold
       set -g window-status-current-style underscore,fg=brightyellow
-      set -g window-status-format "#{pane_current_path}"
+      set -g window-status-format "#I:#{pane_current_path}"
     '';
     historyLimit = 100000;
     keyMode = "emacs";
