@@ -10,6 +10,7 @@
   };
 
   home.packages = [
+    pkgs.aspell
     pkgs.bat
     pkgs.cowsay
     pkgs.curl
@@ -20,6 +21,7 @@
     pkgs.killall
     pkgs.mg
     pkgs.ncdu
+    pkgs.nixpkgs-fmt
     pkgs.nmap
     pkgs.ranger
     pkgs.rclone

@@ -3,11 +3,8 @@
 
   # mainly all for emacs :-)
   home.packages = [
-    pkgs.aspell
     pkgs.emacs29-pgtk
-    pkgs.hunspell
     pkgs.imagemagick
-    pkgs.ispell
     pkgs.mupdf
   ];
 

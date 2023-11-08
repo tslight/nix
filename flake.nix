@@ -9,21 +9,22 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs"; # ...
   };
 
-  outputs = {self, nixpkgs, home-manager, nixos-hardware, darwin, ...} @ inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, darwin, ... } @ inputs:
     let
       inherit (self) outputs;
       # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
       stateVersion = "23.05";
       # https://github.com/wimpysworld/nix-config
-      libx = import ./libx.nix {inherit inputs outputs stateVersion;};
-    in {
+      libx = import ./libx.nix { inherit inputs outputs stateVersion; };
+    in
+    {
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
         cardiel = libx.mkHost { hostname = "cardiel"; };
         nightwolf = libx.mkHost { hostname = "nightwolf"; };
         terence = libx.mkHost {
           hostname = "terence";
-          modules = [nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen1];
+          modules = [ nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen1 ];
         };
         enigma = libx.mkHost { hostname = "enigma"; };
         porridge = libx.mkHost { hostname = "porridge"; };
