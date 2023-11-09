@@ -6,6 +6,7 @@
     pkgs.emacs29-pgtk
     pkgs.imagemagick
     pkgs.mupdf
+    pkgs.texlive.combined.scheme-full
   ];
 
   gtk.enable = true;
