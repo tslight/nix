@@ -11,7 +11,9 @@
 
   home.packages = [
     pkgs.aspell
-    pkgs.aspellDicts.uk
+    pkgs.aspellDicts.en
+    pkgs.aspellDicts.en-computers
+    pkgs.aspellDicts.en-science
     pkgs.bat
     pkgs.cowsay
     pkgs.curl
