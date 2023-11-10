@@ -68,6 +68,7 @@
     dropbox-c2d = "rclone sync dropbox: ~/Dropbox -P -v --exclude Vault/";
     dropbox-d2c = "rclone sync ~/Dropbox dropbox: -P -v --exclude Vault/";
     dropbox-mount = "rclone mount dropbox: ~/Dropbox --daemon --cache-dir ~/.cache/rclone --vfs-cache-mode full";
+    g = "git";
     h = "history";
     ha = "history 0";
     j = "jobs -l";
@@ -142,7 +143,15 @@
     enable = true;
     userName  = "Toby Slight";
     userEmail = "tslight@pm.me";
-    aliases = { l = "log --graph --decorate --pretty=oneline --abbrev-commit"; };
+    aliases = {
+      a = "add";
+      c = "commit -m";
+      d = "diff";
+      l = "log --graph --decorate --pretty=oneline --abbrev-commit";
+      s = "status";
+      p = "pull";
+      P = "push";
+    };
     ignores = [
       ".DS_Store"
       ".localized"
