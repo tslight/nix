@@ -30,4 +30,7 @@ home:
 	NIX_CONFIG="experimental-features = nix-command flakes" \
 		home-manager switch --flake .#$(USER)@$(HOST)
 
+iso: # https://www.reddit.com/r/NixOS/comments/y1xo2u/how_to_create_an_iso_with_my_config_files/
+	nix build --impure .#nixosConfigurations.$(HOST).config.system.build.isoImage
+
 clean:;	sudo nix-collect-garbage -d
