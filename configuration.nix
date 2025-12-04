@@ -36,8 +36,12 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
-  console.keyMap = "uk";
-  console.font = "Lat2-Terminus16";
+  console = {
+    earlySetup = true;
+    font = "ter-v16b";
+    packages = with pkgs; [ terminus_font ];
+    keyMap = "uk";
+  };
 
   services.upower = {
     enable = true;

@@ -9,7 +9,8 @@
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "ehci_pci" "xhci_pci_renesas" "xhci_pci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ ];
+  # https://github.com/NixOS/nixpkgs/issues/219239#issuecomment-1879595054
+  boot.initrd.kernelModules = [ "amdgpu" ]; # or else setting console font breaks, use i915 for intel
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
