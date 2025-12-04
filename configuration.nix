@@ -57,6 +57,9 @@
     KEYBOARD_KEY_9d=leftmeta
     KEYBOARD_KEY_1d=leftmeta
   '';
+  # You may need to run this in order to make trim work on encrypted partitions
+  # sudo cryptsetup --allow-discards --persistent refresh luks-b1f65770-0746-40ad-a557-cdd31604771f
+  services.fstrim.enable = true;
   services.locate.enable = true;
   services.openssh.enable = true;
   services.printing.enable = true;
