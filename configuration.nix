@@ -102,12 +102,12 @@
     fuzzel
     gcc
     git
+    gnumake
     htop
     inxi
     jq
     kitty
     librewolf
-    make
     ncdu
     neovim
     playerctl
