@@ -101,6 +101,8 @@
   nixpkgs.config.allowUnfree = true;
   programs.zsh.enable = true;
   programs.niri.enable = true;
+
+  environment.etc."firefox/policies/policies.json".target = "librewolf/policies/policies.json";
   programs.firefox = { # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
     enable = true;
     package = pkgs.librewolf;
