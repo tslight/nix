@@ -106,14 +106,9 @@
     brightnessctl
     emacs-pgtk
     fuzzel
-    gcc
     git
     gnumake
-    gptfdisk
-    htop
-    jq
     kitty
-    ncdu
     neovim
     playerctl
     swaylock
