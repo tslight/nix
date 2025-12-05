@@ -102,6 +102,7 @@
   programs.zsh.enable = true;
   programs.niri.enable = true;
 
+  # https://discourse.nixos.org/t/librewolf-138-programs-firefox-policies-is-still-broken/64225
   environment.etc."firefox/policies/policies.json".target = "librewolf/policies/policies.json";
   programs.firefox = { # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
     enable = true;
@@ -124,47 +125,8 @@
         Category = "strict";
       };
       HttpsOnlyMode = "enabled";
-      Preferences = { # about:config
-        "browser.ctrlTab.sortByRecentlyUsed" = true;
-        "browser.engagement.ctrlTab.has-used" = true;
-        "browser.engagement.sidebar-button.has-used" = true;
-        "browser.safebrowsing.downloads.remote.block_dangerous" = true;
-        "browser.safebrowsing.downloads.remote.block_dangerous_host" = true;
-        "browser.safebrowsing.malware.enabled" = true;
-        "browser.safebrowsing.phishing.enabled" = true;
-        "browser.toolbarbuttons.introduced.sidebar-button" = true;
-        "browser.theme.dark-private-windows" = true;
-        "cookiebanners.service.mode" = 2; # Block cookie banners
-        "cookiebanners.service.mode.privateBrowsing" = 2; # Block cookie banners in private browsing
-        "dom.security.https_only_mode_ever_enabled" = true;
-        "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
-        "privacy.annotate_channels.strict_list.enabled" = true;
-        "privacy.bounceTrackingProtection.hasMigratedUserActivationData" = true;
-        "privacy.bounceTrackingProtection.mode" = 1;
-        "privacy.clearOnShutdown.cache" = false;
-        "privacy.clearOnShutdown.cookies" = false;
-        "privacy.clearOnShutdown.downloads" = false;
-        "privacy.clearOnShutdown.history" = false;
-        "privacy.clearOnShutdown.sessions" = false;
-        "privacy.clearOnShutdown.siteSettings" = false;
-        "privacy.clearOnShutdown_v2.browsingHistoryAndDownloads" = false;
-        "privacy.clearOnShutdown_v2.cache" = false;
-        "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
-        "privacy.donottrackheader.enabled" = true;
-        "privacy.fingerprintingProtection" = true;
-        "privacy.globalprivacycontrol.was_ever_enabled" = true;
-        "privacy.resistFingerprinting" = true;
-        "privacy.trackingprotection.allow_list.convenience.enabled" = false;
-        "privacy.trackingprotection.emailtracking.enabled" = true;
-        "privacy.trackingprotection.enabled" = true;
-        "privacy.trackingprotection.fingerprinting.enabled" = true;
-        "privacy.trackingprotection.socialtracking.enabled" = true;
-        "sidebar.new-sidebar.has-used" = true;
-        "sidebar.revamp" = true;
-        "sidebar.verticalTabs" = true;
-        "sidebar.verticalTabs.dragToPinPromo.dismissed" = true;
-        "webgl.disabled" = false;
-      };
+      OfferToSaveLoginsDefault = false;
+      PasswordManagerEnabled = false;
       ExtensionSettings = { # about:support
         "*".installation_mode = "blocked"; # blocks all addons except the ones specified below
         "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
@@ -184,6 +146,67 @@
           installation_mode = "force_installed";
         };
       };
+      SearchEngines = {
+        Add = [
+          {
+            Alias = "@np";
+            Description = "Search in NixOS Packages";
+            IconURL = "https://nixos.org/favicon.png";
+            Method = "GET";
+            Name = "NixOS Packages";
+            URLTemplate = "https://search.nixos.org/packages?from=0&size=200&sort=relevance&type=packages&query={searchTerms}";
+          }
+          {
+            Alias = "@no";
+            Description = "Search in NixOS Options";
+            IconURL = "https://nixos.org/favicon.png";
+            Method = "GET";
+            Name = "NixOS Options";
+            URLTemplate = "https://search.nixos.org/options?from=0&size=200&sort=relevance&type=packages&query={searchTerms}";
+          }
+        ];
+      };
+    };
+    preferences = { # about:config
+      "browser.ctrlTab.sortByRecentlyUsed" = true;
+      "browser.engagement.ctrlTab.has-used" = true;
+      "browser.engagement.sidebar-button.has-used" = true;
+      "browser.safebrowsing.downloads.remote.block_dangerous" = true;
+      "browser.safebrowsing.downloads.remote.block_dangerous_host" = true;
+      "browser.safebrowsing.malware.enabled" = true;
+      "browser.safebrowsing.phishing.enabled" = true;
+      "browser.toolbarbuttons.introduced.sidebar-button" = true;
+      "browser.theme.dark-private-windows" = true;
+      "cookiebanners.service.mode" = 2; # Block cookie banners
+      "cookiebanners.service.mode.privateBrowsing" = 2; # Block cookie banners in private browsing
+      "dom.security.https_only_mode_ever_enabled" = true;
+      "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+      "privacy.annotate_channels.strict_list.enabled" = true;
+      "privacy.bounceTrackingProtection.hasMigratedUserActivationData" = true;
+      "privacy.bounceTrackingProtection.mode" = 1;
+      "privacy.clearOnShutdown.cache" = false;
+      "privacy.clearOnShutdown.cookies" = false;
+      "privacy.clearOnShutdown.downloads" = false;
+      "privacy.clearOnShutdown.history" = false;
+      "privacy.clearOnShutdown.sessions" = false;
+      "privacy.clearOnShutdown.siteSettings" = false;
+      "privacy.clearOnShutdown_v2.browsingHistoryAndDownloads" = false;
+      "privacy.clearOnShutdown_v2.cache" = false;
+      "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
+      "privacy.donottrackheader.enabled" = true;
+      "privacy.fingerprintingProtection" = true;
+      "privacy.globalprivacycontrol.was_ever_enabled" = true;
+      "privacy.resistFingerprinting" = true;
+      "privacy.trackingprotection.allow_list.convenience.enabled" = false;
+      "privacy.trackingprotection.emailtracking.enabled" = true;
+      "privacy.trackingprotection.enabled" = true;
+      "privacy.trackingprotection.fingerprinting.enabled" = true;
+      "privacy.trackingprotection.socialtracking.enabled" = true;
+      "sidebar.new-sidebar.has-used" = true;
+      "sidebar.revamp" = true;
+      "sidebar.verticalTabs" = true;
+      "sidebar.verticalTabs.dragToPinPromo.dismissed" = true;
+      "webgl.disabled" = false;
     };
   };
 
