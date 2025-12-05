@@ -7,19 +7,20 @@
 
   outputs = { self, nixpkgs }: {
     nixosConfigurations = {
-      # This should correspond to the hostname of the machine
       enigma = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./configuration.nix
           ./enigma/hardware-configuration.nix
+          ./configuration.nix
+          ./browsers.nix
         ];
       };
       genesis = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./configuration.nix
           ./genesis/hardware-configuration.nix
+          ./configuration.nix
+          ./browsers.nix
         ];
       };
     };
