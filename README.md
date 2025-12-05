@@ -18,44 +18,43 @@ https://phip1611.de/blog/migrate-stock-nixos-configuration-to-flake/
 
 # INSTALLATION
 
-1. Install NixOS using the official graphical installer.
-2. Clone this repository.
-3. Make a directory for the new machine to store the new hardware
-   configuration, the name of the directory should be the same as your
-   `$HOSTNAME`.
-4. Ensure all hardware specific settings from `/etc/nixos/configuration.nix`
-   are in `/etc/nixos/hardware-configuration.nix`. Specifically any
-   `boot.initrd.luks.devices` lines...
-5. Move `/etc/nixos/hardware-configuration.nix` to the new machine's directory
-   we created at step 3.
-6. Declare the new addition in `flake.nix` with the following block under
-   `nixosConfigurations`:
+* Install NixOS using the official graphical installer.
+* Make sure you have a custom `$HOSTNAME` and not just the default "nixos" one.
+  Either via the installer or by editing the default
+  `/etc/nixos/configuration.nix` and rebooting.
+* Spawn an adhoc environment with `nix-shell -p git`.
+* Run `git clone https://github.com/tslight/nix`.
+* Run `mkdir $HOSTNAME && cp /etc/nixos/hardware-configuration.nix ./$HOSTNAME/`
+* Ensure all device exclusive settings from `/etc/nixos/configuration.nix` are
+  copied to `$HOSTNAME/hardware-configuration.nix`. Specifically
+  `networking.hostName = "$HOSTNAME";` and any `boot.initrd.luks.devices`
+  lines:
+
+``` shell
+grep "networking.hostName" /etc/nixos/configuration.nix >> ./$HOSTNAME/hardware-configuration.nix
+grep "boot.initrd.luks.devices" /etc/nixos/configuration.nix >> ./$HOSTNAME/hardware-configuration.nix
+```
+
+* Declare the new addition in `flake.nix` with the following block under
+  `nixosConfigurations`:
 
 ``` nix
-<HOSTNAME> = nixpkgs.lib.nixosSystem {
+$HOSTNAME = nixpkgs.lib.nixosSystem {
   system = "x86_64-linux";
   modules = [
     ./configuration.nix
-    ./<HOSTNAME>/hardware-configuration.nix
+    ./$HOSTNAME/hardware-configuration.nix
   ];
 };
 ```
 
-7. Run `make` and reboot. Ensuring we can successfully build and boot from the
-   flake's derivation.
-8. Run `sudo nix-channel --remove nixos`. You do not need Nix channels on a
-   flake-based system anymore.
-9. Once we've verified we can successfully build and boot from the flake, we
-   can go ahead and delete `/etc/nixos`.
-
-# THE FLEET
-
-| Hostname    | Make   | Model                  | RAM  | DISK          | OS    |
-|-------------|--------|------------------------|------|---------------|-------|
-| `cardiel`   | Lenovo | ThinkPad X131E         | 16GB | 256GB + 512GB | NixOS |
-| `enigma`    | Lenovo | ThinkPad T13 AMD Gen 1 | 8G   | 4TB           | NixOS |
-| `penny`     | Pine64 | Pinebook Pro           | 4G   | 128GB + 512GB | NixOS |
-| `nightwolf` | Apple  | MacBook Air 7,2        | 8G   | 256GB         | NixOS |
-| `genesis`   | Lenovo | ThinkPad 11e Yoga      | 8G   | 128GB         | NixOS |
-| `terence`   | Lenovo | ThinkPad T14 AMD Gen 1 | 32GB | 4TB           | NixOS |
-| `hexley`    | Apple  | MacBook Pro            | 16GB | 512GB         | MacOS |
+* Run `git add -A`, as when using Nix flakes, only files that are tracked by
+  Git and not ignored by your ~.gitignore~ are included in the flake's source.
+* Run `nix flake update --extra-experimental-features nix-command --extra-experimental-features flakes`
+* Run `make` and reboot, ensuring we can successfully build and boot from the
+  flake's derivation.
+* Run `sudo nix-channel --remove nixos`. You do not need Nix channels on a
+  flake-based system anymore.
+* Once we've verified we can successfully build and boot from the flake, we can
+  go ahead and delete `/etc/nixos`.
+* Commit and push your changes. Profit!
