@@ -122,9 +122,12 @@
       "dbepggeogbaibhgnhhndojpepiihcmeb" # vimium
     ];
     extraOpts = {
+      "AdvancedProtectionAllowed" = true;
       "BlockThirdPartyCookies" = true;
       "BrowserSignin" = 0;
       "BrowserThemeColor" = "#000000";
+      "DnsOverHttpsMode" = "automatic";
+      "HttpsOnlyMode" = "allowed";
       "SyncDisabled" = true;
       "PasswordManagerEnabled" = false;
       "SpellcheckEnabled" = true;
