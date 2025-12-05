@@ -187,12 +187,16 @@
       "privacy.clearOnShutdown.cache" = false;
       "privacy.clearOnShutdown.cookies" = false;
       "privacy.clearOnShutdown.downloads" = false;
+      "privacy.clearOnShutdown.formdata" = false;
       "privacy.clearOnShutdown.history" = false;
       "privacy.clearOnShutdown.sessions" = false;
       "privacy.clearOnShutdown.siteSettings" = false;
       "privacy.clearOnShutdown_v2.browsingHistoryAndDownloads" = false;
       "privacy.clearOnShutdown_v2.cache" = false;
       "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
+      "privacy.clearOnShutdown_v2.formdata" = false;
+      "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = false;
+      "privacy.clearOnShutdown_v2.siteSettings" = false;
       "privacy.donottrackheader.enabled" = true;
       "privacy.fingerprintingProtection" = true;
       "privacy.globalprivacycontrol.was_ever_enabled" = true;
@@ -210,13 +214,34 @@
     };
   };
 
+  programs.chromium = {
+    enable = true;
+    extensions = [
+      "nngceckbapebfimnlniiiahkandclblb" # bitwarden
+      "pkehgijcmpdhfbdbbnkijodmdjhbjlgp" # privacy badger
+      "ddkjiahejlhfcafbddmgiahcphecmpfh" # ublock
+      "dbepggeogbaibhgnhhndojpepiihcmeb" # vimium
+    ];
+    extraOpts = {
+      "BlockThirdPartyCookies" = true;
+      "BrowserSignin" = 0;
+      "BrowserThemeColor" = "#000000";
+      "SyncDisabled" = true;
+      "PasswordManagerEnabled" = false;
+      "SpellcheckEnabled" = true;
+      "SpellcheckLanguage" = [
+        "en-GB"
+      ];
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     aspell
     aspellDicts.en
     aspellDicts.en-science
     aspellDicts.en-computers
     brightnessctl
-    chromium
+    chromium # for some bizarre reason needs to be here too
     emacs-pgtk
     fastfetch
     fuzzel
