@@ -12,11 +12,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.initrd.luks.devices."luks-4da17729-a689-4796-bf9d-5df51c3e5934".device = "/dev/disk/by-uuid/4da17729-a689-4796-bf9d-5df51c3e5934";
 
-  networking.hostName = "enigma";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # Enable networking
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -50,17 +47,7 @@
     percentageCritical = 15;
     percentageLow = 20;
   };
-  services.udev.extraHwdb = ''
-  evdev:input:b0011v0001p0001*
-    KEYBOARD_KEY_01=capslock
-    KEYBOARD_KEY_3a=esc
-    KEYBOARD_KEY_b8=leftctrl
-    KEYBOARD_KEY_38=leftctrl
-    KEYBOARD_KEY_b7=leftalt
-    KEYBOARD_KEY_db=leftalt
-    KEYBOARD_KEY_9d=leftmeta
-    KEYBOARD_KEY_1d=leftmeta
-  '';
+
   # You may need to run this in order to make trim work on encrypted partitions
   # sudo cryptsetup --allow-discards --persistent refresh luks-b1f65770-0746-40ad-a557-cdd31604771f
   services.fstrim.enable = true;
@@ -75,6 +62,31 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  services.greetd = {
+    enable = true;
+    settings = {
+      initial_session = {
+        command = "niri-session";
+        user = "tobe";
+      };
+      # By adding default_session it ensures you can still access the tty
+      # terminal if you logout of your windows manager otherwise you would just
+      # relaunch into it.
+      default_session = {
+        command = ''
+        ${pkgs.tuigreet}/bin/tuigreet \
+          --greeting "Welcome To NixOS" \
+          --asterisks \
+          --remember \
+          --remember-session \
+          --remember-user-session \
+          --time \
+          --cmd niri-session
+        '';
+        user = "greeter"; # DO NOT CHANGE THIS USER
+      };
+    };
+  };
 
   # Don't forget to set a password with ‘passwd’.
   users.users.tobe = {
@@ -83,14 +95,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
-    ];
-  };
-
-  # autologin on tty1
-  systemd.services."getty@tty1" = {
-    overrideStrategy = "asDropin";
-    serviceConfig.ExecStart = [
-      "" "@${pkgs.util-linux}/sbin/agetty agetty --login-program ${config.services.getty.loginProgram} --autologin tobe --noclear --keep-baud %I 115200,38400,9600 $TERM"
     ];
   };
 
@@ -110,6 +114,7 @@
     gcc
     git
     gnumake
+    gptfdisk
     htop
     inxi
     jq

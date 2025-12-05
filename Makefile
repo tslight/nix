@@ -1,4 +1,8 @@
 .DEFAULT_GOAL := all
 .PHONY: all
-all:; sudo nixos-rebuild switch --flake . --upgrade
+
+HOST := $(shell hostname -s)
+
+all:; sudo nixos-rebuild switch --flake .#$(HOST) --upgrade
+
 clean:;	sudo nix-collect-garbage -d

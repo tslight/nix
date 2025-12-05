@@ -12,7 +12,14 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
-          ./hardware-configuration.nix
+          ./enigma/hardware-configuration.nix
+        ];
+      };
+      genesis = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
+          ./genesis/hardware-configuration.nix
         ];
       };
     };

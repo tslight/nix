@@ -19,6 +19,7 @@
       fsType = "ext4";
     };
 
+  boot.initrd.luks.devices."luks-4da17729-a689-4796-bf9d-5df51c3e5934".device = "/dev/disk/by-uuid/4da17729-a689-4796-bf9d-5df51c3e5934";
   boot.initrd.luks.devices."luks-b1f65770-0746-40ad-a557-cdd31604771f".device = "/dev/disk/by-uuid/b1f65770-0746-40ad-a557-cdd31604771f";
 
   fileSystems."/boot" =
@@ -33,4 +34,18 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  networking.hostName = "enigma";
+
+  services.udev.extraHwdb = ''
+  evdev:input:b0011v0001p0001*
+    KEYBOARD_KEY_01=capslock
+    KEYBOARD_KEY_3a=esc
+    KEYBOARD_KEY_b8=leftctrl
+    KEYBOARD_KEY_38=leftctrl
+    KEYBOARD_KEY_b7=leftalt
+    KEYBOARD_KEY_db=leftalt
+    KEYBOARD_KEY_9d=leftmeta
+    KEYBOARD_KEY_1d=leftmeta
+  '';
 }
