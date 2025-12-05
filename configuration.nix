@@ -105,14 +105,12 @@
     aspellDicts.en-computers
     brightnessctl
     emacs-pgtk
-    fastfetch
     fuzzel
     gcc
     git
     gnumake
     gptfdisk
     htop
-    inxi
     jq
     kitty
     ncdu
