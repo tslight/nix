@@ -31,7 +31,7 @@
 
   console = {
     earlySetup = true;
-    font = "ter-v16b";
+    font = "ter-v20b";
     packages = with pkgs; [ terminus_font ];
     keyMap = "uk";
   };
