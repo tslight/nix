@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # https://discourse.nixos.org/t/librewolf-138-programs-firefox-policies-is-still-broken/64225
