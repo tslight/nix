@@ -18,8 +18,11 @@ This time, I'm going slowly and keeping it simple. So far I've used the
 following resources for inspiration:
 
 https://phip1611.de/blog/migrate-stock-nixos-configuration-to-flake/
+
 https://www.youtube.com/playlist?list=PL_WcXIXdDWWpuypAEKzZF2b5PijTluxRG
+
 https://nix.dev/tutorials/nix-language
+
 https://zero-to-nix.com/
 
 # INSTALLATION
