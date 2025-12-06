@@ -3,14 +3,13 @@
 This is my third attempt at maintaining a fleet of NixOS machines using flakes.
 
 My first attempt was back in 2019 and I can't remember exactly why I ended up
-giving up on it that time, or whether or not I actually came across flakes that
-time.
+giving up on it, or whether or not I actually came across flakes that time.
 
 The last incarnation from 2023, is currently in `.old/`, and is likely
-over-engineered. I ended up declaring nix bankruptcy again, and going back to
-more traditional OSes, after I attempted my first version update, all hell
-broke loose & I didn't have the time or inclination to spend hours and hours
-figuring it out...
+over-engineered. I ended up declaring nix bankruptcy and going back to more
+traditional OSes, after I attempted my first version update, all hell broke
+loose & I didn't have the time or inclination to spend hours and hours figuring
+it out...
 
 Looking back at the code a couple of years down the line - it seems overly
 complicated and hard to maintain/debug (for a noob like me at least)...
