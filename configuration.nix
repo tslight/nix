@@ -44,6 +44,13 @@
     percentageLow = 20;
   };
 
+  services.power-profiles-daemon.enable = true;
+  powerManagement = {
+    enable = true;
+    powertop.enable = true;
+    cpuFreqGovernor = "performance"; #power, performance, ondemand
+  };
+
   # You may need to run this in order to make trim work on encrypted partitions
   # sudo cryptsetup --allow-discards --persistent refresh luks-b1f65770-0746-40ad-a557-cdd31604771f
   services.fstrim.enable = true;
