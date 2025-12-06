@@ -107,7 +107,6 @@
     emacs-pgtk
     fuzzel
     git
-    gnumake
     kitty
     neovim
     playerctl

@@ -81,6 +81,22 @@
             URLTemplate = "https://start.duckduckgo.com/lite/?q={searchTerms}";
           }
           {
+            Alias = "@ff";
+            Description = "Frog Find Retro Computers";
+            IconURL = "https://nixos.org/favicon.png";
+            Method = "GET";
+            Name = "Frog Find";
+            URLTemplate = "https://frogfind.com/?q={searchTerms}";
+          }
+          {
+            Alias = "@n";
+            Description = "Search in MyNixOS";
+            IconURL = "https://nixos.org/favicon.png";
+            Method = "GET";
+            Name = "My NixOS Site";
+            URLTemplate = "https://mynixos.com/search?q={searchTerms}";
+          }
+          {
             Alias = "@np";
             Description = "Search in NixOS Packages";
             IconURL = "https://nixos.org/favicon.png";
