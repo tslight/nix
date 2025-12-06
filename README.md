@@ -28,26 +28,9 @@ https://phip1611.de/blog/migrate-stock-nixos-configuration-to-flake/
 * Ensure all device exclusive settings from `/etc/nixos/configuration.nix` are
   copied to `$HOSTNAME/hardware-configuration.nix`. Specifically
   `networking.hostName = "$HOSTNAME";` and any `boot.initrd.luks.devices`
-  lines:
-
-``` shell
-grep "networking.hostName" /etc/nixos/configuration.nix >> ./$HOSTNAME/hardware-configuration.nix
-grep "boot.initrd.luks.devices" /etc/nixos/configuration.nix >> ./$HOSTNAME/hardware-configuration.nix
-```
-
-* Declare the new addition in `flake.nix` with the following block under
-  `nixosConfigurations`:
-
-``` nix
-$HOSTNAME = nixpkgs.lib.nixosSystem {
-  system = "x86_64-linux";
-  modules = [
-    ./configuration.nix
-    ./$HOSTNAME/hardware-configuration.nix
-  ];
-};
-```
-
+  lines.
+* Declare the new addition in `flake.nix` with a block under
+  `nixosConfigurations`.
 * Run `git add -A`, as when using Nix flakes, only files that are tracked by
   Git and not ignored by your ~.gitignore~ are included in the flake's source.
 * Run `nix flake update --extra-experimental-features nix-command --extra-experimental-features flakes`

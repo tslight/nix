@@ -3,6 +3,10 @@
 {
   # https://discourse.nixos.org/t/librewolf-138-programs-firefox-policies-is-still-broken/64225
   environment.etc."firefox/policies/policies.json".target = "librewolf/policies/policies.json";
+  environment.systemPackages = with pkgs; [
+    chromium # for some bizarre reason needs to be here too
+  ];
+
   programs.firefox = { # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
     enable = true;
     package = pkgs.librewolf;
@@ -179,8 +183,4 @@
       ];
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    chromium # for some bizarre reason needs to be here too
-  ];
 }
