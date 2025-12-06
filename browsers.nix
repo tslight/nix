@@ -131,48 +131,28 @@
     };
     preferences = { # about:config
       "browser.ctrlTab.sortByRecentlyUsed" = true;
-      "browser.engagement.ctrlTab.has-used" = true;
-      "browser.engagement.sidebar-button.has-used" = true;
       "browser.safebrowsing.downloads.remote.block_dangerous" = true;
       "browser.safebrowsing.downloads.remote.block_dangerous_host" = true;
       "browser.safebrowsing.malware.enabled" = true;
       "browser.safebrowsing.phishing.enabled" = true;
-      "browser.toolbarbuttons.introduced.sidebar-button" = true;
+      "browser.startup.blankWindow" = true;
       "browser.theme.dark-private-windows" = true;
       "cookiebanners.service.mode" = 2; # Block cookie banners
       "cookiebanners.service.mode.privateBrowsing" = 2; # Block cookie banners in private browsing
       "dom.security.https_only_mode_ever_enabled" = true;
       "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
-      "privacy.annotate_channels.strict_list.enabled" = true;
-      "privacy.bounceTrackingProtection.hasMigratedUserActivationData" = true;
-      "privacy.bounceTrackingProtection.mode" = 1;
-      "privacy.clearOnShutdown.cache" = false;
-      "privacy.clearOnShutdown.cookies" = false;
-      "privacy.clearOnShutdown.downloads" = false;
-      "privacy.clearOnShutdown.formdata" = false;
-      "privacy.clearOnShutdown.history" = false;
-      "privacy.clearOnShutdown.sessions" = false;
-      "privacy.clearOnShutdown.siteSettings" = false;
-      "privacy.clearOnShutdown_v2.browsingHistoryAndDownloads" = false;
-      "privacy.clearOnShutdown_v2.cache" = false;
-      "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
-      "privacy.clearOnShutdown_v2.formdata" = false;
-      "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = false;
-      "privacy.clearOnShutdown_v2.siteSettings" = false;
       "privacy.donottrackheader.enabled" = true;
       "privacy.fingerprintingProtection" = true;
-      "privacy.globalprivacycontrol.was_ever_enabled" = true;
       "privacy.resistFingerprinting" = true;
+      "privacy.resistFingerprinting.letterboxing" = true;
+      "privacy.sanitize.sanitizeOnShutdown" = false; # override librewolf default
       "privacy.trackingprotection.allow_list.convenience.enabled" = false;
       "privacy.trackingprotection.emailtracking.enabled" = true;
       "privacy.trackingprotection.enabled" = true;
       "privacy.trackingprotection.fingerprinting.enabled" = true;
       "privacy.trackingprotection.socialtracking.enabled" = true;
-      "sidebar.new-sidebar.has-used" = true;
-      "sidebar.revamp" = true;
-      "sidebar.verticalTabs" = true;
-      "sidebar.verticalTabs.dragToPinPromo.dismissed" = true;
-      "webgl.disabled" = false;
+      "sidebar.verticalTabs" = true; # doesn't currently work :-(
+      "webgl.disabled" = true;
     };
   };
 

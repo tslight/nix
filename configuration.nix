@@ -63,7 +63,7 @@
     settings = {
       initial_session = {
         command = "niri-session";
-        user = "tobe";
+        user = "anon";
       };
       # By adding default_session it ensures you can still access the tty
       # terminal if you logout of your windows manager otherwise you would just
@@ -85,9 +85,9 @@
   };
 
   # Don't forget to set a password with ‘passwd’.
-  users.users.tobe = {
+  users.users.anon = {
     isNormalUser = true;
-    description = "~Not Toe Bee";
+    description = "Friend of Bill";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
