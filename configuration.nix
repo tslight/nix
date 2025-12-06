@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ];
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   boot.loader.systemd-boot.enable = true;
@@ -107,8 +105,6 @@
     description = "Friend of Bill";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [
-    ];
   };
 
   nixpkgs.config.allowUnfree = true;
