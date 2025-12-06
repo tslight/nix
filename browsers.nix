@@ -7,6 +7,18 @@
     enable = true;
     package = pkgs.librewolf;
     policies = { # https://mozilla.github.io/policy-templates/
+      Cookies = {
+        Allow = [
+          "https://ebay.co.uk"
+          "https://chatgpt.com"
+          "https://youtube.com"
+          "https://mail.proton.me"
+          "https://amazon.co.uk"
+          "https://reddit.com"
+        ];
+        Behaviour = "reject-tracker-and-partition-foreign";
+        BehaviorPrivateBrowsing = "reject";
+      };
       DisableFirefoxAccounts = true;
       DisableFirefoxStudies = true;
       DisablePocket = true;
@@ -46,7 +58,24 @@
         };
       };
       SearchEngines = {
+        Default = "DDG Lite";
         Add = [
+          {
+            Alias = "@aw";
+            Description = "Arch Linux Wiki";
+            IconURL = "https://nixos.org/favicon.png";
+            Method = "GET";
+            Name = "Arch Wiki";
+            URLTemplate = "https://wiki.archlinux.org/index.php?search={searchTerms}";
+          }
+          {
+            Alias = "@dl";
+            Description = "Duck Duck Go Lite";
+            IconURL = "https://nixos.org/favicon.png";
+            Method = "GET";
+            Name = "DDG Lite";
+            URLTemplate = "https://start.duckduckgo.com/lite/?q={searchTerms}";
+          }
           {
             Alias = "@np";
             Description = "Search in NixOS Packages";
@@ -63,8 +92,22 @@
             Name = "NixOS Options";
             URLTemplate = "https://search.nixos.org/options?from=0&size=200&sort=relevance&type=packages&query={searchTerms}";
           }
+          {
+            Alias = "@yt";
+            Description = "YouTube Search";
+            IconURL = "https://nixos.org/favicon.png";
+            Method = "GET";
+            Name = "YouTube";
+            URLTemplate = "https://www.youtube.com/results?search_query={searchTerms}";
+          }
         ];
+        Remove = [
+          "Google"
+          "Bing"
+        ];
+        SearchSuggestEnabled = true;
       };
+      ShowHomeButton = true;
     };
     preferences = { # about:config
       "browser.ctrlTab.sortByRecentlyUsed" = true;
