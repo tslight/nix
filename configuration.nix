@@ -44,11 +44,20 @@
     percentageLow = 20;
   };
 
-  services.power-profiles-daemon.enable = true;
-  powerManagement = {
+  # Enable TLP (better than gnomes internal power manager)
+  services.power-profiles-daemon.enable = false;
+  services.tlp = {
     enable = true;
-    powertop.enable = true;
-    cpuFreqGovernor = "performance"; #power, performance, ondemand
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      PLATFORM_PROFILE_ON_AC = "performance";
+      PLATFORM_PROFILE_ON_BAT = "low-power";
+      START_CHARGE_THRESH_BAT0 = 80;
+      STOP_CHARGE_THRESH_BAT0 = 95;
+    };
   };
 
   # You may need to run this in order to make trim work on encrypted partitions
