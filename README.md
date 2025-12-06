@@ -6,16 +6,18 @@ My first attempt was back in 2019 and I can't remember exactly why I ended up
 giving up on it that time.
 
 The last incarnation from 2023, is currently in `.old/`, and is likely
-over-engineered. I ended up declaring nix bankruptcy and going back to more
-traditional OSes, after I attempted my first version update, all hell broke
-loose & I didn't have the time or inclination to spend hours and hours figuring
-it out...
+over-engineered.
+
+I ended up declaring nix bankruptcy and going back to more traditional OSes,
+after I attempted my first version update and all hell broke loose.
+
+I didn't have the time or inclination to spend hours figuring it out...
 
 Looking back at the code a couple of years down the line - it seems overly
-complicated and hard to maintain/debug (for a noob like me at least)...
+complicated and hard to maintain/debug (for a nix noob like me at least)...
 
 This time, I'm going slowly and keeping it simple. So far I've used the
-following resources for inspiration:
+following resources for guidance:
 
 https://phip1611.de/blog/migrate-stock-nixos-configuration-to-flake/
 
