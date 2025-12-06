@@ -1,9 +1,9 @@
 # THIRD TIME'S THE CHARM...
 
-This is my third attempt at maintaining a fleet of NixOS machines using flakes.
+This is my third attempt at maintaining a fleet of NixOS machines.
 
 My first attempt was back in 2019 and I can't remember exactly why I ended up
-giving up on it, or whether or not I actually came across flakes that time.
+giving up on it that time.
 
 The last incarnation from 2023, is currently in `.old/`, and is likely
 over-engineered. I ended up declaring nix bankruptcy and going back to more
