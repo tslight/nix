@@ -97,6 +97,7 @@
   nixpkgs.config.allowUnfree = true;
   programs.zsh.enable = true;
   programs.niri.enable = true;
+  programs.nano.enable = false; # vomit
 
   environment.systemPackages = with pkgs; [
     aspell

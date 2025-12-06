@@ -2,20 +2,25 @@
 
 This is my third attempt at maintaining a fleet of NixOS machines using flakes.
 
-The last incarnation is currently in `.old/` if you want to see some hideous
-over-engineering...
+My first attempt was back in 2019 and I can't remember exactly why I ended up
+giving up on it that time.
 
-I abandoned (declared nix bankruptcy!) it, after I attempted my first version
-update and all hell broke loose...
+The last incarnation from 2023, is currently in `.old/` and is likely
+over-engineered.
 
-Looking back at the code a couple of years down the line it all seems
-unnecessarily complex to me!
+I ended up declaring nix bankruptcy, after I attempted my first version update
+and all hell broke loose...
+
+Looking back at the code a couple of years down the line - it seems overly
+complicated and hard to maintain/debug (for a noob like me at least)...
 
 This time, I'm going slowly and keeping it simple. So far I've used the
 following resources for inspiration:
 
 https://phip1611.de/blog/migrate-stock-nixos-configuration-to-flake/
-https://www.youtube.com/@librephoenix
+https://www.youtube.com/playlist?list=PL_WcXIXdDWWpuypAEKzZF2b5PijTluxRG
+https://nix.dev/tutorials/nix-language
+https://zero-to-nix.com/
 
 # INSTALLATION
 
