@@ -67,7 +67,7 @@
   programs.zsh.enable = true;
   programs.nano.enable = false; # vomit
 
-  environment.systemPackages = with pkgs; [ git tmux ];
+  environment.systemPackages = with pkgs; [ git neovim tmux ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
