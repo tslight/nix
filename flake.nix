@@ -13,6 +13,7 @@
           ./enigma/hardware-configuration.nix
           ./configuration.nix
           ./browsers.nix
+          ./laptop.nix
         ];
       };
       genesis = nixpkgs.lib.nixosSystem {

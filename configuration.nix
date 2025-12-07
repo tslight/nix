@@ -10,10 +10,9 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "Europe/London";
 
-  # Select internationalisation properties.
+  # Internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_GB.UTF-8";
@@ -34,31 +33,7 @@
     keyMap = "uk";
   };
 
-  services.upower = {
-    enable = true;
-    criticalPowerAction = "PowerOff";
-    percentageAction = 10;
-    percentageCritical = 15;
-    percentageLow = 20;
-  };
-
   services.journald.extraConfig = "SystemMaxUse=200M";
-  # Enable TLP (better than gnomes internal power manager)
-  services.power-profiles-daemon.enable = false;
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-      PLATFORM_PROFILE_ON_AC = "performance";
-      PLATFORM_PROFILE_ON_BAT = "low-power";
-      START_CHARGE_THRESH_BAT0 = 88;
-      STOP_CHARGE_THRESH_BAT0 = 98;
-    };
-  };
-
   # You may need to run this in order to make trim work on encrypted partitions
   # sudo cryptsetup --allow-discards --persistent refresh luks-b1f65770-0746-40ad-a557-cdd31604771f
   services.fstrim.enable = true;
