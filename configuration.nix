@@ -50,6 +50,7 @@
   services.journald.extraConfig = "SystemMaxUse=200M";
   # You may need to run this in order to make trim work on encrypted partitions
   # sudo cryptsetup --allow-discards --persistent refresh luks-b1f65770-0746-40ad-a557-cdd31604771f
+  # Or: we can also set boot.initrd.luks.devices.<name>.allowDiscards in hardware-configuration.nix
   services.fstrim.enable = true;
   services.locate.enable = true;
   services.openssh.enable = true;
