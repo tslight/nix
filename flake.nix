@@ -11,7 +11,6 @@
         system = "x86_64-linux";
         modules = [
           ./enigma/hardware-configuration.nix
-          ./configuration.nix
           ./laptop.nix
         ];
       };
@@ -19,7 +18,6 @@
         system = "x86_64-linux";
         modules = [
           ./genesis/hardware-configuration.nix
-          ./configuration.nix
           ./laptop.nix
         ];
       };
