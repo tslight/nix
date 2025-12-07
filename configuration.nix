@@ -66,8 +66,13 @@
   nixpkgs.config.allowUnfree = true;
   programs.zsh.enable = true;
   programs.nano.enable = false; # vomit
+  programs.neovim = {
+    enable = true;
+    vimAlias = true;
+    viAlias = true;
+  };
 
-  environment.systemPackages = with pkgs; [ git neovim tmux ];
+  environment.systemPackages = with pkgs; [ git tmux ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -152,9 +152,12 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ chromium ]; # for some bizarre reason needs to be here too
+  # https://github.com/NixOS/nixpkgs/pull/334726
+  # https://github.com/NixOS/nixpkgs/pull/394028
+  environment.systemPackages = with pkgs; [ chromium ];
   programs.chromium = {
     enable = true;
+    # package = pkgs.brave; # https://github.com/NixOS/nixpkgs/issues/344311
     extensions = [
       "nngceckbapebfimnlniiiahkandclblb" # bitwarden
       "pkehgijcmpdhfbdbbnkijodmdjhbjlgp" # privacy badger
