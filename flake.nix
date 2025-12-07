@@ -12,7 +12,6 @@
         modules = [
           ./enigma/hardware-configuration.nix
           ./configuration.nix
-          ./browsers.nix
           ./laptop.nix
         ];
       };
@@ -21,7 +20,7 @@
         modules = [
           ./genesis/hardware-configuration.nix
           ./configuration.nix
-          ./browsers.nix
+          ./laptop.nix
         ];
       };
     };

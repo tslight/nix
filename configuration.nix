@@ -3,6 +3,20 @@
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # https://wiki.nixos.org/wiki/Storage_optimization
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 10d";
+  };
+  # free up to 1GiB whenever there is less than 100MiB left
+  nix.extraOptions = ''
+  min-free = ${toString (100 * 1024 * 1024)}
+  max-free = ${toString (1024 * 1024 * 1024)}
+'';
+  nix.optimise.automatic = true; # reduce disk usage of /nix
+  nix.optimise.dates = [ "03:00" ]; # optimisation schedule
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -39,40 +53,7 @@
   services.fstrim.enable = true;
   services.locate.enable = true;
   services.openssh.enable = true;
-  services.printing.enable = true;
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-  services.greetd = {
-    enable = true;
-    settings = {
-      initial_session = {
-        command = "niri-session";
-        user = "anon";
-      };
-      # By adding default_session it ensures you can still access the tty
-      # terminal if you logout of your windows manager otherwise you would just
-      # relaunch into it.
-      default_session = {
-        command = ''
-        ${pkgs.tuigreet}/bin/tuigreet \
-          --greeting "Welcome To NixOS" \
-          --asterisks \
-          --remember \
-          --remember-session \
-          --remember-user-session \
-          --time \
-          --cmd niri-session
-        '';
-        user = "greeter"; # DO NOT CHANGE THIS USER
-      };
-    };
-  };
 
   # Don't forget to set a password with ‘passwd’.
   users.users.anon = {
@@ -84,27 +65,9 @@
 
   nixpkgs.config.allowUnfree = true;
   programs.zsh.enable = true;
-  programs.niri.enable = true;
   programs.nano.enable = false; # vomit
 
-  environment.systemPackages = with pkgs; [
-    aspell
-    aspellDicts.en
-    aspellDicts.en-science
-    aspellDicts.en-computers
-    brightnessctl
-    emacs-pgtk
-    fuzzel
-    git
-    kitty
-    neovim
-    playerctl
-    swaylock
-    swayidle
-    tmux
-    waybar
-    wlsunset
-  ];
+  environment.systemPackages = with pkgs; [ git tmux ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
