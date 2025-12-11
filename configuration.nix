@@ -76,16 +76,12 @@
   environment.systemPackages = with pkgs; [
     bat # cat
     bottom # top
-    btop # htop
     curl
     dua # ncdu with dua i
     dust # du
     fd # find
-    fzf
-    gcc
     git
     jq
-    lazygit
     lsd # ls
     ripgrep # grep
     tmux
