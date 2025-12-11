@@ -81,8 +81,11 @@
     dua # ncdu with dua i
     dust # du
     fd # find
+    fzf
+    gcc
     git
     jq
+    lazygit
     lsd # ls
     ripgrep # grep
     tmux
