@@ -13,7 +13,7 @@
   nix.extraOptions = ''
   min-free = ${toString (100 * 1024 * 1024)}
   max-free = ${toString (1024 * 1024 * 1024)}
-'';
+    '';
   nix.optimise.automatic = true; # reduce disk usage of /nix
   nix.optimise.dates = [ "03:00" ]; # optimisation schedule
 
@@ -73,7 +73,23 @@
     viAlias = true;
   };
 
-  environment.systemPackages = with pkgs; [ git tmux ];
+  environment.systemPackages = with pkgs; [
+    bat # cat
+    bottom # top
+    btop # htop
+    curl
+    dua # ncdu with dua i
+    dust # du
+    fd # find
+    git
+    jq
+    lsd # ls
+    ripgrep # grep
+    tmux
+    tokei # linecount
+    wget
+    yazi # ranger
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

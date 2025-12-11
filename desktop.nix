@@ -47,6 +47,7 @@
     brightnessctl
     emacs-pgtk
     fuzzel
+    imagemagick
     kitty
     playerctl
     swaylock
