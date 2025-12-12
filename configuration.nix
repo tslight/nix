@@ -83,6 +83,7 @@
     git
     jq
     lsd # ls
+    lazygit
     ripgrep # grep
     tmux
     tokei # linecount
