@@ -61,35 +61,10 @@
     isNormalUser = true;
     description = "Friend of Bill";
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.zsh;
   };
 
   nixpkgs.config.allowUnfree = true;
-  programs.zsh.enable = true;
   programs.nano.enable = false; # vomit
-  programs.neovim = {
-    enable = true;
-    vimAlias = true;
-    viAlias = true;
-  };
-
-  environment.systemPackages = with pkgs; [
-    bat # cat
-    bottom # top
-    curl
-    dua # ncdu with dua i
-    dust # du
-    fd # find
-    git
-    jq
-    lsd # ls
-    lazygit
-    ripgrep # grep
-    tmux
-    tokei # linecount
-    wget
-    yazi # ranger
-  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
