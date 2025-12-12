@@ -53,6 +53,8 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
+    ".config/niri/config.kdl".source = dotfiles/niri.kdl;
+    ".config/fuzzel/fuzzel.ini".source = dotfiles/fuzzel.ini;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -103,15 +105,6 @@
 
   programs.bash = {
     enable = true;
-    initExtra = ''
-      # Load __git_ps1 bash command.
-      . ~/.nix-profile/share/git/contrib/completion/git-prompt.sh
-      # Also load git command completions for bash.
-      . ~/.nix-profile/share/git/contrib/completion/git-completion.bash
-
-      # Show git branch status in terminal shell.
-      export PS1='\[\033[01;35m\]\w\[\033[00m\]\[\033[01;32m\]$(__git_ps1 " (%s)")\[\033[01;33m\]\n\$\033[00m\] '
-    '';
     historyControl = [
       "erasedups"
       "ignoredups"
@@ -207,6 +200,18 @@
     "\\ep" =  "history-search-backward";
   };
 
+  programs.starship = {
+    enable = true;
+    settings = {
+      # add_newline = true;
+      # character = {
+      #   success_symbol = "[➜](bold green)";
+      #   error_symbol = "[➜](bold red)";
+      # };
+      # package.disabled = true;
+    };
+  };
+
   programs.tmux = {
     enable = true;
     aggressiveResize = true;
@@ -216,6 +221,13 @@
     historyLimit = 100000;
     mouse = true;
     newSession = true;
+    extraConfig = ''
+  set -g message-style bg=default,fg=brightgreen
+  set -g mode-style bg=default,fg=brightgreen
+  set -g status-style bg=default,fg=brightgreen
+  set -g window-status-style bold
+  set -g window-status-current-style underscore,fg=brightyellow
+'';
   };
 
   programs.zsh = {
@@ -230,7 +242,6 @@
       autoload -Uz compinit && compinit -u
       autoload -Uz bashcompinit && bashcompinit
       autoload -Uz colors && colors
-      autoload -Uz promptinit && promptinit && prompt adam2
       autoload -Uz history-search-end
       '';
     defaultKeymap = "emacs";
