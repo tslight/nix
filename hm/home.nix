@@ -88,6 +88,7 @@
     ll = "lsd -l";
     lla = "lsd -la";
     lt = "lsd --tree";
+    lg = "lazygit";
     m = "make";
     mkdir = "mkdir -p";
     mv = "mv -i";
