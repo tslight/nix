@@ -390,5 +390,15 @@
   };
   programs.qutebrowser = {
     enable = true;
+    settings = {
+      "tabs.position" = "left";
+      "tabs.show" = "never";
+    };
+    searchEngines = {
+      w = "https://en.wikipedia.org/wiki/Special:Search?search={}&amp;go=Go&amp;ns0=1";
+      aw = "https://wiki.archlinux.org/?search={}";
+      nw = "https://wiki.nixos.org/index.php?search={}";
+      g = "https://www.google.com/search?hl=en&amp;q={}";
+    };
   };
 }
