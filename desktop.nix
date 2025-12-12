@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./configuration.nix ./lsp.nix ./browsers.nix ];
+  imports = [ ./configuration.nix ./lsp.nix ];
 
   services.printing.enable = true;
   services.pulseaudio.enable = false;
