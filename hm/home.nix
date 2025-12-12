@@ -24,12 +24,10 @@
     pkgs.dua # ncdu with dua i
     pkgs.dust # du
     pkgs.fd # find
-    pkgs.git
     pkgs.jq
     pkgs.lsd # ls
     pkgs.lazygit
     pkgs.ripgrep # grep
-    pkgs.tmux
     pkgs.tokei # linecount
     pkgs.wget
     pkgs.yazi # ranger
@@ -141,7 +139,7 @@
     settings = {
       user.name  = "Toby Slight";
       user.email = "tslight@pm.me";
-      aliases = {
+      alias = {
         a = "add";
         c = "commit -m";
         d = "diff";
@@ -204,7 +202,7 @@
   programs.starship = {
     enable = true;
     settings = {
-      # add_newline = true;
+      add_newline = false;
       # character = {
       #   success_symbol = "[➜](bold green)";
       #   error_symbol = "[➜](bold red)";
@@ -228,6 +226,8 @@
   set -g status-style bg=default,fg=brightgreen
   set -g window-status-style bold
   set -g window-status-current-style underscore,fg=brightyellow
+  bind e neww -n fm yazi
+  bind t neww -n top btm
 '';
   };
 
