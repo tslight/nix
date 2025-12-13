@@ -134,6 +134,11 @@
     ];
   };
 
+  programs.emacs = {
+    enable = true;
+    extraConfig = builtins.readFile ./dotfiles/init.el
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
