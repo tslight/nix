@@ -1,0 +1,104 @@
+{
+  "layer": "top",
+  "position": "left",
+  "spacing": 12,
+  "modules-center": [
+    "cpu",
+    "memory",
+    "disk",
+    "systemd-failed-units",
+    "network",
+    "backlight",
+    "pulseaudio",
+    "battery",
+    "temperature",
+    "idle_inhibitor",
+    "tray",
+    "clock",
+    "custom/power"
+  ],
+  "cpu": {
+    "format": "{usage}%",
+  },
+  "memory": {
+    "format": "{}%",
+    "tooltip-format": "RAM: {used}GB/{total}GB\nSWAP: {swapUsed}GB/{swapTotal}GB",
+  },
+  "disk": {
+    "format": "{percentage_used}%",
+    "tooltip-format": "{used}/{total}"
+  },
+  "systemd-failed-units": {
+    "format-ok": "",
+    "format": "{nr_failed}",
+    "tooltip-format": "System: {nr_failed_system}\nUser: {nr_failed_user}",
+  },
+  "network": {
+    "format-wifi": "{signalStrength}%",
+    "format-ethernet": "🌐",
+    "format-linked": "🔗‍",
+    "format-disabled": "⚠️",
+    "format-disconnected": "💥️",
+    "tooltip-format": "{ifname}\n{essid}\n{ipaddr}/{cidr}\nVia: {gwaddr}\nUpload: {bandwidthUpBytes}\nDownload: {bandwidthDownBytes}",
+  },
+  "temperature": {
+    "critical-threshold": 75,
+    "warning-threshold": 60,
+    "format-critical": "{temperatureC}°C 🔥",
+    "format-warning": "🥵",
+    "format": "🌡️",
+    "tooltip-format": "{temperatureC}°C",
+  },
+  "backlight": {
+    "format": "🔆",
+    "tooltip-format": "{percent}%"
+  },
+  "pulseaudio": {
+    "format": "🔊",
+    "tooltip-format": "{volume}%",
+    "format-muted": "🔇",
+  },
+  "battery": {
+    "format": "",
+    "full-at": 98,
+    "states": {
+	"good": 80,
+	"warning": 30,
+	"critical": 20
+    },
+    "tooltip-format": "{capacity}%\n{time}\n{cycles} cycles\n{health}% health",
+    "format-full": "",
+    "format-good": "🔋",
+    "format-charging": "🔌",
+    "format-discharging": "🪫",
+    "format-discharging-warning": "🪫❗",
+    "format-discharging-critical": "{capacity}%‼️",
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+	"activated": "☕",
+	"deactivated": "🥃"
+    },
+    "timeout": 120
+  },
+  "tray": {
+    "spacing": 10,
+  },
+  "clock": {
+    "format": "{:%H:%M\n%d/%m}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+  },
+  "custom/power": {
+    "format" : "⏻",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "$HOME/.config/waybar/power_menu.xml",
+    "menu-actions": {
+	"shutdown": "shutdown",
+	"reboot": "reboot",
+	"suspend": "systemctl suspend",
+	"hibernate": "systemctl hibernate"
+    }
+  }
+}
