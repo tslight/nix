@@ -1,13 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = _: true;
-    };
-  };
+  nixpkgs.config.allowUnfree = true;
 
   home.username = "anon";
   home.homeDirectory = "/home/anon";
@@ -112,13 +106,13 @@
       user.name  = "Toby Slight";
       user.email = "tslight@pm.me";
       alias = {
-	a = "add";
-	c = "commit -m";
-	d = "diff";
-	l = "log --graph --decorate --pretty=oneline --abbrev-commit";
-	s = "status";
-	f = "pull";
-	p = "push";
+        a = "add";
+        c = "commit -m";
+        d = "diff";
+        l = "log --graph --decorate --pretty=oneline --abbrev-commit";
+        s = "status";
+        f = "pull";
+        p = "push";
       };
     };
     ignores = [
