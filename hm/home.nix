@@ -140,6 +140,7 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    extraConfig = builtins.readFile ./dotfiles/init.lua;
   };
 
   programs.readline.enable = true;

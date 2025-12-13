@@ -38,21 +38,4 @@
   };
 
   programs.niri.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    aspell
-    aspellDicts.en
-    aspellDicts.en-science
-    aspellDicts.en-computers
-    brightnessctl
-    emacs-pgtk
-    fuzzel
-    imagemagick
-    kitty
-    playerctl
-    swaylock
-    swayidle
-    waybar
-    wlsunset
-  ];
 }
