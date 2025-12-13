@@ -112,13 +112,13 @@
       user.name  = "Toby Slight";
       user.email = "tslight@pm.me";
       alias = {
-        a = "add";
-        c = "commit -m";
-        d = "diff";
-        l = "log --graph --decorate --pretty=oneline --abbrev-commit";
-        s = "status";
-        f = "pull";
-        p = "push";
+	a = "add";
+	c = "commit -m";
+	d = "diff";
+	l = "log --graph --decorate --pretty=oneline --abbrev-commit";
+	s = "status";
+	f = "pull";
+	p = "push";
       };
     };
     ignores = [
@@ -134,18 +134,13 @@
     ];
   };
 
-  programs.emacs = {
-    enable = true;
-    extraConfig = builtins.readFile ./dotfiles/init.el
-  };
-
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    extraConfig = builtins.readFile ./dotfiles/init.lua;
+    extraLuaConfig = builtins.readFile ./dotfiles/init.lua;
   };
 
   programs.readline.enable = true;

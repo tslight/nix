@@ -29,6 +29,7 @@
   ];
 
   home.file = {
+    ".config/emacs/init.el".source = dotfiles/init.el;
     ".config/fuzzel/fuzzel.ini".source = dotfiles/fuzzel.ini;
     ".config/niri/config.kdl".source = dotfiles/niri.kdl;
     ".config/waybar/config.jsonc".source = dotfiles/waybar/config.jsonc;
