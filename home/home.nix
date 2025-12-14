@@ -171,6 +171,7 @@
   programs.yazi = {
     enable = true;
     plugins = {
+      inherit (pkgs.yaziPlugins) git;
       inherit (pkgs.yaziPlugins) lazygit;
     };
     initLua = ''require("git"):setup()'';
