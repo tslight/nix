@@ -142,7 +142,12 @@
     "\\ep" =  "history-search-backward";
   };
 
-  programs.starship.enable = true;
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
+    };
+  };
 
   programs.tmux = {
     enable = true;
