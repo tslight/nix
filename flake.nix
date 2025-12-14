@@ -3,13 +3,9 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/25.11";
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, home-manager, nixpkgs }: {
+  outputs = { self, nixpkgs }: {
     nixosConfigurations = {
       enigma = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
