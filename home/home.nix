@@ -24,7 +24,6 @@
     pkgs.ripgrep # grep
     pkgs.tokei # linecount
     pkgs.wget
-    pkgs.yazi # ranger
   ];
 
   home.sessionPath = [ "$HOME/bin" "$HOME/.local/bin" ];
@@ -160,6 +159,10 @@
     mouse = true;
     newSession = true;
     extraConfig = ''
+  # For images in Yazi
+  set -g allow-passthrough on
+  set -ga update-environment TERM
+  set -ga update-environment TERM_PROGRAM
   set -g message-style bg=default,fg=brightgreen
   set -g mode-style bg=default,fg=brightgreen
   set -g status-style bg=default,fg=brightgreen
@@ -168,6 +171,16 @@
   bind e neww -n fm yazi
   bind t neww -n top btm
 '';
+  };
+
+  programs.yazi = {
+    enable = true;
+    settings = {
+      mgr = {
+        show_hidden = true;
+        ratio = [ 1 2 5 ];
+      };
+    };
   };
 
   programs.zsh = {
