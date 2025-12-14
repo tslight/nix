@@ -173,6 +173,7 @@
     plugins = {
       inherit (pkgs.yaziPlugins) lazygit;
     };
+    initLua = ''require("git"):setup()'';
     keymap = {
       mgr.prepend_keymap = [
         {
