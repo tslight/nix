@@ -22,6 +22,7 @@
     pkgs.lsd # ls
     pkgs.lazygit
     pkgs.ripgrep # grep
+    pkgs.starship
     pkgs.tokei # linecount
     pkgs.wget
   ];
@@ -140,13 +141,6 @@
   programs.readline.bindings = {
     "\\en" = "history-search-forward";
     "\\ep" =  "history-search-backward";
-  };
-
-  programs.starship = {
-    enable = true;
-    settings = {
-      add_newline = false;
-    };
   };
 
   programs.tmux = {
