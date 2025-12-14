@@ -27,7 +27,7 @@
           # the path to your home.nix.
           modules = [
             { nixpkgs.overlays = overlays; }
-            ./desktop.nix
+            ./default.nix
           ];
 
           # Optionally use extraSpecialArgs
