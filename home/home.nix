@@ -170,6 +170,18 @@
 
   programs.yazi = {
     enable = true;
+    plugins = {
+      inherit (pkgs.yaziPlugins) lazygit;
+    };
+    keymap = {
+      mgr.prepend_keymap = [
+        {
+          on = [ "g" "i" ];
+          run = "plugin lazygit";
+          desc = "Run you Lazy Git!";
+        }
+      ];
+    };
     settings = {
       mgr = {
         show_hidden = true;
