@@ -18,6 +18,7 @@
     pkgs.dua # ncdu with dua i
     pkgs.dust # du
     pkgs.fd # find
+    pkgs.fzf
     pkgs.jq
     pkgs.lsd # ls
     pkgs.lazygit
