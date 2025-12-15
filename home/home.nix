@@ -46,11 +46,13 @@
     j = "jobs -l";
     k = "kubectl";
     lc = "tokei";
-    l = "lsd";
-    la = "lsd -a";
-    ll = "lsd -l";
-    lla = "lsd -la";
-    lt = "lsd --tree";
+    ls = "lsd --git";
+    lsd = "lsd --git";
+    l = "lsd --git";
+    la = "lsd -a --git";
+    ll = "lsd -l --git";
+    lla = "lsd -la --git";
+    lt = "lsd --tree --git";
     lg = "lazygit";
     m = "make";
     mkdir = "mkdir -p";
@@ -62,7 +64,7 @@
     rm = "rm -i";
     se = "sudoedit";
     t = "tmux attach";
-    tree = "lsd --tree";
+    tree = "lsd --tree --git";
     up = "uptime";
     vi = "nvim";
   };
