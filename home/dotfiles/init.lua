@@ -15,8 +15,9 @@ vim.pack.add({
 })
 
 require('fzf-lua').setup{}
-vim.keymap.set("n", "<leader>f", "<cmd>FzfLua files<cr>", { desc = "Files" })
-vim.keymap.set("n", "<leader>o", "<cmd>FzfLua files cwd=~<cr>", { desc = "Open" })
+vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<cr>", { desc = "Files Project" })
+vim.keymap.set("n", "<leader>f.", "<cmd>FzfLua files cwd=.<cr>", { desc = "Files Here" })
+vim.keymap.set("n", "<leader>fh", "<cmd>FzfLua files cwd=~<cr>", { desc = "Files Home" })
 vim.keymap.set("n", "<leader>c", "<cmd>FzfLua commands<cr>", { desc = "Commands" })
 vim.keymap.set("n", "<leader>r", "<cmd>FzfLua oldfiles<cr>", { desc = "Recent" })
 vim.keymap.set("n", "<leader>b", "<cmd>FzfLua buffers<cr>", { desc = "Buffers" })

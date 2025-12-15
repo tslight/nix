@@ -22,6 +22,7 @@
 
   home.file = {
     # ".config/starship.toml".source = dotfiles/starship.toml;
+    ".config/emacs/early-init.el".source = dotfiles/early-init.el;
     ".config/emacs/init.el".source = dotfiles/init.el;
     ".config/fuzzel/fuzzel.ini".source = dotfiles/fuzzel.ini;
     ".config/niri/config.kdl".source = dotfiles/niri.kdl;
