@@ -1,3 +1,4 @@
+vim.o.termguicolors = true
 vim.cmd.colorscheme("wildcharm")
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>w", vim.cmd.write, { desc = "Write" })
@@ -8,10 +9,13 @@ vim.opt.relativenumber = true
 vim.opt.shiftwidth = 2
 
 vim.pack.add({
+  { src = "https://github.com/nvim-lua/plenary.nvim" },
+  { src = "https://github.com/mikavilpas/yazi.nvim" },
   { src = "https://github.com/kdheepak/lazygit.nvim" },
   { src = "https://github.com/folke/which-key.nvim" },
   { src = "https://github.com/github/copilot.vim" },
   { src = "https://github.com/ibhagwan/fzf-lua" },
+  { src = "https://github.com/tpope/vim-surround" },
 })
 
 require('fzf-lua').setup{}
@@ -27,3 +31,4 @@ vim.keymap.set("n", "<leader>s", "<cmd>FzfLua grep_project<cr>", { desc = "Grep 
 vim.keymap.set("n", "<leader> ", "<cmd>FzfLua global<cr>", { desc = "FZF" })
 require('which-key').setup{}
 vim.keymap.set('n', '<leader>g', ':LazyGit<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>e', ':Yazi<CR>', { noremap = true, silent = true })

@@ -1,6 +1,6 @@
 ;;; General Emacs Settings
 (use-package emacs
-  :config
+  :init
   (load-theme 'modus-vivendi)
   (set-frame-font "Monospace 12" nil t)
   (menu-bar-mode -1)
@@ -9,6 +9,7 @@
   (tooltip-mode -1)
   (display-time)
   (display-battery-mode)
+  :config
   (defun my/indent-buffer ()
     "Indent the contents of a buffer."
     (interactive)
@@ -27,6 +28,7 @@
      ("melpa" . "https://melpa.org/packages/")
      ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
   (use-package-enable-imenu-support t)
+  (use-package-always-defer t)
   :bind
   ("M-i" . my/indent-buffer)
   ("C-;" . comment-line)
