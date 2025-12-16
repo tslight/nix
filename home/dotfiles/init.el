@@ -77,27 +77,20 @@
 	      ("f" . 'dired-find-alternate-file)))
 
 ;;; Recentf
-(use-package recentf
-  :bind
-  ("C-c r" . recentf))
+(use-package recentf :bind ("C-c r" . recentf))
 
 ;;; Which Key
-(use-package which-key
-  :config (which-key-mode))
+(use-package which-key :config (which-key-mode))
 
 ;;; Nix Mode
 (use-package nix-mode :ensure)
 
 ;;; Whitespace
-(use-package whitepace
-  :hook
-  (before-save . whitespace-cleanup))
+(use-package whitepace :hook (before-save . whitespace-cleanup))
 
 ;;; Code Completion
 ;;;; Eglot
-(use-package eglot
-  :hook
-  (prog-mode . eglot-ensure))
+(use-package eglot :hook (prog-mode . eglot-ensure))
 
 ;;;; Corfu
 (use-package corfu :ensure
@@ -109,8 +102,6 @@
 
 ;;; Git
 ;;;; Magit
-(use-package magit :ensure
-  :bind*
-  ("C-x g" . magit-status))
+(use-package magit :ensure :bind* ("C-x g" . magit-status))
 ;;;; Timemachine
 (use-package git-timemachine :ensure)
