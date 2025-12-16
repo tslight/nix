@@ -9,7 +9,12 @@
   (tooltip-mode -1)
   (display-time)
   (display-battery-mode)
+  (savehist-mode)
   :config
+  (defun my/last-buffer ()
+    "Switch back and forth between two buffers easily."
+    (interactive)
+    (switch-to-buffer (other-buffer (current-buffer) 1)))
   (defun my/indent-buffer ()
     "Indent the contents of a buffer."
     (interactive)
@@ -30,6 +35,8 @@
   (use-package-enable-imenu-support t)
   (use-package-always-defer t)
   :bind
+  ("C-c b" . my/last-buffer)
+  ("C-<escape>" . my/last-buffer)
   ("M-i" . my/indent-buffer)
   ("C-;" . comment-line)
   ("C-z" . zap-up-to-char))
@@ -53,7 +60,7 @@
 
 ;;; Line Numbers
 (use-package display-line-numbers
-  :config
+  :init
   (setq display-line-numbers 'relative)
   :hook
   (prog-mode . display-line-numbers-mode)
