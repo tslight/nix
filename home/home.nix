@@ -19,6 +19,7 @@
     pkgs.dust # du
     pkgs.fd # find
     pkgs.fzf
+    pkgs.gnumake
     pkgs.jq
     pkgs.lsd # ls
     pkgs.lazygit
