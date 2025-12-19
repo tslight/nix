@@ -8,6 +8,7 @@
     pkgs.aspellDicts.en
     pkgs.aspellDicts.en-science
     pkgs.aspellDicts.en-computers
+    pkgs.dropbox-cli
     pkgs.brightnessctl
     pkgs.emacs-pgtk
     pkgs.fuzzel
