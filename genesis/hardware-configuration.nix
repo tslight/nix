@@ -47,7 +47,7 @@
     KEYBOARD_KEY_700e2=leftmeta
     KEYBOARD_KEY_700e0=esc
     KEYBOARD_KEY_70089=backspace
-    KEYBOARD_KEY_70087=102nd # somehow this is backslash/pipe!
+    KEYBOARD_KEY_70087=grave
     KEYBOARD_KEY_ff0003=rightmeta
   '';
 }
