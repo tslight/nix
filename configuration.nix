@@ -44,7 +44,7 @@
     earlySetup = true;
     font = "ter-v20b";
     packages = with pkgs; [ terminus_font ];
-    keyMap = "uk";
+    keyMap = "us";
   };
 
   services.journald.extraConfig = "SystemMaxUse=200M";
