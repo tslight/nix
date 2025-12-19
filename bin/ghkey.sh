@@ -52,11 +52,11 @@ if [[ "$HTTP_CODE" -eq 201 ]]; then
 else
     ERROR_MESSAGE=$(jq -r '.errors[].message' /tmp/github_response.txt)
     if [[ "$ERROR_MESSAGE" == "key is already in use" ]]; then
-        echo "Looks like you've already added this key to GitHub."
+	echo "Looks like you've already added this key to GitHub."
     else
-        echo "Failed to add SSH key. Response code: $HTTP_CODE"
-        echo "Response body:"
-        echo "$BODY"
+	echo "Failed to add SSH key. Response code: $HTTP_CODE"
+	echo "Response body:"
+	echo "$BODY"
     fi
 fi
 

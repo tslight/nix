@@ -31,22 +31,28 @@ https://zero-to-nix.com/
 
 * Install NixOS using the official graphical installer.
 * Optional, but recommended: set a distinct `$HOSTNAME`.
-* Spawn an adhoc environment with `nix-shell -p git`.
+* Spawn an adhoc environment with `nix-shell -p git gnumake neovim`.
 * Run `git clone https://github.com/tslight/nix`.
 * Run `mkdir $HOSTNAME && cp /etc/nixos/hardware-configuration.nix ./$HOSTNAME/`
-* Ensure all device exclusive settings from `/etc/nixos/configuration.nix` are
-  copied to `$HOSTNAME/hardware-configuration.nix`. Specifically
-  `networking.hostName = "$HOSTNAME";` and any `boot.initrd.luks.devices`
-  lines.
+* Ensure all device exclusive settings from
+  `/etc/nixos/configuration.nix` are copied to
+  `$HOSTNAME/hardware-configuration.nix`. Specifically
+  `networking.hostName = "$HOSTNAME";` and any
+  `boot.initrd.luks.devices` lines.
 * Declare the new addition in `flake.nix` with a block under
   `nixosConfigurations`.
-* Run `git add -A`, as when using Nix flakes, only files that are tracked by
-  Git and not ignored by your ~.gitignore~ are included in the flake's source.
-* Run `sudo nixos-rebuild switch --flake . --upgrade`, or if your `$HOSTNAME`
-  doesn't match: `sudo nixos-rebuild switch --flake .#name-of-nixosSystem --upgrade`
-* Reboot, to ensure we can successfully boot from the flake's derivation.
-* Run `sudo nix-channel --remove nixos`. You do not need Nix channels on a
-  flake-based system anymore.
-* Once we've verified we can successfully build and boot from the flake, we can
-  go ahead and delete `/etc/nixos`.
+* Run `git add -A`, as when using Nix flakes, only files that are
+  tracked by Git and not ignored by your ~.gitignore~ are included in
+  the flake's source.
+* Run `sudo nixos-rebuild switch --flake .`, or if your `$HOSTNAME`
+  doesn't match: `sudo nixos-rebuild switch --flake
+  .#name-of-nixosSystem`
+* Reboot, to ensure we can successfully boot from the flake's
+  derivation.
+* Run `sudo nix-channel --remove nixos`. You do not need Nix channels
+  on a flake-based system anymore.
+* Once we've verified we can successfully build and boot from the
+  flake, we can go ahead and delete `/etc/nixos`.
+* Run `make setup` to upload newly created SSH keys to GitHub and then
+  change our git remote.
 * Commit and push your changes. Profit!
