@@ -6,7 +6,8 @@ help:; @awk '/^#/{c=substr($$0,3);next}c&&/^[[:alpha:]][[:alnum:]_-]+:/{print su
 
 # Rebuilt NixOS system
 nixos:
-	sudo nixos-rebuild switch --flake .
+	nix flake update
+	sudo nixos-rebuild switch --upgrade --flake .
 	sudo udevadm trigger
 
 # Rebuilt Home Manager
