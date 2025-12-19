@@ -34,6 +34,7 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   networking.hostName = "genesis"; # Define your hostname.
+  # This was a mad layout to figure out! It's a Japanese Layout MBA
   # https://bbs.archlinux.org/viewtopic.php?id=260804
   services.udev.extraHwdb = ''
   evdev:input:b0003v05ACp0290*
