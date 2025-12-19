@@ -34,6 +34,7 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   networking.hostName = "genesis"; # Define your hostname.
+  # https://bbs.archlinux.org/viewtopic.php?id=260804
   services.udev.extraHwdb = ''
   evdev:input:b0003v05ACp0290*
     KEYBOARD_KEY_70029=capslock
@@ -45,7 +46,7 @@
     KEYBOARD_KEY_700e2=leftmeta
     KEYBOARD_KEY_700e0=esc
     KEYBOARD_KEY_70089=backspace
-    KEYBOARD_KEY_70087=102nd
+    KEYBOARD_KEY_70087=102nd # somehow this is backslash/pipe!
     KEYBOARD_KEY_ff0003=rightmeta
   '';
 }
