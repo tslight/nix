@@ -10,6 +10,8 @@
   (display-time)
   (display-battery-mode)
   (savehist-mode)
+  (save-place-mode)
+  (electric-pair-mode)
   :config
   (defun my/last-buffer ()
     "Switch back and forth between two buffers easily."
@@ -67,9 +69,7 @@
   (sh-script-mode . display-line-numbers-mode))
 
 ;;; Org
-(use-package org
-  :custom
-  (org-use-speed-commands t))
+(use-package org :custom (org-use-speed-commands t))
 
 ;;; Dired
 (use-package dired
@@ -85,20 +85,17 @@
 
 ;;; Recentf
 (use-package recentf :bind ("C-c r" . recentf))
-
+;;; Vundo
+(use-package vundo :ensure :bind ("C-c u" . vundo))
 ;;; Which Key
 (use-package which-key :config (which-key-mode))
-
 ;;; Nix Mode
 (use-package nix-mode :ensure)
-
 ;;; Whitespace
 (use-package whitepace :hook (before-save . whitespace-cleanup))
-
 ;;; Code Completion
 ;;;; Eglot
 (use-package eglot :hook (prog-mode . eglot-ensure))
-
 ;;;; Corfu
 (use-package corfu :ensure
   :custom
