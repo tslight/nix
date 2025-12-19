@@ -9,7 +9,7 @@
 input {
   keyboard {
     xkb {
-        layout "gb"
+        layout "us"
         // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
     }
 
