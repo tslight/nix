@@ -9,8 +9,8 @@
 input {
   keyboard {
     xkb {
-	layout "gb"
-	// options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+        layout "gb"
+        // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
     }
 
     // Enable numlock on startup, omitting this setting disables it.
@@ -220,13 +220,14 @@ binds {
   Mod+Slash { show-hotkey-overlay; }
 
   // Suggested binds for running programs: terminal, app launcher, screen locker.
+  Mod+E hotkey-overlay-title="Open Editor" { spawn "nirirun" "emacs"; }
   Mod+T hotkey-overlay-title="Open Terminal" { spawn "nirirun" "kitty"; }
   Mod+W hotkey-overlay-title="Open Web Browser" { spawn "nirirun" "librewolf"; }
   Mod+Space hotkey-overlay-title="Launch Programs" { spawn "fuzzel"; }
   Mod+Ctrl+Q hotkey-overlay-title="Lock Screen" { spawn "swaylock" "-c" "000000"; }
   // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
   // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
-  Mod+E hotkey-overlay-title="Open Editor" { spawn-sh "nirirun -c 'emacs' emacsclient -c -a ''"; }
+  // Mod+E hotkey-overlay-title="Open Editor" { spawn-sh "nirirun -c 'emacs' emacsclient -c -a ''"; }
 
   // Example volume keys mappings for PipeWire & WirePlumber.
   // The allow-when-locked=true property makes them work even when the session is locked.
