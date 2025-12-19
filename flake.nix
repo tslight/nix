@@ -26,8 +26,8 @@
         modules = [
           ./cardiel/hardware-configuration.nix
           ./laptop.nix
-       ];
+        ];
       };
     };
-};
+  };
 }
