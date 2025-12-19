@@ -21,6 +21,13 @@
           ./laptop.nix
         ];
       };
+      cardiel = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./cardiel/hardware-configuration.nix
+          ./laptop.nix
+       ];
+      };
     };
-  };
+};
 }
