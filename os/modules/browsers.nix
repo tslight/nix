@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }: {
   # https://discourse.nixos.org/t/librewolf-138-programs-firefox-policies-is-still-broken/64225
   environment.etc."firefox/policies/policies.json".target = "librewolf/policies/policies.json";
   programs.firefox = { # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265

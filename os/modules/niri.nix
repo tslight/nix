@@ -1,8 +1,4 @@
-{ config, pkgs, ... }:
-
-{
-  imports = [ ./configuration.nix ];
-
+{ pkgs, ... }: {
   services.printing.enable = true;
   services.pulseaudio.enable = false;
   services.pipewire = {
@@ -36,6 +32,7 @@
       };
     };
   };
+  security.rtkit.enable = true; # for audio I think
 
   programs.niri.enable = true;
 }

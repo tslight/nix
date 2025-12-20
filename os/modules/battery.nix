@@ -1,7 +1,4 @@
-{ config, pkgs, ... }:
 {
-  imports = [ ./desktop.nix ];
-
   services.upower = {
     enable = true;
     criticalPowerAction = "PowerOff";

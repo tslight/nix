@@ -1,4 +1,4 @@
-{ config, ... }: {
+{
   services.udev.extraHwdb = ''
   evdev:input:b0011v0001p0001*
     KEYBOARD_KEY_01=capslock
@@ -10,4 +10,4 @@
     KEYBOARD_KEY_9d=leftmeta
     KEYBOARD_KEY_1d=leftmeta
   '';
-  }
+}

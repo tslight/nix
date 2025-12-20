@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -54,7 +54,6 @@
   services.fstrim.enable = true;
   services.locate.enable = true;
   services.openssh.enable = true;
-  security.rtkit.enable = true;
 
   users.users.anon = {
     isNormalUser = true;
@@ -65,8 +64,7 @@
   nixpkgs.config.allowUnfree = true;
   programs.nano.enable = false; # vomit
   environment.defaultPackages = []; # get rid of nano, perl, rsync, strace
-  environment.systemPackages = with pkgs; [ home-manager ];
-  environment.etc."motd".text = "It was a musical thing...";
+  environment.systemPackages = with pkgs; [ ed home-manager ];
   # It‘s perfectly fine and recommended to leave this value at the release
   # version of the first install of this system. Before changing this value
   # read the documentation for this option (e.g. man configuration.nix or on

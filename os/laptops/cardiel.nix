@@ -1,11 +1,16 @@
-{ config, lib, pkgs, modulesPath, ... }:
-
-{
+{ config, lib, modulesPath, host, system, ... }: {
   imports = [
-  (modulesPath + "/installer/scan/not-detected.nix")
-  ../modules/kbd-thinkpad-chicklet.nix
-  ../modules/etc-issue-cardiel.nix
-    ];
+    (modulesPath + "/installer/scan/not-detected.nix")
+    ../modules/kbd-thinkpad-chicklet.nix
+    ../modules/etc-issue-cardiel.nix
+    ../modules/battery.nix
+    ../modules/minimal.nix
+    ../modules/niri.nix
+  ];
+
+  # The system & host vars are getting passed in from the flake
+  nixpkgs.hostPlatform = lib.mkDefault system;
+  networking.hostName = host;
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ "i915" ];
@@ -33,8 +38,5 @@
 
   swapDevices = [ { device = "/dev/disk/by-uuid/7f7997a6-05f3-4a54-acbe-4658a4ba0f82"; } ];
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  networking.hostName = "cardiel";
 }

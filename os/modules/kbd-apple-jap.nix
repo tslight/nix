@@ -1,4 +1,4 @@
-{ config, ... }: {
+{
   # This was a mad layout to figure out! It's a Japanese Layout MBA
   # https://bbs.archlinux.org/viewtopic.php?id=260804
   services.udev.extraHwdb = ''
@@ -15,4 +15,4 @@
     KEYBOARD_KEY_70087=grave
     KEYBOARD_KEY_ff0003=rightmeta
   '';
-  }
+}
