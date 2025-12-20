@@ -30,31 +30,39 @@ https://zero-to-nix.com/
 # INSTALLATION
 
 * Install NixOS using the official graphical installer.
-* Optional, but recommended: set a distinct `$HOSTNAME`.
 * Spawn an adhoc environment with `nix-shell -p git gnumake neovim`.
-* Run `git clone https://github.com/tslight/nix`.
-* Run `mkdir $HOSTNAME && cp /etc/nixos/hardware-configuration.nix
-  ./$HOSTNAME/`
-* Ensure all device exclusive settings from
-  `/etc/nixos/configuration.nix` are copied to
-  `$HOSTNAME/hardware-configuration.nix`. Specifically
-  `networking.hostName = "$HOSTNAME";` and any
-  `boot.initrd.luks.devices` lines.
-* Declare the new `$HOSTNAME` in the `hosts` array in `flake.nix`.
+* Run:
+
+```bash
+git clone https://github.com/tslight/nix && cd nix
+export $NEW_HOSTNAME="your-fancy-new-hostname"
+mkdir ./os/hosts/$NEW_HOSTNAME
+cp /etc/nixos/hardware-configuration.nix ./os/hosts/$NEW_HOSTNAME.nix
+```
+
+* Add the following to the top of `./os/hosts/$NEW_HOSTNAME.nix`:
+
+```nix
+{ lib, modulesPath, host, system, ... }: {
+  imports = [
+	(modulesPath + "/installer/scan/not-detected.nix")
+	# Add modules from ../modules/*.nix here
+  ];
+
+  # The system & host vars are getting passed in from the flake
+  nixpkgs.hostPlatform = lib.mkDefault system;
+  networking.hostName = host;
+```
+
 * Run `git add -A`, as when using Nix flakes, only files that are
-  tracked by Git and not ignored by your ~.gitignore~ are included in
-  the flake's source.
-* Run `sudo nixos-rebuild switch --flake .`, or if your `$HOSTNAME`
-  doesn't match: `sudo nixos-rebuild switch --flake
-  .#name-of-nixosSystem`
+tracked by Git and not ignored by your ~.gitignore~ are included in
+the flake's source.
+* Run `sudo nixos-rebuild switch --flake .#"$NEW_HOSTNAME"`
 * Reboot, to ensure we can successfully boot from the flake's
-  derivation.
-* Run `sudo nix-channel --remove nixos`. You do not need Nix channels
-  on a flake-based system anymore.
-* Once we've verified we can successfully build and boot from the
-  flake, we can go ahead and delete `/etc/nixos`.
+derivation.
+* Run `make clean` to delete all the old channel cruft.
 * Run `make setup` to upload newly created SSH keys to GitHub and then
-  change our git remote.
+change our git remote.
 * Commit and push your changes. Profit!
 
 # THE FLEET
