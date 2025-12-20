@@ -34,7 +34,7 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  nixpkgs.hostName = "sahaja";
+  networking.hostName = "sahaja";
   services.udev.extraHwdb = ''
   evdev:input:b0011v0001p0001*
     KEYBOARD_KEY_01=capslock
