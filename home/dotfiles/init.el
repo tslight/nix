@@ -1,6 +1,7 @@
 ;;; General Emacs Settings
 (use-package emacs
   :init
+  (column-number-mode)
   (load-theme 'modus-vivendi)
   (set-frame-font "Monospace 12" nil t)
   (menu-bar-mode -1)
