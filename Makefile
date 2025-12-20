@@ -4,19 +4,21 @@
 # Show this help.
 help:; @awk '/^#/{c=substr($$0,3);next}c&&/^[[:alpha:]][[:alnum:]_-]+:/{print substr($$1,1,index($$1,":")),c}1{c=0}' $(MAKEFILE_LIST) | column -s: -t
 
+update:
+	nix flake update
+	cd home && nix flake update
+
 # Rebuilt NixOS system
 nixos:
-	nix flake update
 	sudo nixos-rebuild switch --upgrade --flake .
 	sudo udevadm trigger
 
 # Rebuilt Home Manager
 home:
-	cd ./home && nix flake update
 	home-manager switch --flake ./home
 
 # Rebuilt NixOS & Home Manager
-all: nixos home
+all: update nixos home
 
 # Garbage Collect Nix
 clean:
