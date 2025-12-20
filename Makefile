@@ -1,20 +1,20 @@
 .DEFAULT_GOAL := help
-.PHONY: all nixos home clean help setup
+.PHONY: all os hm clean help setup
 
 # Show this help.
 help:; @awk '/^#/{c=substr($$0,3);next}c&&/^[[:alpha:]][[:alnum:]_-]+:/{print substr($$1,1,index($$1,":")),c}1{c=0}' $(MAKEFILE_LIST) | column -s: -t
 
 # Update Flakes
-update:; nix flake update && cd ./home && nix flake update
+update:; nix flake update && cd ./hm && nix flake update
 
 # Rebuilt NixOS system
 os:; sudo nixos-rebuild switch --upgrade --flake .
 
 # Rebuilt Home Manager
-home:; home-manager switch --flake ./home
+hm:; home-manager switch --flake ./hm
 
 # Rebuilt NixOS & Home Manager
-all: os home
+all: os hm
 
 # Garbage Collect Nix
 clean:
