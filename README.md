@@ -33,14 +33,14 @@ https://zero-to-nix.com/
 * Optional, but recommended: set a distinct `$HOSTNAME`.
 * Spawn an adhoc environment with `nix-shell -p git gnumake neovim`.
 * Run `git clone https://github.com/tslight/nix`.
-* Run `mkdir $HOSTNAME && cp /etc/nixos/hardware-configuration.nix ./$HOSTNAME/`
+* Run `mkdir $HOSTNAME && cp /etc/nixos/hardware-configuration.nix
+  ./$HOSTNAME/`
 * Ensure all device exclusive settings from
   `/etc/nixos/configuration.nix` are copied to
   `$HOSTNAME/hardware-configuration.nix`. Specifically
   `networking.hostName = "$HOSTNAME";` and any
   `boot.initrd.luks.devices` lines.
-* Declare the new addition in `flake.nix` with a block under
-  `nixosConfigurations`.
+* Declare the new `$HOSTNAME` in the `hosts` array in `flake.nix`.
 * Run `git add -A`, as when using Nix flakes, only files that are
   tracked by Git and not ignored by your ~.gitignore~ are included in
   the flake's source.
