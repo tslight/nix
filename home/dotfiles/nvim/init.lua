@@ -1,4 +1,3 @@
-vim.o.termguicolors = true
 vim.cmd.colorscheme("wildcharm")
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>w", vim.cmd.write, { desc = "Write" })
@@ -6,6 +5,8 @@ vim.keymap.set("n", "<leader>q", vim.cmd.quit, { desc = "Quit" })
 vim.keymap.set("n", "<leader>bn", ':bn<cr>', { desc = "Buffer Next" })
 vim.keymap.set("n", "<leader>bp", ':bp<cr>', { desc = "Buffer Prev" })
 vim.keymap.set("n", "<leader>bl", ':bl<cr>', { desc = "Buffer Last" })
+vim.opt.wrap = false
+vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.number = true
 vim.opt.relativenumber = true
