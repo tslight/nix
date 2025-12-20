@@ -14,6 +14,7 @@ vim.pack.add({
   { src = "https://github.com/kdheepak/lazygit.nvim" },
   { src = "https://github.com/folke/which-key.nvim" },
   { src = "https://github.com/github/copilot.vim" },
+  { src = "https://github.com/CopilotC-Nvim/CopilotChat.nvim" },
   { src = "https://github.com/ibhagwan/fzf-lua" },
   { src = "https://github.com/tpope/vim-surround" },
 })

@@ -105,3 +105,9 @@
 ;;;; Markdown
 (use-package markdown-mode :ensure)
 (use-package markdown-ts-mode :ensure)
+;;;; Lua
+(use-package lua-mode :ensure)
+(use-package lua-ts-mode :ensure)
+;;;; Copilot
+(use-package copilot :ensure)
+(use-package copilot-chat :ensure)
