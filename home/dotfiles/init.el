@@ -1,4 +1,4 @@
-;;; General Emacs Settings
+;;; General Settings
 (use-package emacs
   :init
   (column-number-mode)
@@ -43,14 +43,12 @@
   ("M-i" . my/indent-buffer)
   ("C-;" . comment-line)
   ("C-z" . zap-up-to-char))
-
 ;;; Outline
 (use-package outline
   :custom
   (outline-minor-mode-cycle t)
   :hook
   (emacs-lisp-mode . outline-minor-mode))
-
 ;;; Icomplete
 (use-package icomplete
   :custom
@@ -60,7 +58,6 @@
 	      ("<tab>" . icomplete-forward-completions)
 	      ("<backtab>" . icomplete-backward-completions)
 	      ("M-j" . exit-minibuffer)))
-
 ;;; Line Numbers
 (use-package display-line-numbers
   :init
@@ -68,10 +65,8 @@
   :hook
   (prog-mode . display-line-numbers-mode)
   (sh-script-mode . display-line-numbers-mode))
-
 ;;; Org
 (use-package org :custom (org-use-speed-commands t))
-
 ;;; Dired
 (use-package dired
   :custom
@@ -83,20 +78,19 @@
   :bind (:map dired-mode-map
 	      ("b" . my/dired-up-directory)
 	      ("f" . 'dired-find-alternate-file)))
-
 ;;; Recentf
 (use-package recentf :bind ("C-c r" . recentf))
-;;; Vundo
-(use-package vundo :ensure :bind ("C-c u" . vundo))
 ;;; Which Key
 (use-package which-key :config (which-key-mode))
-;;; Nix Mode
-(use-package nix-mode :ensure)
 ;;; Whitespace
 (use-package whitepace :hook (before-save . whitespace-cleanup))
-;;; Code Completion
-;;;; Eglot
+;;; Eglot
 (use-package eglot :hook (prog-mode . eglot-ensure))
+;;; Ensures
+;;;; Nix Mode
+(use-package nix-mode :ensure)
+;;;; Vundo
+(use-package vundo :ensure :bind ("C-c u" . vundo))
 ;;;; Corfu
 (use-package corfu :ensure
   :custom
@@ -104,9 +98,10 @@
   (corfu-auto t)
   :hook
   (prog-mode . corfu-mode))
-
-;;; Git
 ;;;; Magit
 (use-package magit :ensure :bind* ("C-x g" . magit-status))
 ;;;; Timemachine
 (use-package git-timemachine :ensure)
+;;;; Markdown
+(use-package markdown-mode :ensure)
+(use-package markdown-ts-mode :ensure)

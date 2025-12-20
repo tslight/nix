@@ -73,6 +73,9 @@
 
   programs.bash = {
     enable = true;
+    initExtra = ''
+stty -ixon # disable ctrl-s/q flow control
+'';
     historyControl = [
       "erasedups"
       "ignoredups"
