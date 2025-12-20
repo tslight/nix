@@ -1,6 +1,4 @@
-{ config, pkgs, ... }:
-
-{
+{ config, pkgs, ... }: {
   nixpkgs.config.allowUnfree = true;
 
   home.username = "anon";
@@ -112,7 +110,7 @@ stty -ixon # disable ctrl-s/q flow control
       user.name  = "Toby Slight";
       user.email = "tslight@pm.me";
       alias = {
-        a = "add";
+        a = "add -A";
         c = "commit -m";
         d = "diff";
         l = "log --graph --decorate --pretty=oneline --abbrev-commit";
@@ -140,7 +138,7 @@ stty -ixon # disable ctrl-s/q flow control
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    extraLuaConfig = builtins.readFile ./dotfiles/nvim/init.lua;
+    extraLuaConfig = builtins.readFile ../config/nvim/init.lua;
   };
 
   programs.readline.enable = true;

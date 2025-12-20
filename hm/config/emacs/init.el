@@ -23,6 +23,7 @@
     (interactive)
     (indent-region (point-min) (point-max)))
   :custom
+  (backup-directory-alist '(("." . "~/.emacs.d/backups")))
   (custom-file (expand-file-name "custom.el" user-emacs-directory))
   (display-time-format "%H:%M %a %d/%m")
   (display-time-default-load-average 'nil)
