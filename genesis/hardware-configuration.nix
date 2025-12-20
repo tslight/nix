@@ -4,8 +4,10 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+  imports = [ 
+    (modulesPath + "/installer/scan/not-detected.nix")
+    ../modules/etc-issue-wordsworth.nix
+    ../modules/kbd-apple-jap.nix
     ];
 
   nixpkgs.config.permittedInsecurePackages = [ "broadcom-sta-6.30.223.271-59-6.17.9" ];
@@ -37,20 +39,4 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   networking.hostName = "genesis"; # Define your hostname.
-  # This was a mad layout to figure out! It's a Japanese Layout MBA
-  # https://bbs.archlinux.org/viewtopic.php?id=260804
-  services.udev.extraHwdb = ''
-  evdev:input:b0003v05ACp0290*
-    KEYBOARD_KEY_70029=capslock
-    KEYBOARD_KEY_70039=fn
-    KEYBOARD_KEY_70090=leftctrl
-    KEYBOARD_KEY_70091=leftctrl
-    KEYBOARD_KEY_700e7=leftalt
-    KEYBOARD_KEY_700e3=leftalt
-    KEYBOARD_KEY_700e2=leftmeta
-    KEYBOARD_KEY_700e0=esc
-    KEYBOARD_KEY_70089=backspace
-    KEYBOARD_KEY_70087=grave
-    KEYBOARD_KEY_ff0003=rightmeta
-  '';
 }

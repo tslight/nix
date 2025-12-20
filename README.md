@@ -59,19 +59,19 @@ https://zero-to-nix.com/
 
 # THE FLEET
 
-| Name                | Manufacturer | Model             | Size |       |
-|---------------------|--------------|-------------------|------|-------|
-| AMFV                | Apple        | MacBook Pro 2011  | 17"  | NixOS |
-| TSOT (nightwolf)    | Apple        | MacBook Air 6,1   | 13"  | NixOS |
-| Genesis             | Apple        | MacBook Air 7,2   | 11"  | NixOS |
-| Hexley              | Apple        | MacBook Pro M1    | 14"  | macOS |
-|---------------------|--------------|-------------------|------|-------|
-| Porridge (martin)   | Pine64       | Pinebook Pro      | 14"  | nixOS |
-|---------------------|--------------|-------------------|------|-------|
-| Nightwolf (cardiel) | Lenovo       | ThinkPad X131e    | 11"  | NixOS |
-| Sahaja (porridge)   | Lenovo       | ThinkPad Yoga 11e | 11"  | NixOS |
-| Cardiel             | Lenovo       | ThinkPad P1 Gen 1 | 15"  | NixOS |
-| Enigma              | Lenovo       | ThinkPad X13      | 13"  | NixOS |
+| Name                | Manufacturer | Model                   | Size |       |
+|---------------------|--------------|-------------------------|------|-------|
+| AMFV                | Apple        | MacBook Pro 2011        | 17"  | NixOS |
+| TSOT (nightwolf)    | Apple        | MacBook Air 6,1         | 13"  | NixOS |
+| Genesis             | Apple        | MacBook Air 7,2         | 11"  | NixOS |
+| Hexley              | Apple        | MacBook Pro M1          | 14"  | macOS |
+|---------------------|--------------|-------------------------|------|-------|
+| Porridge (martin)   | Pine64       | Pinebook Pro            | 14"  | nixOS |
+|---------------------|--------------|-------------------------|------|-------|
+| Nightwolf (cardiel) | Lenovo       | ThinkPad X131e          | 11"  | NixOS |
+| Sahaja (porridge)   | Lenovo       | ThinkPad 11e Yoga Gen 6 | 11"  | NixOS |
+| Cardiel             | Lenovo       | ThinkPad P1 Gen 1       | 15"  | NixOS |
+| Enigma              | Lenovo       | ThinkPad X13 Gen 1      | 13"  | NixOS |
 
 # THE FLEET
 

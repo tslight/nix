@@ -4,8 +4,10 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+  imports = [ 
+    (modulesPath + "/installer/scan/not-detected.nix")
+    ../modules/etc-issue-shri.nix
+    ../modules/kbd-thinkpad-chicklet.nix
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
@@ -35,15 +37,4 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   networking.hostName = "sahaja";
-  services.udev.extraHwdb = ''
-  evdev:input:b0011v0001p0001*
-    KEYBOARD_KEY_01=capslock
-    KEYBOARD_KEY_3a=esc
-    KEYBOARD_KEY_b8=leftctrl
-    KEYBOARD_KEY_38=leftctrl
-    KEYBOARD_KEY_b7=leftalt
-    KEYBOARD_KEY_db=leftalt
-    KEYBOARD_KEY_9d=leftmeta
-    KEYBOARD_KEY_1d=leftmeta
-  '';
 }

@@ -66,6 +66,7 @@
   programs.nano.enable = false; # vomit
   environment.defaultPackages = []; # get rid of nano, perl, rsync, strace
   environment.systemPackages = with pkgs; [ home-manager ];
+  environment.etc."motd".text = "It was a musical thing...";
   # It‘s perfectly fine and recommended to leave this value at the release
   # version of the first install of this system. Before changing this value
   # read the documentation for this option (e.g. man configuration.nix or on

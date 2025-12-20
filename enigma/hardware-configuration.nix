@@ -4,7 +4,11 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
+  imports = [
+  (modulesPath + "/installer/scan/not-detected.nix")
+  ../modules/kbd-thinkpad-chicklet.nix
+  ../modules/etc-issue-cardiel.nix
+  ];
 
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -46,16 +50,4 @@
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   networking.hostName = "enigma";
-
-  services.udev.extraHwdb = ''
-  evdev:input:b0011v0001p0001*
-    KEYBOARD_KEY_01=capslock
-    KEYBOARD_KEY_3a=esc
-    KEYBOARD_KEY_b8=leftctrl
-    KEYBOARD_KEY_38=leftctrl
-    KEYBOARD_KEY_b7=leftalt
-    KEYBOARD_KEY_db=leftalt
-    KEYBOARD_KEY_9d=leftmeta
-    KEYBOARD_KEY_1d=leftmeta
-  '';
 }
