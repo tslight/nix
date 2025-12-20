@@ -7,8 +7,10 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  environment.systemPackages = with pkgs; [ tuigreet niri ];
   services.greetd = {
     enable = true;
+    useTextGreeter = true;
     settings = {
       initial_session = {
         command = "niri-session";
@@ -19,14 +21,7 @@
       # relaunch into it.
       default_session = {
         command = ''
-        ${pkgs.tuigreet}/bin/tuigreet \
-          --greeting "Welcome To NixOS" \
-          --asterisks \
-          --remember \
-          --remember-session \
-          --remember-user-session \
-          --time \
-          --cmd niri-session
+tuigreet --greeting "(0x2b) || !(0x2b) == 00xff" --asterisks --remember --remember-user-session --time --cmd niri-session
         '';
         user = "greeter"; # DO NOT CHANGE THIS USER
       };
