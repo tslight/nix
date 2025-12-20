@@ -161,10 +161,10 @@
       "tabs.show" = "never";
     };
     searchEngines = {
+      DEFAULT = "https://start.duckduckgo.com/lite/?q={}";
       a = "https://wiki.archlinux.org/?search={}";
       d = "https://start.duckduckgo.com/?q={}";
       f = "https://frogfind.com/?q={}";
-      DEFAULT = "https://start.duckduckgo.com/lite/?q={}";
       g = "https://www.google.com/search?q={}";
       n = "https://mynixos.com/search?q={}";
       no = "https://search.nixos.org/options?from=0&size=200&sort=relevance&type=packages&query={}";
@@ -172,6 +172,14 @@
       nw = "https://wiki.nixos.org/w/index.php?search={}";
       w = "https://en.wikipedia.org/wiki/{}";
       yt = "https://www.youtube.com/results?search_query={}";
+    };
+    keyBindings.normal = {
+      "<ctrl-tab>" = "tab-next";
+      "<ctrl-shift-tab" = "tab-prev";
+    };
+    keyBindings.passthrough = {
+      "<ctrl-tab>" = "tab-next";
+      "<ctrl-shift-tab" = "tab-prev";
     };
   };
 }
