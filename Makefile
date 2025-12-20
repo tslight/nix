@@ -11,7 +11,9 @@ nixos:
 	sudo udevadm trigger
 
 # Rebuilt Home Manager
-home:; home-manager switch --flake ./home
+home:
+	cd ./home && nix flake update
+	home-manager switch --flake ./home
 
 # Rebuilt NixOS & Home Manager
 all: nixos home
