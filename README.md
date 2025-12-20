@@ -59,13 +59,14 @@ https://zero-to-nix.com/
 
 # THE FLEET
 
-| Name     | Manufacturer | Model             | Size |       |
-|----------|--------------|-------------------|------|-------|
-|          | Apple        | MacBook Pro 2011  | 17"  | NixOS |
-|          | Apple        | MacBook Air 2014  | 13"  | NixOS |
-| Genesis  | Apple        | MacBook Air 2014  | 11"  | NixOS |
-| Hexley   | Apple        | MacBook Pro M1    | 14"  | macOS |
-|          | Lenovo       | ThinkPad X131e    |      | NixOS |
-| Porridge | Lenovo       | ThinkPad Yoga 11e | 11"  | NixOS |
-| Cardiel  | Lenovo       | P1 Gen 1          | 15"  | NixOS |
-| Enigma   | Lenovo       | X13               | 13"  | NixOS |
+| Name      | Manufacturer | Model             | Size |       |
+|-----------|--------------|-------------------|------|-------|
+| AMFV      | Apple        | MacBook Pro 2011  | 17"  | NixOS |
+| TSOT      | Apple        | MacBook Air 2014  | 13"  | NixOS |
+| Genesis   | Apple        | MacBook Air 2014  | 11"  | NixOS |
+| Hexley    | Apple        | MacBook Pro M1    | 14"  | macOS |
+| Porridge  | Pine64       | Pinebook Pro      | 14"  | nixOS |
+| Nightwolf | Lenovo       | ThinkPad X131e    | 11"  | NixOS |
+| Sahaja    | Lenovo       | ThinkPad Yoga 11e | 11"  | NixOS |
+| Cardiel   | Lenovo       | P1 Gen 1          | 15"  | NixOS |
+| Enigma    | Lenovo       | X13               | 13"  | NixOS |
