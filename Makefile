@@ -8,13 +8,13 @@ help:; @awk '/^#/{c=substr($$0,3);next}c&&/^[[:alpha:]][[:alnum:]_-]+:/{print su
 update:; nix flake update && cd ./home && nix flake update
 
 # Rebuilt NixOS system
-nixos:;	sudo nixos-rebuild switch --upgrade --flake .
+os:; sudo nixos-rebuild switch --upgrade --flake .
 
 # Rebuilt Home Manager
 home:; home-manager switch --flake ./home
 
 # Rebuilt NixOS & Home Manager
-all: update nixos home
+all: os home
 
 # Garbage Collect Nix
 clean:
