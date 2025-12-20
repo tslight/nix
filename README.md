@@ -16,16 +16,7 @@ I didn't have the time or inclination to spend hours figuring it out...
 Looking back at the code a couple of years down the line - it seems overly
 complicated and hard to maintain/debug (for a nix noob like me at least)...
 
-This time, I'm going slowly and keeping it simple. So far I've used the
-following resources for guidance:
-
-https://phip1611.de/blog/migrate-stock-nixos-configuration-to-flake/
-
-https://www.youtube.com/playlist?list=PL_WcXIXdDWWpuypAEKzZF2b5PijTluxRG
-
-https://nix.dev/tutorials/nix-language
-
-https://zero-to-nix.com/
+This time, I'm going slowly and aiming to *K.I.S.S*....
 
 # INSTALLATION
 
@@ -60,38 +51,35 @@ cp /etc/nixos/hardware-configuration.nix ./os/hosts/$NEW_HOSTNAME.nix
 * Run `git add -A`, as when using Nix flakes, only files that are
 tracked by Git and not ignored by your `.gitignore` are included in
 the flake's source.
-* Run `sudo nixos-rebuild switch --flake .#"$NEW_HOSTNAME"`
+* Run `sudo nixos-rebuild switch --flake .#"$NEW_HOSTNAME"`.
+* Run `make home`.
 * Reboot, to ensure we can successfully boot from the flake's
 derivation.
 * Run `make clean` to delete all the old channel cruft.
 * Run `make setup` to upload newly created SSH keys to GitHub and then
 change our git remote.
-* Commit and push your changes. Profit!
+* Commit and push the new host. Profit!
 
 # THE FLEET
 
-| Name                | Manufacturer | Model                   | Size |       |
-|---------------------|--------------|-------------------------|------|-------|
-| AMFV                | Apple        | MacBook Pro 2011        | 17"  | NixOS |
-| TSOT (nightwolf)    | Apple        | MacBook Air 6,1         | 13"  | NixOS |
-| Genesis             | Apple        | MacBook Air 7,2         | 11"  | NixOS |
-| Hexley              | Apple        | MacBook Pro M1          | 14"  | macOS |
-|---------------------|--------------|-------------------------|------|-------|
-| Porridge (martin)   | Pine64       | Pinebook Pro            | 14"  | nixOS |
-|---------------------|--------------|-------------------------|------|-------|
-| Nightwolf (cardiel) | Lenovo       | ThinkPad X131e          | 11"  | NixOS |
-| Sahaja (porridge)   | Lenovo       | ThinkPad 11e Yoga Gen 6 | 11"  | NixOS |
-| Cardiel             | Lenovo       | ThinkPad P1 Gen 1       | 15"  | NixOS |
-| Enigma              | Lenovo       | ThinkPad X13 Gen 1      | 13"  | NixOS |
+| **Host**    | **Device**                      | **Size** | **OS** |
+|-------------|---------------------------------|----------|--------|
+| `amfv`      | Apple   MacBook Pro 2011        | 17"      | NixOS  |
+| `tsot`      | Apple   MacBook Air 6,1         | 13"      | NixOS  |
+| `genesis`   | Apple   MacBook Air 7,2         | 11"      | NixOS  |
+| `hexley`    | Apple   MacBook Pro M1          | 14"      | macOS  |
+| `porridge`  | Pine64  Pinebook Pro            | 14"      | NixOS  |
+| `nightwolf` | Lenovo  ThinkPad X131e          | 11"      | NixOS  |
+| `sahaja`    | Lenovo  ThinkPad 11e Yoga Gen 6 | 11"      | NixOS  |
+| `cardiel`   | Lenovo  ThinkPad P1 Gen 1       | 15"      | NixOS  |
+| `enigma`    | Lenovo  ThinkPad X13 Gen 1      | 13"      | NixOS  |
 
-# THE FLEET
+# RESOURCES
 
-| Hostname    | Make   | Model                  | RAM  | DISK          | OS    |
-|-------------|--------|------------------------|------|---------------|-------|
-| `cardiel`   | Lenovo | ThinkPad X131E         | 16GB | 256GB + 512GB | NixOS |
-| `enigma`    | Lenovo | ThinkPad T13 AMD Gen 1 | 8G   | 4TB           | NixOS |
-| `martin`    | Pine64 | Pinebook Pro           | 4G   | 128GB + 512GB | NixOS |
-| `nightwolf` | Apple  | MacBook Air 7,2        | 8G   | 256GB         | NixOS |
-| `porridge`  | Lenovo | ThinkPad 11e Yoga      | 8G   | 128GB         | NixOS |
-| `terence`   | Lenovo | ThinkPad T14 AMD Gen 1 | 32GB | 4TB           | NixOS |
-| `hexley`    | Apple  | MacBook Pro            | 16GB | 512GB         | MacOS |
+https://phip1611.de/blog/migrate-stock-nixos-configuration-to-flake/
+
+https://www.youtube.com/playlist?list=PL_WcXIXdDWWpuypAEKzZF2b5PijTluxRG
+
+https://nix.dev/tutorials/nix-language
+
+https://zero-to-nix.com/
