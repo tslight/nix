@@ -112,3 +112,5 @@
 ;;;; Copilot
 (use-package copilot :ensure)
 (use-package copilot-chat :ensure)
+;;;; KDL Mode
+(use-package kdl-mode :ensure)
