@@ -56,3 +56,16 @@ https://zero-to-nix.com/
 * Run `make setup` to upload newly created SSH keys to GitHub and then
   change our git remote.
 * Commit and push your changes. Profit!
+
+# THE FLEET
+
+| Name     | Manufacturer | Model             | Size |       |
+|----------|--------------|-------------------|------|-------|
+|          | Apple        | MacBook Pro 2011  | 17"  | NixOS |
+|          | Apple        | MacBook Air 2014  | 13"  | NixOS |
+| Genesis  | Apple        | MacBook Air 2014  | 11"  | NixOS |
+| Hexley   | Apple        | MacBook Pro M1    | 14"  | macOS |
+|          | Lenovo       | ThinkPad X131e    |      | NixOS |
+| Porridge | Lenovo       | ThinkPad Yoga 11e | 11"  | NixOS |
+| Cardiel  | Lenovo       | P1 Gen 1          | 15"  | NixOS |
+| Enigma   | Lenovo       | X13               | 13"  | NixOS |
