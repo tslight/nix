@@ -59,14 +59,28 @@ https://zero-to-nix.com/
 
 # THE FLEET
 
-| Name      | Manufacturer | Model             | Size |       |
-|-----------|--------------|-------------------|------|-------|
-| AMFV      | Apple        | MacBook Pro 2011  | 17"  | NixOS |
-| TSOT      | Apple        | MacBook Air 2014  | 13"  | NixOS |
-| Genesis   | Apple        | MacBook Air 2014  | 11"  | NixOS |
-| Hexley    | Apple        | MacBook Pro M1    | 14"  | macOS |
-| Porridge  | Pine64       | Pinebook Pro      | 14"  | nixOS |
-| Nightwolf | Lenovo       | ThinkPad X131e    | 11"  | NixOS |
-| Sahaja    | Lenovo       | ThinkPad Yoga 11e | 11"  | NixOS |
-| Cardiel   | Lenovo       | P1 Gen 1          | 15"  | NixOS |
-| Enigma    | Lenovo       | X13               | 13"  | NixOS |
+| Name                | Manufacturer | Model             | Size |       |
+|---------------------|--------------|-------------------|------|-------|
+| AMFV                | Apple        | MacBook Pro 2011  | 17"  | NixOS |
+| TSOT (nightwolf)    | Apple        | MacBook Air 6,1   | 13"  | NixOS |
+| Genesis             | Apple        | MacBook Air 7,2   | 11"  | NixOS |
+| Hexley              | Apple        | MacBook Pro M1    | 14"  | macOS |
+|---------------------|--------------|-------------------|------|-------|
+| Porridge (martin)   | Pine64       | Pinebook Pro      | 14"  | nixOS |
+|---------------------|--------------|-------------------|------|-------|
+| Nightwolf (cardiel) | Lenovo       | ThinkPad X131e    | 11"  | NixOS |
+| Sahaja (porridge)   | Lenovo       | ThinkPad Yoga 11e | 11"  | NixOS |
+| Cardiel             | Lenovo       | ThinkPad P1 Gen 1 | 15"  | NixOS |
+| Enigma              | Lenovo       | ThinkPad X13      | 13"  | NixOS |
+
+# THE FLEET
+
+| Hostname    | Make   | Model                  | RAM  | DISK          | OS    |
+|-------------|--------|------------------------|------|---------------|-------|
+| `cardiel`   | Lenovo | ThinkPad X131E         | 16GB | 256GB + 512GB | NixOS |
+| `enigma`    | Lenovo | ThinkPad T13 AMD Gen 1 | 8G   | 4TB           | NixOS |
+| `martin`    | Pine64 | Pinebook Pro           | 4G   | 128GB + 512GB | NixOS |
+| `nightwolf` | Apple  | MacBook Air 7,2        | 8G   | 256GB         | NixOS |
+| `porridge`  | Lenovo | ThinkPad 11e Yoga      | 8G   | 128GB         | NixOS |
+| `terence`   | Lenovo | ThinkPad T14 AMD Gen 1 | 32GB | 4TB           | NixOS |
+| `hexley`    | Apple  | MacBook Pro            | 16GB | 512GB         | MacOS |
