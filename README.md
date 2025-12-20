@@ -40,7 +40,7 @@ mkdir ./os/hosts/$NEW_HOSTNAME
 cp /etc/nixos/hardware-configuration.nix ./os/hosts/$NEW_HOSTNAME.nix
 ```
 
-* Add the following to the top of `./os/hosts/$NEW_HOSTNAME.nix`:
+* Add/Edit the following at the top of `./os/hosts/$NEW_HOSTNAME.nix`:
 
 ```nix
 { lib, modulesPath, host, system, ... }: {
@@ -52,10 +52,13 @@ cp /etc/nixos/hardware-configuration.nix ./os/hosts/$NEW_HOSTNAME.nix
   # The system & host vars are getting passed in from the flake
   nixpkgs.hostPlatform = lib.mkDefault system;
   networking.hostName = host;
+
+  # Rest of hardware config goes here...
+}
 ```
 
 * Run `git add -A`, as when using Nix flakes, only files that are
-tracked by Git and not ignored by your ~.gitignore~ are included in
+tracked by Git and not ignored by your `.gitignore` are included in
 the flake's source.
 * Run `sudo nixos-rebuild switch --flake .#"$NEW_HOSTNAME"`
 * Reboot, to ensure we can successfully boot from the flake's
