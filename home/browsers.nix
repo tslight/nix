@@ -143,7 +143,7 @@
       "privacy.donottrackheader.enabled" = true;
       "privacy.fingerprintingProtection" = true;
       "privacy.resistFingerprinting" = true;
-      "privacy.resistFingerprinting.letterboxing" = true;
+      "privacy.resistFingerprinting.letterboxing" = false;
       "privacy.sanitize.sanitizeOnShutdown" = false; # override librewolf default
       "privacy.trackingprotection.allow_list.convenience.enabled" = false;
       "privacy.trackingprotection.emailtracking.enabled" = true;

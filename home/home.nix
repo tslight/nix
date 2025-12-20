@@ -140,7 +140,7 @@ stty -ixon # disable ctrl-s/q flow control
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    extraLuaConfig = builtins.readFile ./dotfiles/init.lua;
+    extraLuaConfig = builtins.readFile ./dotfiles/nvim/init.lua;
   };
 
   programs.readline.enable = true;
@@ -186,11 +186,13 @@ stty -ixon # disable ctrl-s/q flow control
       inherit (pkgs.yaziPlugins) git;
       inherit (pkgs.yaziPlugins) lazygit;
     };
-    initLua = ''require("git"):setup()'';
+    initLua = ''
+require("git"):setup()
+'';
     keymap = {
       mgr.prepend_keymap = [
         {
-          on = [ "g" "i" ];
+          on = [ "g" "l" ];
           run = "plugin lazygit";
           desc = "Run you Lazy Git!";
         }
@@ -202,6 +204,18 @@ stty -ixon # disable ctrl-s/q flow control
         ratio = [ 1 2 5 ];
       };
     };
+    settings.plugin.prepend_fetchers = [
+      {
+        id   = "git";
+        name = "*";
+        run  = "git";
+      }
+      {
+        id   = "git";
+        name = "*/";
+        run  = "git";
+      }
+    ];
   };
 
   programs.zsh = {

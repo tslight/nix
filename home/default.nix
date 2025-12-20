@@ -22,11 +22,9 @@
   ];
 
   home.file = {
-    # ".config/starship.toml".source = dotfiles/starship.toml;
-    # ".config/emacs/early-init.el".source = dotfiles/early-init.el;
-    ".config/emacs/init.el".source = dotfiles/init.el;
-    ".config/fuzzel/fuzzel.ini".source = dotfiles/fuzzel.ini;
-    ".config/niri/config.kdl".source = dotfiles/niri.kdl;
+    ".config/emacs/init.el".source = dotfiles/emacs/init.el;
+    ".config/fuzzel/fuzzel.ini".source = dotfiles/fuzzel/fuzzel.ini;
+    ".config/niri/config.kdl".source = dotfiles/niri/config.kdl;
     ".config/waybar/config.jsonc".source = dotfiles/waybar/config.jsonc;
     ".config/waybar/style.css".source = dotfiles/waybar/style.css;
     ".config/waybar/power_menu.xml".source = dotfiles/waybar/power_menu.xml;
