@@ -3,7 +3,7 @@
   :init
   (column-number-mode)
   (load-theme 'modus-vivendi)
-  (set-frame-font "Monospace 12" nil t)
+  (set-frame-font "JetBrainsMono Nerd Font 13" nil t)
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
@@ -114,3 +114,5 @@
 (use-package copilot-chat :ensure)
 ;;;; KDL Mode
 (use-package kdl-mode :ensure)
+;;;; Vterm
+(use-package vterm :ensure)
