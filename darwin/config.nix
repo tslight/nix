@@ -6,9 +6,7 @@ let
   user = "anon";
 in
 {
-  imports = [
-    (import ./system.nix { user = user; })
-  ];
+  imports = [ (import ./system.nix { user = user; }) ];
 
   nix.enable = false;
 
