@@ -221,7 +221,7 @@ binds {
 
   // Suggested binds for running programs: terminal, app launcher, screen locker.
   Mod+E hotkey-overlay-title="Open Editor" { spawn "nirirun" "emacs"; }
-  Mod+T hotkey-overlay-title="Open Terminal" { spawn "nirirun" "kitty"; }
+  Mod+T hotkey-overlay-title="Open Terminal" { spawn "nirirun" "foot" "-e" "tmux"; }
   Mod+W hotkey-overlay-title="Open Web Browser" { spawn "nirirun" "librewolf"; }
   Mod+Space hotkey-overlay-title="Launch Programs" { spawn "fuzzel"; }
   Mod+Ctrl+Q hotkey-overlay-title="Lock Screen" { spawn "swaylock" "-c" "000000"; }
