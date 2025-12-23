@@ -5,7 +5,7 @@
     ../modules/etc-issue-cardiel.nix
     ../modules/battery.nix
     ../modules/minimal.nix
-    ../modules/niri.nix
+    ../modules/wayland.nix
   ];
 
   # The system & host vars are getting passed in from the flake

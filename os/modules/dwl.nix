@@ -30,14 +30,25 @@ in
       settings = {
         main = {
           font = "JetBrainsMono Nerd Font:size=13";
+          pad = "0x0";
         };
         mouse = {
           hide-when-typing = "yes";
         };
+        colors = {
+          background = "000000";
+        };
       };
     };
   };
+
   environment.systemPackages = with pkgs; [ wmenu ];
   # Needed for glyph support in foot
   fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
+
+  services.libinput = {
+    enable = true;
+    touchpad.naturalScrolling = true;
+    mouse.naturalScrolling = true; # Optional, for mice
+  };
 }

@@ -1,4 +1,11 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  waylandEmacsVterm =
+    (pkgs.emacsPackagesFor pkgs.emacs-pgtk).emacsWithPackages (epkgs: [
+      epkgs.vterm
+    ]);
+in
+{
   services.printing.enable = true;
   services.pulseaudio.enable = false;
   services.pipewire = {
@@ -7,7 +14,33 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  environment.systemPackages = with pkgs; [ tuigreet niri ];
+  security.rtkit.enable = true; # for audio I think
+
+  fonts.packages = with pkgs; [
+    font-awesome# for waybar
+    nerd-fonts.jetbrains-mono # for foot glyphs
+  ];
+
+  environment.systemPackages = with pkgs; [
+    aspell
+    aspellDicts.en
+    aspellDicts.en-computers
+    aspellDicts.en-science
+    brightnessctl
+    dropbox-cli
+    foot
+    fuzzel
+    imagemagick
+    niri
+    playerctl
+    swayidle
+    swaylock
+    tuigreet
+    waylandEmacsVterm
+    waybar
+    wlsunset
+  ];
+
   services.greetd = {
     enable = true;
     useTextGreeter = true;
@@ -27,7 +60,6 @@ tuigreet --greeting "(0x2b) || !(0x2b) == 00xff" --asterisks --remember --rememb
       };
     };
   };
-  security.rtkit.enable = true; # for audio I think
 
   programs.niri.enable = true;
 }
