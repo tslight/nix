@@ -1,6 +1,0 @@
-{ ... }: {
-  nixpkgs.config.allowUnfree = true;
-  home.username = "anon";
-  home.homeDirectory = "/home/anon";
-  home.stateVersion = "25.11"; # Please read the comment before changing.
-}
