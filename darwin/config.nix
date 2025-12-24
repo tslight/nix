@@ -18,14 +18,13 @@ in
 
   environment.systemPackages = with pkgs; [
     bash
+    coreutils
     curl
     dua # ncdu with dua i
-    dust # du
     emacsVterm
     fd # find
     fzf
     jq
-    lsd # ls
     ripgrep # grep
     tokei # linecount
     wget
