@@ -15,9 +15,6 @@ hm:
 # Rebuild Nix Darwin
 darwin:; sudo darwin-rebuild switch --flake ./darwin
 
-# Rebuilt NixOS & Home Manager
-all: os hm
-
 # Garbage Collect Nix
 clean:
 	sudo nix-channel --remove nixos
