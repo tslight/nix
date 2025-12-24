@@ -1,10 +1,4 @@
 { pkgs, ... }:
-let
-  waylandEmacsVterm =
-    (pkgs.emacsPackagesFor pkgs.emacs-pgtk).emacsWithPackages (epkgs: [
-      epkgs.vterm
-    ]);
-in
 {
   services.printing.enable = true;
   services.pulseaudio.enable = false;
@@ -53,6 +47,11 @@ tuigreet --greeting "(0x2b) || !(0x2b) == 00xff" --asterisks --remember --rememb
   };
 
   programs.niri.enable = true;
+  imports = [
+    ../../common/browsers.nix
+    ../../common/emacs.nix
+  ];
+  programs.emacs.package = pkgs.emacs-pgtk;
 
   fonts.packages = with pkgs; [
     font-awesome# for waybar
@@ -60,10 +59,6 @@ tuigreet --greeting "(0x2b) || !(0x2b) == 00xff" --asterisks --remember --rememb
   ];
 
   environment.systemPackages = with pkgs; [
-    aspell
-    aspellDicts.en
-    aspellDicts.en-computers
-    aspellDicts.en-science
     brightnessctl
     dropbox-cli
     fuzzel
@@ -72,7 +67,6 @@ tuigreet --greeting "(0x2b) || !(0x2b) == 00xff" --asterisks --remember --rememb
     swayidle
     swaylock
     tuigreet
-    waylandEmacsVterm
     waybar
     wlsunset
   ];

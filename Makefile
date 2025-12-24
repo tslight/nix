@@ -1,20 +1,19 @@
 .DEFAULT_GOAL := help
-.PHONY: all os hm clean help setup
+.PHONY: all darwin nixos hm clean help setup
 
 # Show this help.
 help:; @awk '/^#/{c=substr($$0,3);next}c&&/^[[:alpha:]][[:alnum:]_-]+:/{print substr($$1,1,index($$1,":")),c}1{c=0}' $(MAKEFILE_LIST) | column -s: -t
 
-# Update Flakes
-update:; nix flake update && cd ./hm && nix flake update
-
 # Rebuilt NixOS system
-os:; sudo nixos-rebuild switch --flake .
+nixos:; sudo nixos-rebuild switch --flake ./nixos
 
 # Rebuilt Home Manager
-hm:; home-manager switch --flake ./hm
+hm:
+	home-manager switch --flake ./hm
+	nix run home-manager/release-23.11 -- uninstall
 
 # Rebuild Nix Darwin
-mac:; sudo darwin-rebuild switch --flake ./darwin
+darwin:; sudo darwin-rebuild switch --flake ./darwin
 
 # Rebuilt NixOS & Home Manager
 all: os hm

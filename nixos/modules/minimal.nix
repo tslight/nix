@@ -64,7 +64,20 @@
   nixpkgs.config.allowUnfree = true;
   programs.nano.enable = false; # vomit
   environment.defaultPackages = []; # get rid of nano, perl, rsync, strace
-  environment.systemPackages = with pkgs; [ ed home-manager ];
+  environment.systemPackages = with pkgs; [
+    bat # cat
+    bottom # top
+    dua # ncdu with dua i
+    fd # find
+    fzf
+    gcc
+    git
+    gnumake
+    jq
+    ripgrep # grep
+    tokei # linecount
+    wget
+  ];
   # It‘s perfectly fine and recommended to leave this value at the release
   # version of the first install of this system. Before changing this value
   # read the documentation for this option (e.g. man configuration.nix or on
