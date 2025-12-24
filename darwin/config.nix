@@ -17,8 +17,18 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
+    bash
+    curl
+    dua # ncdu with dua i
+    dust # du
     emacsVterm
-    librewolf
+    fd # find
+    fzf
+    jq
+    lsd # ls
+    ripgrep # grep
+    tokei # linecount
+    wget
   ];
 
   # Necessary for using flakes on this system.

@@ -14,7 +14,7 @@ os:; sudo nixos-rebuild switch --flake .
 hm:; home-manager switch --flake ./hm
 
 # Rebuild Nix Darwin
-mac:; sudo darwin-rebuild switch --flake .
+mac:; sudo darwin-rebuild switch --flake ./darwin
 
 # Rebuilt NixOS & Home Manager
 all: os hm
