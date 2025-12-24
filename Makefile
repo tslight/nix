@@ -10,7 +10,7 @@ nixos:; sudo nixos-rebuild switch --flake ./nixos
 # Rebuilt Home Manager
 hm:
 	home-manager switch --flake ./hm
-	nix run home-manager/release-23.11 -- uninstall
+	nix run home-manager/release-25.11 -- uninstall
 
 # Rebuild Nix Darwin
 darwin:; sudo darwin-rebuild switch --flake ./darwin
