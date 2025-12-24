@@ -1,12 +1,10 @@
 { pkgs, configRev ? null, system, ... }:
-let
-  emacsVterm = (pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages (epkgs: [
-    epkgs.vterm
-  ]);
-  user = "anon";
-in
+let user = "anon"; in
 {
-  imports = [ (import ./system.nix { user = user; }) ];
+  imports = [
+    (import ./system.nix { user = user; })
+    ../common/emacs.nix
+  ];
 
   nix.enable = false;
 
@@ -16,12 +14,15 @@ in
     nerd-fonts.jetbrains-mono
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
+  programs.emacs.package = pkgs.emacs;
+
   environment.systemPackages = with pkgs; [
     bash
     coreutils
     curl
     dua # ncdu with dua i
-    emacsVterm
     fd # find
     fzf
     jq
