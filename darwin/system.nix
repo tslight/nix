@@ -23,11 +23,16 @@
     dock.minimize-to-application = true;
     dock.mru-spaces = false;
     dock.orientation = "left";
-    dock.persistent-apps = [];
+    dock.persistent-apps = [
+      { app = "/Applications/Nix Apps/Emacs.app"; }
+    ];
     dock.persistent-others = [
       { folder = { path = "/Users/${user}"; showas = "list"; }; }
       { folder = { path = "/Users/${user}/Downloads"; showas = "grid"; }; }
     ];
+    dock.showAppExposeGestureEnabled = true;
+    dock.showLaunchpadGestureEnabled = true;
+    dock.showMissionControlGestureEnabled = true;
     dock.tilesize = 42;
     dock.wvous-bl-corner = 11; # Launchpad
     dock.wvous-br-corner = 4; # Desktop
