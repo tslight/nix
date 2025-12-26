@@ -1,7 +1,7 @@
 { config, lib, modulesPath, host, system, ... }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    ../modules/etc-issue-wordsworth.nix
+    (import ../modules/issue.nix { issueName = "wordsworth"; })
     ../modules/kbd-apple-jap.nix
     ../modules/battery.nix
     ../modules/minimal.nix

@@ -1,8 +1,8 @@
 { config, lib, modulesPath, host, system, ... }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
+    (import ../modules/issue.nix { issueName = "cardiel"; })
     ../modules/kbd-thinkpad-chicklet.nix
-    ../modules/etc-issue-cardiel.nix
     ../modules/battery.nix
     ../modules/minimal.nix
     ../modules/wayland.nix
