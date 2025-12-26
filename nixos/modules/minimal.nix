@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -75,6 +74,7 @@
     gnumake
     jq
     ripgrep # grep
+    tmux
     tokei # linecount
     wget
   ];
