@@ -2,7 +2,6 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     (import ../modules/issue.nix { issueName = "shri"; })
-    ../modules/etc-issue-shri.nix
     ../modules/kbd-thinkpad-chicklet.nix
     ../modules/battery.nix
     ../modules/minimal.nix

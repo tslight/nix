@@ -15,7 +15,9 @@ When you become one with the divine, the divine starts flowing through you and y
 \e[1;33m~ \e[1;35mH.H. Shri Mataji Nirmala Devi - 1984\e[0m (\l)
 
     '';
-    turing = ''\e[1;32mHyperboloids of wondrous light
+    turing = ''\e[1;32m
+
+Hyperboloids of wondrous light
 Rolling for age through Space and Time
 Harbour there Waves which somehow Might
 Play out God’s holy pantomime
@@ -28,6 +30,11 @@ Play out God’s holy pantomime
 The marble index of a mind forever Voyaging through Strange Seas of thought, alone.
 
 \e[1;33m~\e[1;35m William Wordsworth - The Prelude, Book 3\e[0m (\l)
+
+    '';
+    judy = ''\e[1;32mSomewhere over the rainbow, skies are blue, and the dreams that you dare to dream really do come true.
+
+\e[1;33m~ \e[1;35mJudy Garland\e[0m (\l)
 
     '';
   };
