@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := help
-.PHONY: all darwin nixos hm clean help setup
+.PHONY: darwin nixos clean help setup
 
 # Show this help.
 help:; @awk '/^#/{c=substr($$0,3);next}c&&/^[[:alpha:]][[:alnum:]_-]+:/{print substr($$1,1,index($$1,":")),c}1{c=0}' $(MAKEFILE_LIST) | column -s: -t
