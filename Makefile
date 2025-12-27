@@ -7,11 +7,6 @@ help:; @awk '/^#/{c=substr($$0,3);next}c&&/^[[:alpha:]][[:alnum:]_-]+:/{print su
 # Rebuilt NixOS system
 nixos:; sudo nixos-rebuild switch --flake ./nixos
 
-# Rebuilt Home Manager
-hm:
-	home-manager switch --flake ./hm
-	nix run home-manager/release-25.11 -- uninstall
-
 # Rebuild Nix Darwin
 darwin:; sudo darwin-rebuild switch --flake ./darwin
 
