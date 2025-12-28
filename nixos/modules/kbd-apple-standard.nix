@@ -1,6 +1,6 @@
 {
   services.udev.extraHwdb = ''
-  evdev:input:b0003v05ACp029*
+  evdev:input:b0003v05ACp*
     KEYBOARD_KEY_70029=capslock         # esc   --> caps
     KEYBOARD_KEY_70039=esc              # caps  --> esc
     KEYBOARD_KEY_700e7=leftctrl         # cmd --> ctrl
