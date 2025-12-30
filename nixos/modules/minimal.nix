@@ -8,11 +8,13 @@
     dates = "weekly";
     options = "--delete-older-than 10d";
   };
+
   # free up to 1GiB whenever there is less than 100MiB left
   nix.extraOptions = ''
   min-free = ${toString (100 * 1024 * 1024)}
   max-free = ${toString (1024 * 1024 * 1024)}
-    '';
+  '';
+
   nix.optimise.automatic = true; # reduce disk usage of /nix
   nix.optimise.dates = [ "03:00" ]; # optimisation schedule
 
@@ -78,6 +80,7 @@
     tokei # linecount
     wget
   ];
+
   # It‘s perfectly fine and recommended to leave this value at the release
   # version of the first install of this system. Before changing this value
   # read the documentation for this option (e.g. man configuration.nix or on
