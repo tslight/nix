@@ -37,6 +37,11 @@ The marble index of a mind forever Voyaging through Strange Seas of thought, alo
 \e[1;33m~ \e[1;35mJudy Garland\e[0m (\l)
 
     '';
+    penny = ''\e[1;32mLife is a dream come true.
+
+\e[1;33m~ \e[1;35mTom Penny\e[0m (\l)
+
+    '';
   };
 in
   {
