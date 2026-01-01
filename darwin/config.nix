@@ -16,7 +16,7 @@ let user = "anon"; in
 
   nixpkgs.config.allowUnfree = true;
 
-  programs.emacs.package = pkgs.emacs;
+  programs.emacs.package = pkgs.emacs-macport;
 
   environment.systemPackages = with pkgs; [
     bash
