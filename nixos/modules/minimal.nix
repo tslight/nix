@@ -69,12 +69,16 @@
     bat # cat
     bottom # top
     dua # ncdu with dua i
+    dust # du
+    dysk # df
     fd # find
     fzf
     gcc
     git
     gnumake
+    jless # json less
     jq
+    lsd # ls
     ripgrep # grep
     tmux
     tokei # linecount
