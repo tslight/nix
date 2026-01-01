@@ -28,15 +28,18 @@ let
     aspellDicts.en-computers
     aspellDicts.en-science
   ];
-  emacsWithBatteries = [ emacsVterm ] ++ lspPackages ++ spellPackages;
+  miscPackages = with pkgs; [
+    imagemagick
+  ];
+  emacsWithBatteries = [ emacsVterm ] ++ lspPackages ++ spellPackages ++ miscPackages ;
 in
-{
-  options.programs.emacs.package = lib.mkOption {
-    type = lib.types.package;
-    default = pkgs.emacs;
-    description = "Emacs package to use (e.g. emacs-pgtk, emacs-nox, etc)";
-  };
-  config = {
-    environment.systemPackages = emacsWithBatteries;
-  };
-}
+  {
+    options.programs.emacs.package = lib.mkOption {
+      type = lib.types.package;
+      default = pkgs.emacs;
+      description = "Emacs package to use (e.g. emacs-pgtk, emacs-nox, etc)";
+    };
+    config = {
+      environment.systemPackages = emacsWithBatteries;
+    };
+  }

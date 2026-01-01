@@ -2,7 +2,7 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     (import ../modules/issue.nix { issueName = "wordsworth"; })
-    ../modules/kbd-apple-jap.nix
+    ../modules/kbd-apple-jis.nix
     ../modules/battery.nix
     ../modules/minimal.nix
     ../modules/wayland.nix
@@ -19,19 +19,19 @@
   boot.kernelModules = [ "kvm-intel" "wl" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
-  fileSystems."/" =
-    { device = "/dev/mapper/luks-6d5b0aa3-78d1-4214-811c-bd6c9aeb1475";
-      fsType = "ext4";
-    };
+  fileSystems."/" ={
+    device = "/dev/mapper/luks-6d5b0aa3-78d1-4214-811c-bd6c9aeb1475";
+    fsType = "ext4";
+  };
 
   boot.initrd.luks.devices."luks-6d5b0aa3-78d1-4214-811c-bd6c9aeb1475".device = "/dev/disk/by-uuid/6d5b0aa3-78d1-4214-811c-bd6c9aeb1475";
   boot.initrd.luks.devices."luks-6d5b0aa3-78d1-4214-811c-bd6c9aeb1475".allowDiscards = true;
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/BB34-3479";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/BB34-3479";
+    fsType = "vfat";
+    options = [ "fmask=0077" "dmask=0077" ];
+  };
 
   swapDevices = [{ device = "/var/lib/swapfile"; size = 4*1024; }];
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
