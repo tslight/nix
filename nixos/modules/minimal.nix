@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  imports = [ ../../common/utils.nix ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # https://wiki.nixos.org/wiki/Storage_optimization
@@ -11,7 +12,7 @@
 
   # free up to 1GiB whenever there is less than 100MiB left
   nix.extraOptions = ''
-  min-free = ${toString (100 * 1024 * 1024)}
+    min-free = ${toString (100 * 1024 * 1024)}
   max-free = ${toString (1024 * 1024 * 1024)}
   '';
 
@@ -64,27 +65,7 @@
 
   nixpkgs.config.allowUnfree = true;
   programs.nano.enable = false; # vomit
-  environment.defaultPackages = []; # get rid of nano, perl, rsync, strace
-  environment.systemPackages = with pkgs; [
-    bat # cat
-    bottom # top
-    dua # ncdu with dua i
-    dust # du
-    dysk # df
-    fd # find
-    fzf
-    gcc
-    git
-    gnumake
-    jless # json less
-    jq
-    lsd # ls
-    ripgrep # grep
-    tmux
-    tokei # linecount
-    wget
-    yazi # ranger
-  ];
+  environment.defaultPackages = with pkgs; [ strace ]; # get rid of nano, perl, rsync
 
   # It‘s perfectly fine and recommended to leave this value at the release
   # version of the first install of this system. Before changing this value
