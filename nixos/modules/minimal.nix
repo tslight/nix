@@ -83,6 +83,7 @@
     tmux
     tokei # linecount
     wget
+    yazi # ranger
   ];
 
   # It‘s perfectly fine and recommended to leave this value at the release
