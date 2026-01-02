@@ -65,8 +65,13 @@
 
   nixpkgs.config.allowUnfree = true;
   programs.nano.enable = false; # vomit
-  environment.defaultPackages = with pkgs; [ strace ]; # get rid of nano, perl, rsync
-  environment.systemPackages = with pkgs; [ lm_sensors ];
+  environment.defaultPackages = with pkgs; [
+    gptfdisk
+    lm_sensors
+    powertop
+    pciutils
+    strace
+  ];
 
   # It‘s perfectly fine and recommended to leave this value at the release
   # version of the first install of this system. Before changing this value
