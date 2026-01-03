@@ -6,36 +6,28 @@
     ../modules/battery.nix
     ../modules/minimal.nix
     ../modules/wayland.nix
-    ];
+  ];
 
   # The system & host vars are getting passed in from the flake
   nixpkgs.hostPlatform = lib.mkDefault system;
   networking.hostName = host;
 
   boot.initrd.availableKernelModules = [ "uhci_hcd" "ehci_pci" "ahci" "firewire_ohci" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ "i915" ];
-  boot.kernelModules = [ "kvm-intel" "wl" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "wl" ];
   nixpkgs.config.permittedInsecurePackages = [ "broadcom-sta-6.30.223.271-59-6.17.9" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
-  boot.blacklistedKernelModules = [ "amdgpu" "radeon" ];
-  boot.kernelParams = [
-	"modprobe.blacklist=amdgpu"
-	"modprobe.blacklist=radeon"
-	"radeon.modeset=0"
-	"amdgpu.modeset=0"
-  ];
-
   fileSystems."/" = {
-      device = "/dev/disk/by-uuid/bbfb3cdc-f7a7-4798-9b22-5feb5f3559d5";
-      fsType = "ext4";
-    };
+    device = "/dev/disk/by-uuid/bbfb3cdc-f7a7-4798-9b22-5feb5f3559d5";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E590-A5EE";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/E590-A5EE";
+    fsType = "vfat";
+    options = [ "fmask=0077" "dmask=0077" ];
+  };
 
   swapDevices = [ { device = "/dev/disk/by-uuid/e0553170-48af-4b7c-a295-1a521fd78d40"; } ];
 
