@@ -6,6 +6,7 @@
     dua # ncdu with dua i
     dust # du
     dysk # df
+    ed
     fastfetch
     fd # find
     fzf
@@ -14,6 +15,8 @@
     jless # json less
     jq
     lsd # ls
+    mg
+    neovim
     ripgrep # grep
     rsync
     tmux
