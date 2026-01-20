@@ -10,6 +10,7 @@
     fastfetch
     fd # find
     fzf
+    gcc
     git
     gnumake
     jless # json less

@@ -43,7 +43,7 @@
 
   environment.systemPackages = with pkgs; [
     brightnessctl
-    dropbox
+    dropbox-cli
     libreoffice
     mpv
     playerctl
